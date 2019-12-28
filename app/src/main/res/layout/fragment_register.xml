@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:cpb="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".ui.auth.login.LoginFragment">
+
+
+    <!--    -->
+    <!--    <com.jackandphantom.circularprogressbar.CircleProgressbar-->
+    <!--        android:layout_width="250dp"-->
+    <!--        android:layout_height="250dp"-->
+    <!--        app:cpb_foregroundProgressColor="#FF9800"-->
+    <!--        app:cpb_foregroundProgressWidth="16"-->
+    <!--        app:cpb_backgroundProgressWidth="17"-->
+    <!--        app:cpb_progress="50"-->
+    <!--        app:cpb_backgroundProgressColor="#FFF"-->
+    <!--        app:cpb_roundedCorner="true"-->
+    <!--        app:cpb_touchEnabled="true"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_logo"
+            app:layout_constraintVertical_bias=".25"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/signInLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Sign in"
+            android:textStyle="bold"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="@dimen/_30sdp"
+            app:layout_constraintBottom_toTopOf="@id/phoneNumberET"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+
+        <EditText
+            android:id="@+id/phoneNumberET"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_margin="@dimen/_20sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            android:elevation="@dimen/_2sdp"
+            android:hint="Enter your phone number"
+            android:padding="@dimen/_10sdp"
+            android:drawablePadding="@dimen/_20sdp"
+            android:drawableStart="@drawable/ic_phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/cityET" />
+
+
+
+
+
+        <EditText
+            android:id="@+id/cityET"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_margin="@dimen/_20sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            android:elevation="@dimen/_2sdp"
+            android:hint="Choose your city"
+            android:padding="@dimen/_10sdp"
+            android:drawablePadding="@dimen/_20sdp"
+            android:drawableStart="@drawable/ic_pin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/signUpBtn" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/signUpBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:minWidth="@dimen/_150sdp"
+            android:text="Sign up"
+            android:textColor="@android:color/white"
+            android:textAllCaps="false"
+            android:layout_marginBottom="@dimen/_25sdp"
+            android:textSize="@dimen/_14sdp"
+            android:background="@drawable/button_orange_background"
+            app:layout_constraintBottom_toTopOf="@id/haveAccountLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/haveAccountLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:text="You already have an account?"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias=".4"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/signInTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:text=""
+            android:textColor="@color/orange"
+            android:layout_marginBottom="@dimen/_20sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/haveAccountLabel" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".ui.measurement.MeasurementFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/backGroundImgV"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_160sdp"
+            android:background="@color/orange"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/curveImgV"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:scaleType="fitXY"
+            android:tint="@color/orange"
+            app:layout_constraintBottom_toBottomOf="@id/backGroundImgV"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/backGroundImgV"
+            app:srcCompat="@drawable/ic_dot" />
+
+        <TextView
+            android:id="@+id/appBarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="Measurement"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rightCL"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            android:elevation="@dimen/_6sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/bookingClassCL"
+            app:layout_constraintTop_toBottomOf="@+id/backGroundImgV">
+
+            <ImageView
+                android:id="@+id/leftImage"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:scaleType="fitXY"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_chart" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="last weight : 4 weeks"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/leftImage" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bookingClassCL"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            android:elevation="@dimen/_6sdp"
+            app:layout_constraintEnd_toStartOf="@id/rightCL"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/backGroundImgV">
+
+            <ImageView
+                android:id="@+id/rightImage"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_50sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_weight" />
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="over"
+
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintStart_toEndOf="@+id/rightImage"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="61 kg"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintStart_toEndOf="@+id/rightImage"
+                app:layout_constraintTop_toBottomOf="@+id/text" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Goal 53 kg"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintStart_toEndOf="@+id/rightImage"
+                app:layout_constraintTop_toBottomOf="@+id/text1" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/weightCompositionCL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+
+            android:elevation="@dimen/_4sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            app:layout_constraintTop_toBottomOf="@id/rightCL">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Weight Composition"
+                android:layout_margin="@dimen/_10sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <ImageView
+                android:id="@+id/measurementImgV"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                app:srcCompat="@drawable/ic_measurements"
+                android:layout_margin="@dimen/_50sdp"
+                android:scaleType="fitXY"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginEnd="@dimen/_30sdp"
+                app:layout_constraintBottom_toTopOf="@id/measurementImgV"
+                app:layout_constraintStart_toStartOf="@id/guidLine"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@android:color/darker_gray"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="27 KG ( 20%)"
+                app:layout_constraintEnd_toEndOf="@id/view1"
+                app:layout_constraintBottom_toTopOf="@id/view1"/>
+
+            <TextView
+                android:id="@+id/waterLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Water"
+                app:layout_constraintEnd_toEndOf="@id/view1"
+                app:layout_constraintTop_toBottomOf="@id/view1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Normal 27 - 33 %"
+                android:textSize="@dimen/_6sdp"
+                app:layout_constraintTop_toBottomOf="@+id/waterLabel"
+                app:layout_constraintEnd_toEndOf="@id/view1"/>
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_margin="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="@id/measurementImgV"
+                app:layout_constraintTop_toTopOf="@id/measurementImgV"
+                app:layout_constraintStart_toEndOf="@id/measurementImgV"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@android:color/darker_gray"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7 KG ( 10%)"
+                app:layout_constraintEnd_toEndOf="@id/view2"
+                app:layout_constraintBottom_toTopOf="@id/view2"/>
+
+            <TextView
+                android:id="@+id/proteinLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Protein"
+                app:layout_constraintEnd_toEndOf="@id/view2"
+                app:layout_constraintTop_toBottomOf="@id/view2"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Normal 27 - 33 %"
+                android:textSize="@dimen/_6sdp"
+                app:layout_constraintTop_toBottomOf="@+id/proteinLabel"
+                app:layout_constraintEnd_toEndOf="@id/view2"/>
+            <View
+                android:id="@+id/view3"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginEnd="@dimen/_30sdp"
+                app:layout_constraintTop_toBottomOf="@id/measurementImgV"
+                app:layout_constraintBottom_toBottomOf="@id/measurementImgV"
+                app:layout_constraintStart_toStartOf="@id/guidLine"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@android:color/darker_gray"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2.7 KG ( 4%)"
+                app:layout_constraintEnd_toEndOf="@id/view3"
+                app:layout_constraintBottom_toTopOf="@+id/view3"/>
+
+
+            <TextView
+                android:id="@+id/miniralsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Minirals"
+                app:layout_constraintEnd_toEndOf="@id/view3"
+                app:layout_constraintTop_toBottomOf="@id/view3"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Normal 27 - 33 %"
+                android:textSize="@dimen/_6sdp"
+                app:layout_constraintTop_toBottomOf="@+id/miniralsLabel"
+                app:layout_constraintEnd_toEndOf="@id/view3"/>
+            <View
+                android:id="@+id/view4"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/_30sdp"
+                app:layout_constraintVertical_bias=".3"
+                app:layout_constraintEnd_toStartOf="@id/measurementImgV"
+                app:layout_constraintBottom_toBottomOf="@id/measurementImgV"
+                app:layout_constraintTop_toTopOf="@id/measurementImgV"
+                android:background="@android:color/darker_gray"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="22 KG ( 50%)"
+                app:layout_constraintStart_toStartOf="@id/view4"
+                app:layout_constraintBottom_toTopOf="@id/view4"/>
+
+            <TextView
+                android:id="@+id/fatLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fat"
+                app:layout_constraintStart_toStartOf="@id/view4"
+                app:layout_constraintTop_toBottomOf="@id/view4"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Normal 27 - 33 %"
+                android:textSize="@dimen/_6sdp"
+                app:layout_constraintTop_toBottomOf="@+id/fatLabel"
+                app:layout_constraintStart_toStartOf="@id/view4"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".6"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/analysisLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Analysis"
+            android:textStyle="bold"
+            android:textSize="@dimen/_14sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@id/weightCompositionCL"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/analysisRV"
+            android:orientation="horizontal"
+            android:layout_marginStart="@dimen/_4sdp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/analysisLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:id="@+id/bodySegmentLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Body Segment"
+            android:textStyle="bold"
+            android:textSize="@dimen/_14sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@id/analysisRV"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:elevation="@dimen/_4sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/rect_sharp_corner_white"
+            app:layout_constraintTop_toBottomOf="@id/bodySegmentLabel">
+
+
+
+            <com.google.android.material.button.MaterialButtonToggleGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/toggle_button_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:singleSelection="true">
+
+
+
+                <com.google.android.material.button.MaterialButton
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="false"
+                    android:text="Measurement" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="false"
+                    android:text="Muscles" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="false"
+                    android:text="Fat" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidLine1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".48"/>
+
+            <View
+                android:id="@+id/view5"
+                app:layout_constraintTop_toTopOf="@+id/bodyImgV"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                app:layout_constraintStart_toStartOf="@+id/guidLine1"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="1dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="33 Cm"
+                app:layout_constraintEnd_toEndOf="@+id/view5"
+                app:layout_constraintBottom_toTopOf="@+id/view5"/>
+
+            <TextView
+                android:id="@+id/breastLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Breast"
+                app:layout_constraintEnd_toEndOf="@+id/view5"
+                app:layout_constraintTop_toBottomOf="@+id/view5"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="38 Cm a year ago"
+                android:textSize="@dimen/_6sdp"
+                app:layout_constraintTop_toBottomOf="@+id/breastLabel"
+                app:layout_constraintEnd_toEndOf="@+id/breastLabel"/>
+            <View
+                android:id="@+id/view6"
+                app:layout_constraintStart_toStartOf="@id/guidLine1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/bodyImgV"
+                app:layout_constraintTop_toTopOf="@id/bodyImgV"
+                android:layout_width="0dp"
+                app:layout_constraintVertical_bias=".5"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:background="@android:color/darker_gray"
+                android:layout_height="1dp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="33 Cm"
+                app:layout_constraintEnd_toEndOf="@+id/view6"
+                app:layout_constraintBottom_toTopOf="@+id/view6"/>
+
+            <TextView
+                android:id="@+id/HipsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hips"
+                app:layout_constraintEnd_toEndOf="@+id/view6"
+                app:layout_constraintTop_toBottomOf="@+id/view6"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="38 Cm a year ago"
+                android:textSize="@dimen/_6sdp"
+                app:layout_constraintTop_toBottomOf="@+id/HipsLabel"
+                app:layout_constraintEnd_toEndOf="@+id/HipsLabel"/>
+            <View
+                android:id="@+id/view7"
+                app:layout_constraintEnd_toEndOf="@id/guidLine1"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/_15sdp"
+                app:layout_constraintBottom_toBottomOf="@id/bodyImgV"
+                app:layout_constraintTop_toTopOf="@id/bodyImgV"
+                android:layout_width="0dp"
+                app:layout_constraintVertical_bias=".26"
+                android:background="@android:color/darker_gray"
+                android:layout_height="1dp"/>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="33 Cm"
+                app:layout_constraintStart_toStartOf="@+id/view7"
+                app:layout_constraintBottom_toTopOf="@+id/view7"/>
+
+            <TextView
+                android:id="@+id/armLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Breast"
+                app:layout_constraintStart_toStartOf="@+id/view7"
+                app:layout_constraintTop_toBottomOf="@+id/view7"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="38 Cm a year ago"
+                android:textSize="@dimen/_6sdp"
+                app:layout_constraintTop_toBottomOf="@+id/armLabel"
+                app:layout_constraintStart_toStartOf="@+id/armLabel"/>
+            <View
+                android:id="@+id/view8"
+                app:layout_constraintEnd_toEndOf="@id/guidLine1"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/_70sdp"
+                app:layout_constraintBottom_toBottomOf="@id/bodyImgV"
+                app:layout_constraintTop_toTopOf="@id/bodyImgV"
+                android:layout_width="0dp"
+                app:layout_constraintVertical_bias=".45"
+                android:background="@android:color/darker_gray"
+                android:layout_height="1dp"/>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="33 Cm"
+                app:layout_constraintStart_toStartOf="@+id/view8"
+                app:layout_constraintBottom_toTopOf="@+id/view8"/>
+
+            <TextView
+                android:id="@+id/waistLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Waist"
+                app:layout_constraintStart_toStartOf="@+id/view8"
+                app:layout_constraintTop_toBottomOf="@+id/view8"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="38 Cm a year ago"
+                android:textSize="@dimen/_6sdp"
+                app:layout_constraintTop_toBottomOf="@+id/waistLabel"
+                app:layout_constraintStart_toStartOf="@+id/waistLabel"/>
+
+            <View
+                android:id="@+id/view9"
+                app:layout_constraintEnd_toEndOf="@id/guidLine1"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/_20sdp"
+                app:layout_constraintBottom_toBottomOf="@id/bodyImgV"
+                app:layout_constraintTop_toTopOf="@id/bodyImgV"
+                android:layout_width="0dp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                app:layout_constraintVertical_bias=".8"
+                android:background="@android:color/darker_gray"
+                android:layout_height="1dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="33 Cm"
+                app:layout_constraintStart_toStartOf="@+id/view9"
+                app:layout_constraintBottom_toTopOf="@+id/view9"/>
+
+            <TextView
+                android:id="@+id/legsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Legs"
+                app:layout_constraintStart_toStartOf="@+id/view9"
+                app:layout_constraintTop_toBottomOf="@+id/view9"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="38 Cm a year ago"
+                android:textSize="@dimen/_6sdp"
+                app:layout_constraintTop_toBottomOf="@+id/legsLabel"
+                app:layout_constraintStart_toStartOf="@+id/legsLabel"/>
+            <ImageView
+                android:id="@+id/bodyImgV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_body"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toggle_button_group"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/fullHistoryLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                app:layout_constraintBottom_toTopOf="@id/lastMeasureLabel"
+                app:layout_constraintEnd_toEndOf="parent"/>
+            <TextView
+                android:id="@+id/lastMeasureLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="last measured : 4 weeks"
+                android:textSize="@dimen/_10sdp"
+                android:layout_margin="@dimen/_5sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+   </androidx.core.widget.NestedScrollView>
