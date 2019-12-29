@@ -65,6 +65,7 @@
             android:elevation="@dimen/_2sdp"
             android:hint="Enter your phone number"
             android:padding="@dimen/_10sdp"
+            android:inputType="phone"
             android:drawablePadding="@dimen/_20sdp"
             android:drawableStart="@drawable/ic_phone"
             app:layout_constraintEnd_toEndOf="parent"
