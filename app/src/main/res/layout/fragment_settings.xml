@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:fillViewport="true"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.settings.SettingsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/backGroundImgV"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/orange"/>
+
+        <ImageView
+            android:id="@+id/curveImgV"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:scaleType="fitXY"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            android:tint="@color/orange"
+            app:srcCompat="@drawable/ic_dot"
+            app:layout_constraintBottom_toBottomOf="@id/backGroundImgV"
+            app:layout_constraintTop_toBottomOf="@id/backGroundImgV"
+            />
+
+        <TextView
+            android:id="@+id/appBarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get More"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <ImageView
+            android:id="@+id/backArrowImgV"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            app:layout_constraintHorizontal_bias=".1"
+            app:layout_constraintEnd_toStartOf="@id/appBarTitle"
+            app:srcCompat="@drawable/ic_left_arrow"
+            app:layout_constraintBottom_toBottomOf="@id/appBarTitle"
+            app:layout_constraintTop_toTopOf="@id/appBarTitle"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sara Alhumiad"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/backArrowImgV"
+            app:layout_constraintStart_toEndOf="@id/backArrowImgV"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_logout"
+            android:drawablePadding="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:textSize="@dimen/_12sdp"
+            android:text="Logout"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:layout_constraintTop_toBottomOf="@id/backArrowImgV"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="#837467"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/text1"
+            app:layout_constraintStart_toEndOf="@id/backArrowImgV"/>
+
+        <TextView
+            android:id="@+id/text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_active"
+            android:textSize="@dimen/_12sdp"
+            android:text="Active Member"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:drawablePadding="@dimen/_4sdp"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@id/backArrowImgV"
+            app:layout_constraintTop_toBottomOf="@id/text2"/>
+
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent=".08"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:elevation="@dimen/_4sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/curveImgV"
+            app:layout_constraintBottom_toBottomOf="@id/curveImgV"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/rect_sharp_corner_white"
+            android:id="@+id/membershipCL">
+
+            <ImageView
+                android:id="@+id/membershipImgV"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent=".5"
+                app:layout_constraintWidth_percent=".2"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/ic_sports_running"/>
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Membership"
+                android:gravity="center|start"
+                android:textSize="@dimen/_14sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:textColor="@android:color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/membershipImgV"/>
+
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:srcCompat="@drawable/ic_left_arrow"
+                android:scaleX="-1"
+                app:layout_constraintWidth_percent=".06"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:tint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent=".08"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:elevation="@dimen/_4sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            app:layout_constraintTop_toBottomOf="@id/membershipCL"
+            android:id="@+id/bookingCL">
+
+            <ImageView
+                android:id="@+id/bookingImgV"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent=".5"
+                app:layout_constraintWidth_percent=".2"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/ic_sports_running"/>
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="My Booking"
+                android:gravity="center|start"
+                android:textSize="@dimen/_14sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:textColor="@android:color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/bookingImgV"/>
+
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:srcCompat="@drawable/ic_left_arrow"
+                android:scaleX="-1"
+                app:layout_constraintWidth_percent=".06"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:tint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent=".08"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:elevation="@dimen/_4sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            app:layout_constraintTop_toBottomOf="@id/bookingCL"
+            android:id="@+id/tellUsCL">
+
+            <ImageView
+                android:id="@+id/tellUsImgV"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent=".5"
+                app:layout_constraintWidth_percent=".2"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/ic_sports_running"/>
+
+
+            <TextView
+                android:id="@+id/tellUsLabel"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Tell us what you think...?"
+                android:gravity="center|start"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintWidth_percent=".5"
+                app:layout_constraintHorizontal_bias="0"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:textColor="@android:color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tellUsImgV"/>
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="1 new"
+                android:gravity="center"
+                app:layout_constraintStart_toEndOf="@id/tellUsLabel"
+                app:layout_constraintEnd_toStartOf="@id/arrowImgV"
+                android:textColor="@android:color/holo_red_light"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+            <ImageView
+                android:id="@+id/arrowImgV"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:srcCompat="@drawable/ic_left_arrow"
+                android:scaleX="-1"
+                app:layout_constraintWidth_percent=".06"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:tint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent=".08"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:elevation="@dimen/_4sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            app:layout_constraintTop_toBottomOf="@id/tellUsCL"
+            android:id="@+id/offersCL">
+
+            <ImageView
+                android:id="@+id/offersImgV"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent=".5"
+                app:layout_constraintWidth_percent=".2"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/ic_sports_running"/>
+
+
+            <TextView
+                android:id="@+id/offersLabel"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Spicial Offers"
+                android:gravity="center|start"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintWidth_percent=".5"
+                app:layout_constraintHorizontal_bias="0"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:textColor="@android:color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/offersImgV"/>
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="1 new"
+                android:gravity="center"
+                app:layout_constraintStart_toEndOf="@id/offersLabel"
+                app:layout_constraintEnd_toStartOf="@id/offersArrowImgV"
+                android:textColor="@android:color/holo_red_light"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+            <ImageView
+                android:id="@+id/offersArrowImgV"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:srcCompat="@drawable/ic_left_arrow"
+                android:scaleX="-1"
+                app:layout_constraintWidth_percent=".06"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:tint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent=".08"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:elevation="@dimen/_4sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            app:layout_constraintTop_toBottomOf="@id/offersCL"
+            android:id="@+id/inviteCL">
+
+            <ImageView
+                android:id="@+id/inviteImgV"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent=".5"
+                app:layout_constraintWidth_percent=".2"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/ic_sports_running"/>
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Invite Your Friends"
+                android:gravity="center|start"
+                android:textSize="@dimen/_14sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:textColor="@android:color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/inviteImgV"/>
+
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:srcCompat="@drawable/ic_left_arrow"
+                android:scaleX="-1"
+                app:layout_constraintWidth_percent=".06"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:tint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/followUsCL"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            android:elevation="@dimen/_4sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".08"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inviteCL">
+
+
+            <TextView
+                android:id="@+id/followUsLabel"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:gravity="center|start"
+                android:text="Follow Us On"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".3" />
+
+
+            <ImageView
+                android:id="@+id/snapChatImgV"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/instagramImgV"
+                app:layout_constraintHeight_percent=".8"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/followUsLabel"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".1"
+                app:srcCompat="@drawable/ic_sports_running" />
+
+
+            <ImageView
+                android:id="@+id/instagramImgV"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tiwtterImgV"
+                app:layout_constraintHeight_percent=".8"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/snapChatImgV"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".1"
+                app:srcCompat="@drawable/ic_sports_running" />
+
+
+            <ImageView
+                android:id="@+id/tiwtterImgV"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/facebookImgV"
+                app:layout_constraintHeight_percent=".8"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/instagramImgV"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".1"
+                app:srcCompat="@drawable/ic_sports_running" />
+
+
+            <ImageView
+                android:id="@+id/facebookImgV"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent=".8"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tiwtterImgV"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".1"
+                app:srcCompat="@drawable/ic_sports_running" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/guidBookToolsCL"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/_10sdp"
+            app:layout_constraintHeight_percent=".2"
+            android:elevation="@dimen/_4sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintEnd_toStartOf="@+id/guidBookGroupCL"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/followUsCL">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/_10sdp"
+                app:srcCompat="@drawable/ic_logo"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/guidBookGroupCL"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:elevation="@dimen/_4sdp"
+            android:layout_margin="@dimen/_10sdp"
+            app:layout_constraintHeight_percent=".2"
+            android:background="@drawable/rect_sharp_corner_white"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/guidBookToolsCL"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/followUsCL">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/_10sdp"
+                app:srcCompat="@drawable/ic_logo"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+   </ScrollView>
