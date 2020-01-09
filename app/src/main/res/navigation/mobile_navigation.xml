@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/guidBookFragment">
+    app:startDestination="@id/performanceFragment">
 
 
     <fragment
@@ -87,4 +87,8 @@
     <fragment android:id="@+id/guidBookFragment"
         tools:layout="@layout/fragment_guidebook"
         android:name="com.android.pharous.app.lava.ui.guidebook.GuidebookFragment"/>
+
+    <fragment android:id="@+id/performanceFragment"
+        android:name="com.android.pharous.app.lava.ui.performance.PerformanceFragment"
+        tools:layout="@layout/fragment_performance"/>
 </navigation>

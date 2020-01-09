@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.performance.PerformanceFragment">
+
+
+    <ImageView
+        android:id="@+id/backGroundImgV"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200sdp"
+        android:background="@color/orange_dark"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/curveImgV"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp"
+        android:scaleType="fitXY"
+        android:tint="@color/orange_dark"
+        app:layout_constraintBottom_toBottomOf="@id/backGroundImgV"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backGroundImgV"
+        app:srcCompat="@drawable/ic_dot" />
+
+    <TextView
+        android:id="@+id/appBarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="Performance"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/backArrowImgV"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        app:layout_constraintBottom_toBottomOf="@id/appBarTitle"
+        app:layout_constraintEnd_toStartOf="@id/appBarTitle"
+        app:layout_constraintHorizontal_bias=".1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/appBarTitle"
+        app:srcCompat="@drawable/ic_left_arrow" />
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="@dimen/_4sdp"
+        android:background="@drawable/rect_sharp_corner_white"
+        app:layout_constraintWidth_percent=".9"
+        app:layout_constraintHeight_percent=".15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backGroundImgV">
+
+        <TextView
+            android:id="@+id/dateTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Today"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <ImageView
+            android:id="@+id/progressImgV"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            app:layout_constraintWidth_percent=".35"
+            app:layout_constraintStart_toEndOf="@id/dateTV"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_progress"/>
+
+        <TextView
+            android:id="@+id/stepsNumberTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2500"
+            app:layout_constraintVertical_bias=".45"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="@id/progressImgV"
+            app:layout_constraintTop_toTopOf="@id/progressImgV"
+            app:layout_constraintEnd_toEndOf="@id/progressImgV"
+            app:layout_constraintStart_toStartOf="@id/progressImgV"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="step"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/stepsNumberTV"
+            app:layout_constraintEnd_toEndOf="@id/progressImgV"
+            app:layout_constraintStart_toStartOf="@id/progressImgV"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Goal\n20days"
+            android:gravity="center"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="@dimen/_8sdp"
+            app:layout_constraintVertical_bias="1"
+            app:layout_constraintBottom_toBottomOf="@id/progressImgV"
+            app:layout_constraintTop_toTopOf="@id/progressImgV"
+            app:layout_constraintStart_toStartOf="@id/progressImgV"
+            app:layout_constraintEnd_toEndOf="@id/progressImgV"/>
+
+
+        <ImageView
+            android:id="@+id/progressImgV1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            app:layout_constraintWidth_percent=".35"
+            app:layout_constraintStart_toEndOf="@id/progressImgV"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_progress"/>
+
+        <TextView
+            android:id="@+id/workoutsNumberTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            app:layout_constraintVertical_bias=".45"
+            android:gravity="center"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="@id/progressImgV1"
+            app:layout_constraintTop_toTopOf="@id/progressImgV1"
+            app:layout_constraintEnd_toEndOf="@id/progressImgV1"
+            app:layout_constraintStart_toStartOf="@id/progressImgV1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Workouts"
+            android:gravity="center"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/stepsNumberTV"
+            app:layout_constraintEnd_toEndOf="@id/progressImgV1"
+            app:layout_constraintStart_toStartOf="@id/progressImgV1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Goal\n20days"
+            android:gravity="center"
+            android:textSize="@dimen/_8sdp"
+            android:textColor="@android:color/holo_red_light"
+            app:layout_constraintVertical_bias="1"
+            app:layout_constraintBottom_toBottomOf="@id/progressImgV1"
+            app:layout_constraintTop_toTopOf="@id/progressImgV1"
+            app:layout_constraintStart_toStartOf="@id/progressImgV1"
+            app:layout_constraintEnd_toEndOf="@id/progressImgV1"/>
+
+        <TextView
+            android:id="@+id/floorsNumberTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            android:textSize="@dimen/_16sdp"
+            android:textStyle="bold"
+            app:layout_constraintVertical_bias=".4"
+            app:layout_constraintStart_toEndOf="@id/progressImgV1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/floorsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Floors"
+            android:textSize="@dimen/_16sdp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/progressImgV1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/floorsNumberTV"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

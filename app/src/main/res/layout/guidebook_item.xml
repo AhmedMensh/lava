@@ -68,41 +68,55 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/gray"
+            android:padding="@dimen/_4sdp"
             android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/parentCL">
 
             <ImageView
-                android:id="@+id/dumbellImgV"
-                android:layout_width="@dimen/_40sdp"
+                android:id="@+id/ImgV1"
+                android:layout_width="0dp"
                 android:layout_height="@dimen/_50sdp"
                 android:layout_marginTop="@dimen/_4sdp"
-                android:layout_marginStart="@dimen/_10sdp"
-                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/ic_photo1"
+                app:layout_constraintEnd_toStartOf="@+id/ImgV2"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_dumbbell_colored"/>
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".3" />
 
+            <ImageView
+                android:id="@+id/ImgV2"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="@drawable/ic_photo1"
+                app:layout_constraintEnd_toStartOf="@+id/ImgV3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/ImgV1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".3" />
+
+
+            <ImageView
+                android:id="@+id/ImgV3"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="@drawable/ic_photo1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/ImgV2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".3" />
 
             <TextView
-                android:id="@+id/text"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:text="Walk"
-                android:textSize="@dimen/_12sdp"
-                app:layout_constraintHorizontal_bias=".2"
-                app:layout_constraintTop_toTopOf="@id/dumbellImgV"
-                app:layout_constraintStart_toEndOf="@id/dumbellImgV"/>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10 mins • Mid-Speed"
-                android:textSize="@dimen/_12sdp"
-                app:layout_constraintStart_toStartOf="@id/text"
-                app:layout_constraintTop_toBottomOf="@id/text"/>
-
+                android:padding="@dimen/_4sdp"
+                android:text="1.start by adjusting the seat position by pulling the handle on the right until it feels right.\n\n2.Put your hands upside down and bush the bars\n\n3.repeat for the desired period ( notes: don`t exceed last time more than 50 % )."
+                app:layout_constraintTop_toBottomOf="@id/ImgV1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
