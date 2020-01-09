@@ -11,7 +11,7 @@
         android:id="@+id/backGroundImgV"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_160sdp"
-        android:background="@color/orange"
+        android:background="@color/orange_dark"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_100sdp"
         android:scaleType="fitXY"
-        android:tint="@color/orange"
+        android:tint="@color/orange_dark"
         app:layout_constraintBottom_toBottomOf="@id/backGroundImgV"
 
         app:layout_constraintEnd_toEndOf="parent"

@@ -19,7 +19,7 @@
     android:id="@+id/circleImgV"
     android:layout_width="@dimen/_60sdp"
     android:layout_height="@dimen/_60sdp"
-    android:tint="@color/orange"
+    android:tint="@color/orange_dark"
     app:srcCompat="@drawable/ic_circle_outline"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintTop_toTopOf="parent"

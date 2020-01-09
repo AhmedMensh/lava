@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/_10sdp"
+    android:orientation="horizontal">
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/veryGoodBtn"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_weight="1"
+        android:textAllCaps="false"
+        android:textSize="@dimen/_8sdp"
+        android:backgroundTint="@color/orange"
+        android:text="very good"
+        android:textColor="@color/white"
+        app:cornerRadius="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/needImproveBtn"
+        android:layout_width="0dp"
+        android:layout_weight="1.5"
+        android:layout_height="@dimen/_35sdp"
+        android:textAllCaps="false"
+        android:textSize="@dimen/_8sdp"
+        android:backgroundTint="@color/orange"
+        android:text="need improvement"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:textColor="@color/white"
+        app:cornerRadius="@dimen/_10sdp" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/veryBadBtn"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="@dimen/_35sdp"
+        android:backgroundTint="@color/orange"
+        android:textAllCaps="false"
+        android:textSize="@dimen/_8sdp"
+        android:text="very bad"
+        android:textColor="@color/white"
+        app:cornerRadius="@dimen/_10sdp" />
+
+</LinearLayout>

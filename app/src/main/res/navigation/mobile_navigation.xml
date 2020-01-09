@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/settingsFragment">
+    app:startDestination="@id/guidBookFragment">
 
 
     <fragment
@@ -79,4 +79,12 @@
     <fragment android:id="@+id/settingsFragment"
         tools:layout="@layout/fragment_settings"
         android:name="com.android.pharous.app.lava.ui.settings.SettingsFragment"/>
+
+    <fragment android:id="@+id/membershipFragment"
+        android:name="com.android.pharous.app.lava.ui.membership.MembershipFragment"
+         tools:layout="@layout/fragment_membership"/>
+
+    <fragment android:id="@+id/guidBookFragment"
+        tools:layout="@layout/fragment_guidebook"
+        android:name="com.android.pharous.app.lava.ui.guidebook.GuidebookFragment"/>
 </navigation>

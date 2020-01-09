@@ -124,7 +124,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
             android:text=""
-            android:textColor="@color/orange"
+            android:textColor="@color/orange_dark"
             android:layout_marginBottom="@dimen/_20sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/haveAccountLabel" />

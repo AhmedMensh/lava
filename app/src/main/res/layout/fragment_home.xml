@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_220sdp"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange_dark"/>
 
         <ImageView
             android:id="@+id/curveImgV"
@@ -26,7 +26,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
 
-            android:tint="@color/orange"
+            android:tint="@color/orange_dark"
             app:srcCompat="@drawable/ic_dot"
             app:layout_constraintBottom_toBottomOf="@id/backGroundImgV"
             app:layout_constraintTop_toBottomOf="@id/backGroundImgV"

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/pink"
+
+    android:layout_margin="@dimen/_10sdp"
+    app:cardCornerRadius="@dimen/_8sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/parentCL"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/sportsRunningImgV"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/ic_dumbbell_colored"/>
+
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Walk"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintHorizontal_bias=".2"
+                app:layout_constraintTop_toTopOf="@id/sportsRunningImgV"
+                app:layout_constraintStart_toEndOf="@id/sportsRunningImgV"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10 mins • Mid-Speed"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintStart_toStartOf="@id/text1"
+                app:layout_constraintTop_toBottomOf="@id/text1"/>
+
+            <ImageView
+                android:id="@+id/dropdownArrowImgV"
+                android:layout_width="@dimen/_14sdp"
+                android:layout_height="@dimen/_14sdp"
+                app:srcCompat="@drawable/ic_down_arrow"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:tint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/childCL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/parentCL">
+
+            <ImageView
+                android:id="@+id/dumbellImgV"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/ic_dumbbell_colored"/>
+
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Walk"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintHorizontal_bias=".2"
+                app:layout_constraintTop_toTopOf="@id/dumbellImgV"
+                app:layout_constraintStart_toEndOf="@id/dumbellImgV"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10 mins • Mid-Speed"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintStart_toStartOf="@id/text"
+                app:layout_constraintTop_toBottomOf="@id/text"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>
