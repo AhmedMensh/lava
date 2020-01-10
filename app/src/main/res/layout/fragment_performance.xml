@@ -54,6 +54,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/progressCL"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:elevation="@dimen/_4sdp"
@@ -196,4 +197,55 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <com.google.android.material.button.MaterialButtonToggleGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toggle_button_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressCL"
+        app:singleSelection="true">
+
+
+
+        <com.google.android.material.button.MaterialButton
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="Workout" />
+
+        <com.google.android.material.button.MaterialButton
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="Steps" />
+
+
+        <com.google.android.material.button.MaterialButton
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="Floors" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_10sdp"
+        app:iconGravity="end"
+        app:icon="@drawable/ic_down_arrow"
+        android:textAllCaps="false"
+        android:layout_margin="@dimen/_5sdp"
+        android:backgroundTint="@color/orange_dark"
+        app:layout_constraintTop_toBottomOf="@id/toggle_button_group"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Last Month"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

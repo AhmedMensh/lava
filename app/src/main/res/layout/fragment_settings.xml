@@ -118,7 +118,7 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:elevation="@dimen/_4sdp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/curveImgV"
+            app:layout_constraintTop_toBottomOf="@id/backGroundImgV"
             app:layout_constraintBottom_toBottomOf="@id/curveImgV"
             app:layout_constraintStart_toStartOf="parent"
             android:background="@drawable/rect_sharp_corner_white"
@@ -130,11 +130,11 @@
                 android:layout_height="0dp"
                 app:layout_constraintHeight_percent=".5"
                 app:layout_constraintWidth_percent=".2"
-                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_sports_running"/>
+                app:srcCompat="@drawable/ic_membership_badge"/>
 
 
             <TextView
@@ -185,11 +185,11 @@
                 android:layout_height="0dp"
                 app:layout_constraintHeight_percent=".5"
                 app:layout_constraintWidth_percent=".2"
-                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginStart="@dimen/_10sdp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_sports_running"/>
+                app:srcCompat="@drawable/ic_sport"/>
 
 
             <TextView
@@ -240,11 +240,11 @@
                 android:layout_height="0dp"
                 app:layout_constraintHeight_percent=".5"
                 app:layout_constraintWidth_percent=".2"
-                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginStart="@dimen/_10sdp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_sports_running"/>
+                app:srcCompat="@drawable/ic_survey"/>
 
 
             <TextView
@@ -310,11 +310,11 @@
                 android:layout_height="0dp"
                 app:layout_constraintHeight_percent=".5"
                 app:layout_constraintWidth_percent=".2"
-                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginStart="@dimen/_10sdp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_sports_running"/>
+                app:srcCompat="@drawable/ic_smartphone"/>
 
 
             <TextView
@@ -381,11 +381,11 @@
                 android:layout_height="0dp"
                 app:layout_constraintHeight_percent=".5"
                 app:layout_constraintWidth_percent=".2"
-                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginStart="@dimen/_10sdp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_sports_running"/>
+                app:srcCompat="@drawable/ic_invitation"/>
 
 
             <TextView
@@ -457,7 +457,7 @@
                 app:layout_constraintStart_toEndOf="@+id/followUsLabel"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent=".1"
-                app:srcCompat="@drawable/ic_sports_running" />
+                app:srcCompat="@drawable/ic_snapchat" />
 
 
             <ImageView
@@ -471,7 +471,7 @@
                 app:layout_constraintStart_toEndOf="@+id/snapChatImgV"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent=".1"
-                app:srcCompat="@drawable/ic_sports_running" />
+                app:srcCompat="@drawable/ic_instagram" />
 
 
             <ImageView
@@ -485,7 +485,7 @@
                 app:layout_constraintStart_toEndOf="@+id/instagramImgV"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent=".1"
-                app:srcCompat="@drawable/ic_sports_running" />
+                app:srcCompat="@drawable/ic_twitter" />
 
 
             <ImageView
@@ -499,7 +499,7 @@
                 app:layout_constraintStart_toEndOf="@+id/tiwtterImgV"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent=".1"
-                app:srcCompat="@drawable/ic_sports_running" />
+                app:srcCompat="@drawable/ic_facebook" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
