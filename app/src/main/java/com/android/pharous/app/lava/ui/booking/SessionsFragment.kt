@@ -10,12 +10,13 @@ import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 
 import com.android.pharous.app.lava.R
+import com.android.pharous.app.lava.common.IItemClickListener
 import kotlinx.android.synthetic.main.fragment_sessions.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class SessionsFragment : Fragment() {
+class SessionsFragment : Fragment() , IItemClickListener<String>{
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +32,7 @@ class SessionsFragment : Fragment() {
 
 
         sessionsRV.adapter =
-            BookingSessionAdapter()
+            BookingSessionAdapter(this)
 //        showBookingSessionDialog()
     }
 
@@ -52,4 +53,10 @@ class SessionsFragment : Fragment() {
 
         dialog.show()
     }
+
+    override fun onItemClick(item: String) {
+        showBookingSessionDialog()
+    }
+
+
 }

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
+import androidx.navigation.fragment.findNavController
 
 import com.android.pharous.app.lava.R
 import kotlinx.android.synthetic.main.fragment_schedule.*
@@ -31,7 +32,14 @@ class ScheduleFragment : Fragment() {
 
         sessionRV.adapter = SessionsScheduleAdapter()
 
-        swimmingClassesCL.setOnClickListener { showBookingClassDialog() }
+        swimmingClassesCL.setOnClickListener {
+            var bundle = Bundle()
+            bundle.putString("type","swimming")
+            findNavController().navigate(R.id.action_scheduleFragment_to_bookingFragment) }
+
+        fitnessClassesCL.setOnClickListener {    var bundle = Bundle()
+            bundle.putString("type","class")
+            findNavController().navigate(R.id.action_scheduleFragment_to_bookingFragment) }
     }
 
     fun showBookingClassDialog(){

@@ -11,12 +11,13 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 
 import com.android.pharous.app.lava.R
+import com.android.pharous.app.lava.common.IItemClickListener
 import kotlinx.android.synthetic.main.fragment_measurement.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class MeasurementFragment : Fragment() {
+class MeasurementFragment : Fragment(),IItemClickListener<String> {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +32,7 @@ class MeasurementFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         analysisRV.setHasFixedSize(true)
-        analysisRV.adapter = Adapter()
+        analysisRV.adapter = MeasurementsAdapter(this)
 
 
         val content = SpannableString("SEE FUL HISTORY")
@@ -39,4 +40,10 @@ class MeasurementFragment : Fragment() {
         fullHistoryLabel.text = content
         fullHistoryLabel.setOnClickListener { findNavController().navigate(R.id.action_measurementFragment_to_measurementHistoryFragment) }
     }
+
+    override fun onItemClick(item: String) {
+        findNavController().navigate(R.id.weightLogHistoryFragment)
+    }
+
+
 }

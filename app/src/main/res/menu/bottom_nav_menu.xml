@@ -18,9 +18,9 @@
     <item
         android:icon="@drawable/ic_menu"
         android:title="@string/app_name"
-        android:id="@+id/weightLogHistoryFragment"/>
+        android:id="@+id/performanceFragment"/>
 
-    <item android:id="@+id/workoutFragment"
+    <item android:id="@+id/settingsFragment"
         android:title="@string/app_name"
         android:icon="@drawable/ic_add"/>
 </menu>

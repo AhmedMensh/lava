@@ -30,8 +30,8 @@ class MainActivity : AppCompatActivity() {
 
             if ( navDestination.id ==  R.id.measurementFragment || navDestination.id ==  R.id.homeFragment
                 || navDestination.id == R.id.scheduleFragment || navDestination.id == R.id.measurementFragment
-                || navDestination.id == R.id.workoutFragment
-                || navDestination.id == R.id.weightLogHistoryFragment) {
+                || navDestination.id == R.id.settingsFragment
+                || navDestination.id == R.id.performanceFragment) {
 
                 bottomNavMenu.visibility = View.VISIBLE
 

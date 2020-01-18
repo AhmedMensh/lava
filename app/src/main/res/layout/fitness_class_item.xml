@@ -5,7 +5,6 @@
     android:id="@+id/swipeRevealLayout"
     android:elevation="@dimen/_4sdp"
     android:padding="@dimen/_5sdp"
-    android:layout_marginEnd="@dimen/_10sdp"
     android:layout_marginTop="@dimen/_6sdp"
     android:layout_marginBottom="@dimen/_6sdp"
     android:layout_marginStart="@dimen/_10sdp"

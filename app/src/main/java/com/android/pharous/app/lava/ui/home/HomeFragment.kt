@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 
 import com.android.pharous.app.lava.R
 import com.android.pharous.app.lava.ui.MainActivity
@@ -28,7 +29,15 @@ class HomeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        workoutRV.adapter = WorkoutAdapter()
+
+        cardioCL.setOnClickListener {
+            var bundle = Bundle()
+            bundle.putString("type","swim")
+            findNavController().navigate(R.id.action_homeFragment_to_workoutFragment,bundle) }
+        strengthCL.setOnClickListener {
+            var bundle = Bundle()
+            bundle.putString("type","class")
+            findNavController().navigate(R.id.action_homeFragment_to_workoutFragment,bundle) }
         upcomingBookingRV.adapter = UpcomingBookingsAdapter()
     }
 }

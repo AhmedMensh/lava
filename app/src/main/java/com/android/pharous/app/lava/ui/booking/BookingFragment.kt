@@ -26,22 +26,19 @@ class BookingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        startClassesFragment()
-        classesTV.setOnClickListener {
-            commingBookedClassesLabel.visibility = View.VISIBLE
-            commingBookedClassesTI.visibility = View.VISIBLE
-            yogaImgV.visibility = View.VISIBLE
-            swimmingImgV.visibility = View.VISIBLE
-            startClassesFragment() }
-        sessionsTV.setOnClickListener {
-            commingBookedClassesLabel.visibility = View.GONE
-            commingBookedClassesTI.visibility = View.GONE
-            yogaImgV.visibility = View.GONE
-            swimmingImgV.visibility = View.GONE
-            startSessionsFragment()}
-    }
+        if (arguments?.getString("type").equals("class")) startClassesFragment()
+        else startSessionsFragment()
+
+        classesTV.setOnClickListener { startClassesFragment() }
+        sessionsTV.setOnClickListener { startSessionsFragment()} }
 
     private fun startSessionsFragment(){
+
+        commingBookedClassesLabel.visibility = View.GONE
+        commingBookedClassesTI.visibility = View.GONE
+        yogaImgV.visibility = View.GONE
+        swimmingImgV.visibility = View.GONE
+
 
         val sessionsFragment = SessionsFragment()
         val fm = activity?.supportFragmentManager
@@ -51,6 +48,12 @@ class BookingFragment : Fragment() {
     }
 
     private fun startClassesFragment(){
+
+        commingBookedClassesLabel.visibility = View.VISIBLE
+        commingBookedClassesTI.visibility = View.VISIBLE
+        yogaImgV.visibility = View.VISIBLE
+        swimmingImgV.visibility = View.VISIBLE
+
 
         val calssesFragment = ClassesScheduleFragment()
         val fm = activity?.supportFragmentManager
