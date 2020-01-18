@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_10sdp"
+    app:cardCornerRadius="@dimen/_6sdp"
+    app:cardBackgroundColor="@color/gray">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       >
+
+        <ImageView
+            android:id="@+id/dropdownArrowImgV"
+            android:layout_width="@dimen/_14sdp"
+            android:layout_height="@dimen/_14sdp"
+
+            app:layout_constraintTop_toBottomOf="@id/sessionNameTV"
+
+            android:layout_marginStart="@dimen/_10sdp"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:srcCompat="@drawable/ic_down_arrow" />
+
+        <TextView
+            android:id="@+id/sessionNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:text="Swidish massage"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_14sdp"
+            app:layout_constraintStart_toEndOf="@+id/dropdownArrowImgV"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/sessionPriceTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="SAR 100"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toTopOf="@id/sessionDescTV"
+            app:layout_constraintStart_toEndOf="@+id/dropdownArrowImgV"
+            app:layout_constraintTop_toBottomOf="@id/sessionNameTV" />
+
+
+        <TextView
+            android:id="@+id/bookTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:text="Book"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/sessionPriceTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/sessionDescTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            android:visibility="gone"
+            android:background="@color/gray_dark"
+            android:text="massage for relaxation and stress relefe. Book now and get all these tough muscles rewlaxed!"
+            app:layout_constraintTop_toBottomOf="@id/sessionPriceTV"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

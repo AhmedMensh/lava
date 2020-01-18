@@ -1,4 +1,4 @@
-package com.android.pharous.app.lava.ui.workout
+package com.android.pharous.app.lava.ui.classes
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +8,7 @@ import com.android.pharous.app.lava.R
 import com.chauthai.swipereveallayout.SwipeRevealLayout
 import com.chauthai.swipereveallayout.ViewBinderHelper
 
-class WorkoutTasksAdapter : RecyclerView.Adapter<WorkoutTasksAdapter.ViewHolder>() {
+class SwimmingClassesAdapter : RecyclerView.Adapter<SwimmingClassesAdapter.ViewHolder>() {
 
 
     private var viewBinderHelper : ViewBinderHelper = ViewBinderHelper()
@@ -22,7 +22,7 @@ class WorkoutTasksAdapter : RecyclerView.Adapter<WorkoutTasksAdapter.ViewHolder>
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.workout_task_item, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.swimming_class_item, parent, false))
     }
 
     override fun getItemCount(): Int {

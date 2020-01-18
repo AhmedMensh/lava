@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_50sdp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainViewCL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rect_sharp_corner_white_with_gray_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/classTrainingImgV"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".1"
+            app:layout_constraintHeight_percent=".5"
+            app:layout_constraintHorizontal_bias=".02"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/ic_running" />
+
+
+        <TextView
+            android:id="@+id/coachNameTV"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent=".3"
+            app:layout_constraintWidth_percent=".3"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias=".1"
+            android:text="By Heba"
+            android:textColor="@android:color/black"
+
+            app:layout_constraintStart_toEndOf="@+id/classTrainingImgV"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/trainTypeTV"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent=".3"
+            app:layout_constraintWidth_percent=".5"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:text="Sprining"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            android:layout_marginBottom="@dimen/_4sdp"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toStartOf="@id/coachNameTV"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/classTrainingImgV"
+            app:layout_constraintTop_toBottomOf="@id/coachNameTV" />
+
+
+        <TextView
+            android:id="@+id/trainingScheduleTV"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintWidth_percent=".4"
+            app:layout_constraintHeight_percent=".4"
+            android:gravity="center"
+            android:text="09:00-09:45"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/coachNameTV"
+            android:layout_marginTop="@dimen/_4sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            android:tint="@color/gray"
+            app:layout_constraintTop_toBottomOf="@id/trainingScheduleTV"
+            app:layout_constraintWidth_percent=".1"
+            app:layout_constraintHeight_percent=".6"
+            app:srcCompat="@drawable/ic_virifaction"
+            app:layout_constraintHorizontal_bias=".8"
+            app:layout_constraintStart_toStartOf="@id/trainingScheduleTV"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@color/gray_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mainViewCL"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>

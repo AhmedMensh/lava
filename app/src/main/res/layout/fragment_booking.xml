@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.booking.BookingFragment">
+
+
+
+    <ImageView
+        android:id="@+id/backGroundImgV"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/orange_dark"/>
+
+    <ImageView
+        android:id="@+id/curveImgV"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:tint="@color/orange_dark"
+        app:srcCompat="@drawable/ic_dot"
+        app:layout_constraintBottom_toBottomOf="@id/backGroundImgV"
+        app:layout_constraintTop_toBottomOf="@id/backGroundImgV"
+        />
+
+    <TextView
+        android:id="@+id/appBarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get More"
+        android:textSize="@dimen/_14sdp"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageView
+        android:id="@+id/backArrowImgV"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        app:layout_constraintHorizontal_bias=".1"
+        app:layout_constraintEnd_toStartOf="@id/appBarTitle"
+        app:srcCompat="@drawable/ic_left_arrow"
+        app:layout_constraintBottom_toBottomOf="@id/appBarTitle"
+        app:layout_constraintTop_toTopOf="@id/appBarTitle"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent=".3"
+        android:orientation="horizontal"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:elevation="@dimen/_4sdp"
+        android:background="@drawable/rect_sharp_corner_white"
+        app:layout_constraintTop_toBottomOf="@+id/guidLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+
+        <TextView
+            android:id="@+id/classesTV"
+            android:layout_width="0dp"
+            app:layout_constraintHorizontal_weight="1"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray"
+            app:cornerRadius="@dimen/_10sdp"
+            android:text="@string/classes"
+            android:gravity="center"
+            android:padding="@dimen/_10sdp"
+            android:background="@color/gray"
+            android:layout_marginEnd="@dimen/_4sdp"
+            app:layout_constraintWidth_percent="1"
+            app:layout_constraintHeight_percent=".1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/sessionsTV"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+        <TextView
+            android:id="@+id/sessionsTV"
+            android:layout_width="0dp"
+            app:layout_constraintHorizontal_weight="1"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray"
+            app:cornerRadius="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="@string/sessions"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:padding="@dimen/_10sdp"
+            android:background="@color/pink"
+            app:layout_constraintStart_toEndOf="@id/classesTV"
+            app:layout_constraintWidth_percent="1"
+            app:layout_constraintHeight_percent=".1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <FrameLayout
+            android:id="@+id/containerFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sessionsTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

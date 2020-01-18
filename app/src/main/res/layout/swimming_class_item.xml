@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.chauthai.swipereveallayout.SwipeRevealLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/swipeRevealLayout"
+    android:elevation="@dimen/_4sdp"
+    android:padding="@dimen/_5sdp"
+    android:layout_marginEnd="@dimen/_10sdp"
+    android:layout_marginTop="@dimen/_6sdp"
+    android:layout_marginBottom="@dimen/_6sdp"
+    android:layout_marginStart="@dimen/_10sdp"
+    app:mode="same_level"
+    app:dragEdge="left"
+    android:background="@drawable/rect_sharp_corner_white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+        <TextView
+            android:id="@+id/classNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What class?"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/classNameTI"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_38sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:gravity="center"
+            app:boxCornerRadiusBottomEnd="@dimen/_6sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_6sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_6sdp"
+            app:boxCornerRadiusTopStart="@dimen/_6sdp"
+            app:boxStrokeColor="@color/orange_dark"
+            app:boxStrokeWidth="@dimen/_4sdp"
+            android:focusable="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/classNameLabel"
+            app:layout_constraintWidth_percent=".7">
+
+            <AutoCompleteTextView
+                android:id="@+id/classNameTV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:drawablePadding="@dimen/_8sdp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <ImageView
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:tint="@android:color/darker_gray"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/classNameTI"
+            android:layout_margin="@dimen/_4sdp"
+            app:srcCompat="@drawable/ic_virifaction" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/foregroundCL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/sportsRunningImgV"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/numberTV"
+            app:srcCompat="@drawable/ic_computer_room"/>
+
+        <TextView
+            android:id="@+id/numberTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="01"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:textSize="@dimen/_20sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Walk"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintHorizontal_bias=".2"
+            app:layout_constraintTop_toTopOf="@id/sportsRunningImgV"
+            app:layout_constraintStart_toEndOf="@id/sportsRunningImgV"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10 mins"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintStart_toStartOf="@id/text1"
+            app:layout_constraintTop_toBottomOf="@id/text1"/>
+
+        <ImageView
+            android:layout_width="@dimen/_17sdp"
+            android:layout_height="@dimen/_17sdp"
+            app:srcCompat="@drawable/ic_left_arrow"
+            android:scaleX="-1"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:tint="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        //
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.chauthai.swipereveallayout.SwipeRevealLayout>

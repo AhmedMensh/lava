@@ -1,4 +1,4 @@
-package com.android.pharous.app.lava.ui.workout
+package com.android.pharous.app.lava.ui.classes
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.pharous.app.lava.R
 
-class WorkoutProgressAdapter : RecyclerView.Adapter<WorkoutProgressAdapter.ViewHolder>() {
+class ClassesProgressAdapter : RecyclerView.Adapter<ClassesProgressAdapter.ViewHolder>() {
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

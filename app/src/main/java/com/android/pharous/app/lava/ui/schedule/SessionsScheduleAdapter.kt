@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.pharous.app.lava.R
 
-class SessionsAdapter : RecyclerView.Adapter<SessionsAdapter.ViewHolder>() {
+class SessionsScheduleAdapter : RecyclerView.Adapter<SessionsScheduleAdapter.ViewHolder>() {
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -15,7 +15,7 @@ class SessionsAdapter : RecyclerView.Adapter<SessionsAdapter.ViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.session_item, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.session_schedule_item, parent, false))
     }
 
     override fun getItemCount(): Int {

@@ -52,7 +52,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/rightCL"
+        android:id="@+id/swimmingClassesCL"
         android:layout_width="0dp"
         android:layout_height="@dimen/_80sdp"
         android:layout_marginStart="@dimen/_5sdp"
@@ -61,7 +61,7 @@
         android:elevation="@dimen/_6sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@id/bookingClassCL"
+        app:layout_constraintStart_toEndOf="@id/fitnessClassesCL"
         app:layout_constraintTop_toBottomOf="@+id/backGroundImgV">
 
         <ImageView
@@ -88,14 +88,14 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/bookingClassCL"
+        android:id="@+id/fitnessClassesCL"
         android:layout_width="0dp"
         android:layout_height="@dimen/_80sdp"
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_5sdp"
         android:background="@drawable/rect_sharp_corner_white"
         android:elevation="@dimen/_6sdp"
-        app:layout_constraintEnd_toStartOf="@id/rightCL"
+        app:layout_constraintEnd_toStartOf="@id/swimmingClassesCL"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
 
@@ -133,7 +133,7 @@
         android:textSize="@dimen/_16sdp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bookingClassCL" />
+        app:layout_constraintTop_toBottomOf="@id/fitnessClassesCL" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/sessionRV"

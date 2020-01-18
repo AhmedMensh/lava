@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.workout.WorkoutFragment">
+    tools:context=".ui.classes.ClassesFragment">
 
     <ImageView
         android:id="@+id/backGroundImgV"
@@ -51,7 +51,7 @@
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
-        android:id="@+id/text1"
+        android:id="@+id/classNameTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ABS DAY"
@@ -77,18 +77,18 @@
 
 
     <TextView
-        android:id="@+id/text2"
+        android:id="@+id/classTypeTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tone muscles"
         android:layout_marginTop="@dimen/_10sdp"
         android:textSize="@dimen/_14sdp"
         android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/text1"
+        app:layout_constraintTop_toBottomOf="@id/classNameTV"
         app:layout_constraintStart_toEndOf="@id/backArrowImgV"/>
 
     <TextView
-        android:id="@+id/text3"
+        android:id="@+id/classDurationTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_clock"
@@ -98,7 +98,7 @@
         android:drawablePadding="@dimen/_10sdp"
         android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@id/backArrowImgV"
-        app:layout_constraintTop_toBottomOf="@id/text2"/>
+        app:layout_constraintTop_toBottomOf="@id/classTypeTV"/>
 
 
     <TextView
@@ -112,11 +112,11 @@
         android:drawablePadding="@dimen/_10sdp"
         android:textColor="@color/white"
         android:layout_marginStart="@dimen/_10sdp"
-        app:layout_constraintStart_toEndOf="@id/text3"
-        app:layout_constraintTop_toBottomOf="@id/text2"/>
+        app:layout_constraintStart_toEndOf="@id/classDurationTV"
+        app:layout_constraintTop_toBottomOf="@id/classTypeTV"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/workoutProgressRV"
+        android:id="@+id/classesProgressRV"
         android:layout_width="@dimen/_160sdp"
         android:layout_height="wrap_content"
         tools:listitem="@layout/workout_progress_item"
@@ -127,13 +127,27 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/workoutTasksRV"
+        android:id="@+id/fitnessClassesRV"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
+        android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/workout_task_item"
-        app:layout_constraintTop_toBottomOf="@id/workoutProgressRV"
+        tools:listitem="@layout/fitness_class_item"
+        app:layout_constraintTop_toBottomOf="@id/classesProgressRV"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/swimmingClassesRV"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/fitness_class_item"
+        app:layout_constraintTop_toBottomOf="@id/classesProgressRV"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>

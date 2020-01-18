@@ -1,4 +1,4 @@
-package com.android.pharous.app.lava.ui.workout
+package com.android.pharous.app.lava.ui.classes
 
 
 import android.os.Bundle
@@ -11,29 +11,30 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.android.pharous.app.lava.R
-import kotlinx.android.synthetic.main.fragment_workout.*
+import kotlinx.android.synthetic.main.fragment_classes.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class WorkoutFragment : Fragment() {
+class ClassesFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_workout, container, false)
+        return inflater.inflate(R.layout.fragment_classes, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        workoutTasksRV.adapter = WorkoutTasksAdapter()
+        fitnessClassesRV.adapter = FitnessClassesAdapter()
+        swimmingClassesRV.adapter = SwimmingClassesAdapter()
 
         var layoutManger = GridLayoutManager(context,7,RecyclerView.VERTICAL,false)
-        workoutProgressRV.layoutManager = layoutManger
-        workoutProgressRV.adapter = WorkoutProgressAdapter()
+        classesProgressRV.layoutManager = layoutManger
+        classesProgressRV.adapter = ClassesProgressAdapter()
 
         finishWorkoutBtn.setOnClickListener{ showWorkoutCompletionDialog() }
     }

@@ -29,9 +29,9 @@ class ScheduleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sessionRV.adapter = SessionsAdapter()
+        sessionRV.adapter = SessionsScheduleAdapter()
 
-        bookingClassCL.setOnClickListener { showBookingClassDialog() }
+        swimmingClassesCL.setOnClickListener { showBookingClassDialog() }
     }
 
     fun showBookingClassDialog(){
