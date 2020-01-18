@@ -1,4 +1,4 @@
-package com.android.pharous.app.lava.ui.membership
+package com.android.pharous.app.lava.ui.offer
 
 
 import android.os.Bundle
@@ -10,34 +10,30 @@ import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 
 import com.android.pharous.app.lava.R
-import kotlinx.android.synthetic.main.fragment_membership.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class MembershipFragment : Fragment() {
+class OfferFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_membership, container, false)
+        return inflater.inflate(R.layout.fragment_offer, container, false)
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        suspendBtn.setOnClickListener { showMembershipSuspensionDialog() }
-
+        showOfferDialog()
     }
 
-
-    fun showMembershipSuspensionDialog(){
+    fun showOfferDialog(){
 
         var builder = AlertDialog.Builder(context!!)
-        var view =  activity?.layoutInflater?.inflate(R.layout.dialog_membership_suspension, null)
+        var view =  activity?.layoutInflater?.inflate(R.layout.dialog_offer, null)
 
 
         builder.setView(view)

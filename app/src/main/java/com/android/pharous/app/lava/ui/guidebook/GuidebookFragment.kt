@@ -33,17 +33,6 @@ class GuidebookFragment : Fragment() {
 
     }
 
-    private fun showBodyAnatomyDialog() {
 
-        var builder = AlertDialog.Builder(context!!)
-        var view =  activity?.layoutInflater?.inflate(R.layout.dialog_body_anatomy, null)
-
-
-        builder.setView(view)
-
-
-        var dialog = builder.create()
-        dialog.show()
-    }
 
 }

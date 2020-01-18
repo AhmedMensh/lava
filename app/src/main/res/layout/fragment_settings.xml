@@ -513,20 +513,40 @@
             android:elevation="@dimen/_4sdp"
             android:background="@drawable/rect_sharp_corner_white"
             app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintEnd_toStartOf="@+id/guidBookGroupCL"
+            app:layout_constraintEnd_toStartOf="@+id/guidBookMusclesGroupCL"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/followUsCL">
 
+
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="@dimen/_10sdp"
-                app:srcCompat="@drawable/ic_logo"/>
+                android:id="@+id/guidBookImgV1"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_50sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias=".3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:scaleType="fitXY"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:srcCompat="@drawable/ic_guide"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@android:color/black"
+
+                android:text="Guidbook\ngym machines  tools"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/guidBookImgV1"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/guidBookGroupCL"
+            android:id="@+id/guidBookMusclesGroupCL"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:elevation="@dimen/_4sdp"
@@ -541,10 +561,29 @@
 
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="@dimen/_10sdp"
-                app:srcCompat="@drawable/ic_logo"/>
+                android:id="@+id/guidBookImgV"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_50sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias=".3"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:srcCompat="@drawable/ic_guide"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@android:color/black"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Guidbook\nMuscles groups"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/guidBookImgV"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

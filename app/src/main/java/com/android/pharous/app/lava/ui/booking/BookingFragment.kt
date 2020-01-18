@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.android.pharous.app.lava.R
+import kotlinx.android.synthetic.main.fragment_booking.*
 
 /**
  * A simple [Fragment] subclass.
@@ -26,6 +27,18 @@ class BookingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         startClassesFragment()
+        classesTV.setOnClickListener {
+            commingBookedClassesLabel.visibility = View.VISIBLE
+            commingBookedClassesTI.visibility = View.VISIBLE
+            yogaImgV.visibility = View.VISIBLE
+            swimmingImgV.visibility = View.VISIBLE
+            startClassesFragment() }
+        sessionsTV.setOnClickListener {
+            commingBookedClassesLabel.visibility = View.GONE
+            commingBookedClassesTI.visibility = View.GONE
+            yogaImgV.visibility = View.GONE
+            swimmingImgV.visibility = View.GONE
+            startSessionsFragment()}
     }
 
     private fun startSessionsFragment(){

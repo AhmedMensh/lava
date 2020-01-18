@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/rect_sharp_corner_white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_cross" />
+
+    <TextView
+        android:id="@+id/bookClassLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="Swidish massage"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/_16sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <TextView
+        android:id="@+id/sessionPriceTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="SAR 100"
+        android:textStyle="bold"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/branchTI"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_40sdp"
+        app:layout_constraintTop_toBottomOf="@id/bookClassLabel"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        app:boxStrokeColor="@android:color/darker_gray"
+        app:boxStrokeWidth="@dimen/_4sdp"
+        app:hintEnabled="false"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_height="@dimen/_45sdp">
+
+        <AutoCompleteTextView
+            android:id="@+id/branchTV"
+            android:layout_width="match_parent"
+            android:editable="false"
+            android:hint="Book a Class"
+            android:padding="@dimen/_6sdp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:drawablePadding="@dimen/_8sdp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/sessionDataTI"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        app:hintEnabled="false"
+        app:layout_constraintTop_toBottomOf="@id/branchTI"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        app:boxStrokeColor="@android:color/darker_gray"
+        app:boxStrokeWidth="@dimen/_4sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_height="@dimen/_45sdp">
+
+        <AutoCompleteTextView
+            android:id="@+id/sessionDataTV"
+            android:layout_width="match_parent"
+            android:editable="false"
+            android:hint="Choose a Time"
+            android:padding="@dimen/_6sdp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:drawablePadding="@dimen/_8sdp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/sessionDurationTI"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/sessionDataTI"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        app:boxStrokeColor="@android:color/darker_gray"
+        app:boxStrokeWidth="@dimen/_4sdp"
+        app:hintEnabled="false"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_height="@dimen/_45sdp">
+
+        <AutoCompleteTextView
+            android:id="@+id/sessionDurationTV"
+            android:layout_width="match_parent"
+            android:editable="false"
+            android:hint="Book a Class"
+            android:padding="@dimen/_6sdp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:drawablePadding="@dimen/_8sdp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/classInfoTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="Yoga class | Thursday | 8:10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sessionDurationTI"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bookBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:minWidth="@dimen/_150sdp"
+        android:text="Book Now"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:layout_marginBottom="@dimen/_25sdp"
+        android:textSize="@dimen/_14sdp"
+        android:background="@drawable/button_orange_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_margin="@dimen/_40sdp"
+        app:layout_constraintTop_toBottomOf="@+id/classInfoTV"
+        android:layout_height="wrap_content"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

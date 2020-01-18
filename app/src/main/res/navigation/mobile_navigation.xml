@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/classesFragment">
+    app:startDestination="@id/settingsFragment">
 
 
     <fragment
@@ -78,7 +78,17 @@
 
     <fragment android:id="@+id/settingsFragment"
         tools:layout="@layout/fragment_settings"
-        android:name="com.android.pharous.app.lava.ui.settings.SettingsFragment"/>
+        android:name="com.android.pharous.app.lava.ui.settings.SettingsFragment">
+
+        <action android:id="@+id/action_settingsFragment_to_membershipFragment"
+            app:destination="@+id/membershipFragment"/>
+
+        <action android:id="@+id/action_settingsFragment_to_offersFragment"
+            app:destination="@+id/offerFragment"/>
+
+        <action android:id="@+id/action_settingsFragment_to_guidFragment"
+            app:destination="@+id/guidBookFragment"/>
+    </fragment>
 
     <fragment android:id="@+id/membershipFragment"
         android:name="com.android.pharous.app.lava.ui.membership.MembershipFragment"
@@ -95,4 +105,8 @@
     <fragment android:id="@+id/bookingFragment"
         tools:layout="@layout/fragment_booking"
         android:name="com.android.pharous.app.lava.ui.booking.BookingFragment"/>
+
+    <fragment android:id="@+id/offerFragment"
+        android:name="com.android.pharous.app.lava.ui.offer.OfferFragment"
+        tools:layout="@layout/fragment_offer"/>
 </navigation>

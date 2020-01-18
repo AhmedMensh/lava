@@ -61,8 +61,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
         android:elevation="@dimen/_4sdp"
         android:background="@drawable/rect_sharp_corner_white"
         app:layout_constraintTop_toBottomOf="@+id/guidLine"
@@ -77,16 +77,16 @@
             android:layout_width="0dp"
             app:layout_constraintHorizontal_weight="1"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/gray"
             app:cornerRadius="@dimen/_10sdp"
             android:text="@string/classes"
             android:gravity="center"
             android:padding="@dimen/_10sdp"
-            android:background="@color/gray"
+            android:background="@drawable/ic_class_background"
             android:layout_marginEnd="@dimen/_4sdp"
             app:layout_constraintWidth_percent="1"
             app:layout_constraintHeight_percent=".1"
             app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/_14sdp"
             app:layout_constraintEnd_toStartOf="@id/sessionsTV"
             app:layout_constraintStart_toStartOf="parent"
             />
@@ -95,13 +95,13 @@
             android:layout_width="0dp"
             app:layout_constraintHorizontal_weight="1"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/gray"
             app:cornerRadius="@dimen/_10sdp"
             android:gravity="center"
             android:text="@string/sessions"
             android:layout_marginStart="@dimen/_4sdp"
             android:padding="@dimen/_10sdp"
-            android:background="@color/pink"
+            android:textSize="@dimen/_14sdp"
+            android:background="@drawable/ic_session_background"
             app:layout_constraintStart_toEndOf="@id/classesTV"
             app:layout_constraintWidth_percent="1"
             app:layout_constraintHeight_percent=".1"
@@ -109,12 +109,118 @@
             app:layout_constraintEnd_toEndOf="parent"
             />
 
+        <TextView
+            android:id="@+id/myBookingLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_20sdp"
+            android:text="My Booking"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/classesTV"/>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/myBookingTI"
+            android:layout_width="0dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_height="@dimen/_38sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:gravity="center"
+            app:hintEnabled="false"
+            android:layout_marginTop="@dimen/_6sdp"
+            app:boxCornerRadiusBottomEnd="@dimen/_14sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_14sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_14sdp"
+            app:boxCornerRadiusTopStart="@dimen/_14sdp"
+            app:boxStrokeColor="@color/orange_dark"
+            app:boxStrokeWidth="@dimen/_4sdp"
+            android:focusable="true"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/myBookingLabel">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Search"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/commingBookedClassesLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_20sdp"
+            android:text="Upcomming Booked Class:"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/myBookingTI"/>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/commingBookedClassesTI"
+            android:layout_width="0dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_height="@dimen/_38sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:gravity="center"
+            app:hintEnabled="false"
+            android:layout_marginTop="@dimen/_6sdp"
+            app:boxCornerRadiusBottomEnd="@dimen/_14sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_14sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_14sdp"
+            app:boxCornerRadiusTopStart="@dimen/_14sdp"
+            app:boxStrokeColor="@color/orange_dark"
+            app:boxStrokeWidth="@dimen/_4sdp"
+            android:focusable="true"
+            app:layout_constraintWidth_percent=".6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/commingBookedClassesLabel">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusable="false"
+                android:editable="false"
+                android:enabled="false"
+                android:text="Yoga    Today 6:15 pm"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/swimmingImgV"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            app:srcCompat="@drawable/ic_swimming"
+            android:layout_marginEnd="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="@id/commingBookedClassesTI"
+            app:layout_constraintTop_toTopOf="@id/commingBookedClassesTI"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ImageView
+            android:id="@+id/yogaImgV"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            app:srcCompat="@drawable/ic_youga"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:tint="@color/gray"
+
+            app:layout_constraintBottom_toBottomOf="@id/commingBookedClassesTI"
+            app:layout_constraintTop_toTopOf="@id/commingBookedClassesTI"
+            app:layout_constraintEnd_toStartOf="@id/swimmingImgV"/>
         <FrameLayout
             android:id="@+id/containerFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sessionsTV"
+            app:layout_constraintTop_toBottomOf="@+id/commingBookedClassesTI"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
