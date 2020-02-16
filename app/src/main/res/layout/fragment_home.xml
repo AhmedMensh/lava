@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.home.HomeFragment">
 
@@ -11,17 +12,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
+
         <ImageView
             android:id="@+id/backGroundImgV"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_220sdp"
+            android:layout_height="@dimen/_260sdp"
             app:layout_constraintTop_toTopOf="parent"
             android:background="@color/orange_dark"/>
 
         <ImageView
             android:id="@+id/curveImgV"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_100sdp"
+            android:layout_height="@dimen/_110sdp"
             android:scaleType="fitXY"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,14 +36,39 @@
             />
 
         <TextView
+            android:id="@+id/headQuestionLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="What do you think about"
+            android:gravity="center"
+
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_16sdp"
+            app:layout_constraintVertical_bias=".2"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+
+        <include
+            android:id="@+id/gymMachinesAnswers"
+            layout="@layout/rate_opitions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/headQuestionLabel"/>
+        <TextView
             android:id="@+id/personNAmeTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sara Alhumaid"
             android:textSize="@dimen/_18sdp"
             android:textColor="@android:color/white"
-            android:layout_marginTop="@dimen/_20sdp"
-            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/gymMachinesAnswers"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
