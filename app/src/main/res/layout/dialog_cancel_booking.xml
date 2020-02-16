@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_10sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/bookingImgV"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_youga"/>
+
+    <ImageView
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_cross"/>
+
+    <TextView
+        android:id="@+id/bookingNameTV"
+        app:layout_constraintTop_toTopOf="@id/bookingImgV"
+        app:layout_constraintStart_toEndOf="@id/bookingImgV"
+        app:layout_constraintBottom_toBottomOf="@id/bookingImgV"
+        android:text="Yoga"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/_14sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/bookingDurationTV"
+        app:layout_constraintTop_toBottomOf="@+id/bookingNameTV"
+        app:layout_constraintStart_toStartOf="@id/bookingNameTV"
+        android:text="30 min"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/_14sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:id="@+id/sepratorView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/gray_dark"
+        android:layout_margin="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bookingDurationTV"/>
+
+    <TextView
+        android:id="@+id/dateTV"
+        android:text="Date : Today    06:15 PM"
+        android:layout_width="wrap_content"
+        android:textSize="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/sepratorView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bookBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:minWidth="@dimen/_150sdp"
+        android:text="Cancel"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:layout_margin="@dimen/_10sdp"
+        android:textSize="@dimen/_14sdp"
+        android:background="@drawable/button_orange_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/dateTV"
+        android:layout_height="wrap_content"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

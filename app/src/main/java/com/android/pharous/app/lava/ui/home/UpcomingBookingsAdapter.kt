@@ -6,13 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.pharous.app.lava.R
+import com.android.pharous.app.lava.common.IItemClickListener
 import kotlinx.android.synthetic.main.workout_item.view.*
 
-class UpcomingBookingsAdapter() : RecyclerView.Adapter<UpcomingBookingsAdapter.ViewHolder>() {
+class UpcomingBookingsAdapter(private val listener : IItemClickListener<String>) : RecyclerView.Adapter<UpcomingBookingsAdapter.ViewHolder>() {
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        fun bind(listener: IItemClickListener<String>){
+
+            itemView.setOnClickListener { listener.onItemClick("") }
+        }
 
     }
 
@@ -26,5 +31,6 @@ class UpcomingBookingsAdapter() : RecyclerView.Adapter<UpcomingBookingsAdapter.V
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
+        holder.bind(listener)
     }
 }

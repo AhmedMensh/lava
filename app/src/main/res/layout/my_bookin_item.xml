@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="@dimen/_12sdp"
+    android:elevation="@dimen/_4sdp"
+    android:background="@drawable/rect_sharp_corner_white"
+    android:layout_margin="@dimen/_4sdp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+
+        <ImageView
+            android:id="@+id/bycycleImgV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tint="@android:color/darker_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_bycycle" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:text="Fttness class"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/bycycleImgV"
+            app:layout_constraintStart_toEndOf="@id/bycycleImgV"
+            app:layout_constraintTop_toTopOf="@id/bycycleImgV"
+            app:layout_constraintVertical_bias=".1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date : Today"
+            app:layout_constraintStart_toStartOf="@id/text"
+            app:layout_constraintTop_toBottomOf="@id/text" />
+
+    <TextView
+        android:id="@+id/durationTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Duration : 30 min"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/timeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time : 9.30 am"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/durationTV"
+        app:layout_constraintTop_toBottomOf="@+id/durationTV"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>

@@ -36,6 +36,7 @@ class SettingsFragment : Fragment() {
         guidBookToolsCL.setOnClickListener { findNavController().navigate(R.id.action_settingsFragment_to_guidFragment) }
         guidBookMusclesGroupCL.setOnClickListener { showBodyAnatomyDialog() }
         tellUsCL.setOnClickListener {  showGymRatingDialog() }
+        bookingCL.setOnClickListener { findNavController().navigate(R.id.action_settingsFragment_to_myBookingFragment) }
     }
 
     private fun showGymRatingDialog() {

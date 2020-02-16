@@ -98,8 +98,14 @@
 
         <action android:id="@+id/action_settingsFragment_to_guidFragment"
             app:destination="@+id/guidBookFragment"/>
+
+        <action android:id="@+id/action_settingsFragment_to_myBookingFragment"
+            app:destination="@+id/myBookingFragment"/>
     </fragment>
 
+    <fragment android:id="@+id/myBookingFragment"
+        tools:layout="@layout/fragment_my_booking"
+        android:name="com.android.pharous.app.lava.ui.myBooking.MyBookingFragment"/>
     <fragment android:id="@+id/membershipFragment"
         android:name="com.android.pharous.app.lava.ui.membership.MembershipFragment"
          tools:layout="@layout/fragment_membership"/>
