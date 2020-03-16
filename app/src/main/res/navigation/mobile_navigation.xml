@@ -139,5 +139,13 @@
 
     <fragment android:id="@+id/pointFragment"
         android:name="com.android.pharous.app.lava.ui.point.PointFragment"
-        tools:layout="@layout/fragment_point"/>
+        tools:layout="@layout/fragment_point">
+
+        <action android:id="@+id/action_pointFragment_to_achivementPointFragment"
+            app:destination="@+id/achivementPointFragment"/>
+    </fragment>
+
+    <fragment android:id="@+id/achivementPointFragment"
+        tools:layout="@layout/fragment_achivement_point"
+        android:name="com.android.pharous.app.lava.ui.achivementPoint.AchivementPointFragment"/>
 </navigation>

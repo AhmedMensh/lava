@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.navigation.fragment.findNavController
 
 import com.android.pharous.app.lava.R
 import kotlinx.android.synthetic.main.fragment_point.*
@@ -24,6 +25,7 @@ class PointFragment : Fragment(R.layout.fragment_point) {
 
         newMembershipCL.setOnClickListener {showCreateNewServiceDialog()  }
         newServiceCL.setOnClickListener { showCreateNewServiceDialog("Create New Service") }
+        detailsTV.setOnClickListener { findNavController().navigate(R.id.action_pointFragment_to_achivementPointFragment) }
     }
 
     private fun showCreateNewServiceDialog(title : String = "Create New Membership") {
