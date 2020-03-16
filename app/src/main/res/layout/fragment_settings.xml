@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:fillViewport="true"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
     tools:context=".ui.settings.SettingsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,404 +15,509 @@
             android:id="@+id/backGroundImgV"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_200sdp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/orange_dark"/>
+            android:background="@color/orange_dark"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/curveImgV"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_100sdp"
             android:scaleType="fitXY"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-
             android:tint="@color/orange_dark"
-            app:srcCompat="@drawable/ic_dot"
             app:layout_constraintBottom_toBottomOf="@id/backGroundImgV"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/backGroundImgV"
-            />
+            app:srcCompat="@drawable/ic_dot" />
 
         <TextView
             android:id="@+id/appBarTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Get More"
-            android:textSize="@dimen/_14sdp"
-            android:textColor="@color/white"
             android:layout_marginTop="@dimen/_20sdp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="Get More"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14sdp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/backArrowImgV"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
-            app:layout_constraintHorizontal_bias=".1"
-            app:layout_constraintEnd_toStartOf="@id/appBarTitle"
-            app:srcCompat="@drawable/ic_left_arrow"
             app:layout_constraintBottom_toBottomOf="@id/appBarTitle"
+            app:layout_constraintEnd_toStartOf="@id/appBarTitle"
+            app:layout_constraintHorizontal_bias=".1"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/appBarTitle"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:srcCompat="@drawable/ic_left_arrow" />
 
         <TextView
             android:id="@+id/text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sara Alhumiad"
             android:layout_marginTop="@dimen/_20sdp"
-            android:textSize="@dimen/_14sdp"
+            android:text="Sara Alhumiad"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/backArrowImgV"
-            app:layout_constraintStart_toEndOf="@id/backArrowImgV"/>
+            android:textSize="@dimen/_14sdp"
+            app:layout_constraintStart_toEndOf="@id/backArrowImgV"
+            app:layout_constraintTop_toBottomOf="@id/backArrowImgV" />
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
             android:drawableStart="@drawable/ic_logout"
             android:drawablePadding="@dimen/_4sdp"
-            android:layout_marginEnd="@dimen/_20sdp"
-            android:textSize="@dimen/_12sdp"
-            android:text="Logout"
             android:scaleX="1.2"
             android:scaleY="1.2"
+            android:text="Logout"
             android:textColor="@color/white"
-            android:layout_marginTop="@dimen/_20sdp"
-            app:layout_constraintTop_toBottomOf="@id/backArrowImgV"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/backArrowImgV" />
 
 
         <TextView
             android:id="@+id/text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="#837467"
             android:layout_marginTop="@dimen/_10sdp"
-            android:textSize="@dimen/_14sdp"
+            android:text="#837467"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/text1"
-            app:layout_constraintStart_toEndOf="@id/backArrowImgV"/>
+            android:textSize="@dimen/_14sdp"
+            app:layout_constraintStart_toEndOf="@id/backArrowImgV"
+            app:layout_constraintTop_toBottomOf="@id/text1" />
 
         <TextView
             android:id="@+id/text3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_active"
-            android:textSize="@dimen/_12sdp"
-            android:text="Active Member"
             android:layout_marginTop="@dimen/_10sdp"
+            android:drawableStart="@drawable/ic_active"
             android:drawablePadding="@dimen/_4sdp"
+            android:text="Active Member"
             android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp"
             app:layout_constraintStart_toEndOf="@id/backArrowImgV"
-            app:layout_constraintTop_toBottomOf="@id/text2"/>
-
-
+            app:layout_constraintTop_toBottomOf="@id/text2" />
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/membershipCL"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent=".08"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
-            android:elevation="@dimen/_4sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/backGroundImgV"
-            app:layout_constraintBottom_toBottomOf="@id/curveImgV"
-            app:layout_constraintStart_toStartOf="parent"
             android:background="@drawable/rect_sharp_corner_white"
-            android:id="@+id/membershipCL">
+            android:elevation="@dimen/_4sdp"
+            app:layout_constraintBottom_toBottomOf="@id/curveImgV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".068"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/backGroundImgV">
 
             <ImageView
                 android:id="@+id/membershipImgV"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintHeight_percent=".5"
-                app:layout_constraintWidth_percent=".2"
                 android:layout_marginStart="@dimen/_10sdp"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHeight_percent=".5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_membership_badge"/>
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".2"
+                app:srcCompat="@drawable/ic_membership_badge" />
 
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:text="Membership"
-                android:gravity="center|start"
-                android:textSize="@dimen/_14sdp"
                 android:layout_marginStart="@dimen/_5sdp"
+                android:gravity="center|start"
+                android:text="Membership"
                 android:textColor="@android:color/black"
-                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="@dimen/_14sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/membershipImgV"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/membershipImgV"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:srcCompat="@drawable/ic_left_arrow"
-                android:scaleX="-1"
-                app:layout_constraintWidth_percent=".06"
                 android:layout_marginEnd="@dimen/_10sdp"
+                android:scaleX="-1"
                 android:tint="@android:color/darker_gray"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".06"
+                app:srcCompat="@drawable/ic_left_arrow" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/myPointCL"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent=".08"
             android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/rect_sharp_corner_white"
             android:elevation="@dimen/_4sdp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".068"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/membershipCL">
+
+            <ImageView
+                android:id="@+id/myPointImgV"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHeight_percent=".5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".2"
+                app:srcCompat="@drawable/ic_coin" />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:gravity="center|start"
+                android:text="My Point"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/myPointImgV"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:scaleX="-1"
+                android:tint="@android:color/darker_gray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".06"
+                app:srcCompat="@drawable/ic_left_arrow" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bookingCL"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:background="@drawable/rect_sharp_corner_white"
-            app:layout_constraintTop_toBottomOf="@id/membershipCL"
-            android:id="@+id/bookingCL">
+            android:elevation="@dimen/_4sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".068"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/myPointCL">
 
             <ImageView
                 android:id="@+id/bookingImgV"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintHeight_percent=".5"
-                app:layout_constraintWidth_percent=".2"
-                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginStart="@dimen/_10sdp"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHeight_percent=".5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_sport"/>
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".2"
+                app:srcCompat="@drawable/ic_sport" />
 
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:text="My Booking"
-                android:gravity="center|start"
-                android:textSize="@dimen/_14sdp"
                 android:layout_marginStart="@dimen/_5sdp"
+                android:gravity="center|start"
+                android:text="My Booking"
                 android:textColor="@android:color/black"
-                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="@dimen/_14sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/bookingImgV"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/bookingImgV"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:srcCompat="@drawable/ic_left_arrow"
-                android:scaleX="-1"
-                app:layout_constraintWidth_percent=".06"
                 android:layout_marginEnd="@dimen/_10sdp"
+                android:scaleX="-1"
                 android:tint="@android:color/darker_gray"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".06"
+                app:srcCompat="@drawable/ic_left_arrow" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tellUsCL"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent=".08"
             android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/rect_sharp_corner_white"
             android:elevation="@dimen/_4sdp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".068"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:background="@drawable/rect_sharp_corner_white"
-            app:layout_constraintTop_toBottomOf="@id/bookingCL"
-            android:id="@+id/tellUsCL">
+            app:layout_constraintTop_toBottomOf="@id/bookingCL">
 
             <ImageView
                 android:id="@+id/tellUsImgV"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintHeight_percent=".5"
-                app:layout_constraintWidth_percent=".2"
-                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginStart="@dimen/_10sdp"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHeight_percent=".5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_survey"/>
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".2"
+                app:srcCompat="@drawable/ic_survey" />
 
 
             <TextView
                 android:id="@+id/tellUsLabel"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:text="Tell us what you think...?"
-                android:gravity="center|start"
-                android:textSize="@dimen/_12sdp"
-                app:layout_constraintWidth_percent=".5"
-                app:layout_constraintHorizontal_bias="0"
                 android:layout_marginStart="@dimen/_5sdp"
+                android:gravity="center|start"
+                android:text="Tell us what you think...?"
                 android:textColor="@android:color/black"
-                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="@dimen/_12sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tellUsImgV"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toEndOf="@id/tellUsImgV"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".5" />
 
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:text="1 new"
                 android:gravity="center"
-                app:layout_constraintStart_toEndOf="@id/tellUsLabel"
-                app:layout_constraintEnd_toStartOf="@id/arrowImgV"
+                android:text="1 new"
                 android:textColor="@android:color/holo_red_light"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintEnd_toStartOf="@id/arrowImgV"
+                app:layout_constraintStart_toEndOf="@id/tellUsLabel"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <ImageView
                 android:id="@+id/arrowImgV"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:srcCompat="@drawable/ic_left_arrow"
-                android:scaleX="-1"
-                app:layout_constraintWidth_percent=".06"
                 android:layout_marginEnd="@dimen/_10sdp"
+                android:scaleX="-1"
                 android:tint="@android:color/darker_gray"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".06"
+                app:srcCompat="@drawable/ic_left_arrow" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/offersCL"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent=".08"
             android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/rect_sharp_corner_white"
             android:elevation="@dimen/_4sdp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".068"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:background="@drawable/rect_sharp_corner_white"
-            app:layout_constraintTop_toBottomOf="@id/tellUsCL"
-            android:id="@+id/offersCL">
+            app:layout_constraintTop_toBottomOf="@id/tellUsCL">
 
             <ImageView
                 android:id="@+id/offersImgV"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintHeight_percent=".5"
-                app:layout_constraintWidth_percent=".2"
-                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginStart="@dimen/_10sdp"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHeight_percent=".5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_smartphone"/>
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".2"
+                app:srcCompat="@drawable/ic_smartphone" />
 
 
             <TextView
                 android:id="@+id/offersLabel"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:text="Spicial Offers"
-                android:gravity="center|start"
-                android:textSize="@dimen/_12sdp"
-                app:layout_constraintWidth_percent=".5"
-                app:layout_constraintHorizontal_bias="0"
                 android:layout_marginStart="@dimen/_5sdp"
+                android:gravity="center|start"
+                android:text="Special Offers"
                 android:textColor="@android:color/black"
-                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="@dimen/_12sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/offersImgV"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toEndOf="@id/offersImgV"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".5" />
 
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:text="1 new"
                 android:gravity="center"
-                app:layout_constraintStart_toEndOf="@id/offersLabel"
-                app:layout_constraintEnd_toStartOf="@id/offersArrowImgV"
+                android:text="1 new"
                 android:textColor="@android:color/holo_red_light"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintEnd_toStartOf="@id/offersArrowImgV"
+                app:layout_constraintStart_toEndOf="@id/offersLabel"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <ImageView
                 android:id="@+id/offersArrowImgV"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:srcCompat="@drawable/ic_left_arrow"
-                android:scaleX="-1"
-                app:layout_constraintWidth_percent=".06"
                 android:layout_marginEnd="@dimen/_10sdp"
+                android:scaleX="-1"
                 android:tint="@android:color/darker_gray"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".06"
+                app:srcCompat="@drawable/ic_left_arrow" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/shareCL"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent=".08"
             android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/rect_sharp_corner_white"
             android:elevation="@dimen/_4sdp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".068"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/offersCL">
+
+            <ImageView
+                android:id="@+id/shareImgV"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHeight_percent=".5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".2"
+                app:srcCompat="@drawable/ic_share" />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:gravity="center|start"
+                android:text="Share App With Your Friends"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/shareImgV"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:scaleX="-1"
+                android:tint="@android:color/darker_gray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".06"
+                app:srcCompat="@drawable/ic_left_arrow" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/inviteCL"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:background="@drawable/rect_sharp_corner_white"
-            app:layout_constraintTop_toBottomOf="@id/offersCL"
-            android:id="@+id/inviteCL">
+            android:elevation="@dimen/_4sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".068"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/shareCL">
 
             <ImageView
                 android:id="@+id/inviteImgV"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintHeight_percent=".5"
-                app:layout_constraintWidth_percent=".2"
-                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginStart="@dimen/_10sdp"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHeight_percent=".5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_invitation"/>
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".2"
+                app:srcCompat="@drawable/ic_invitation" />
 
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:text="Invite Your Friends"
-                android:gravity="center|start"
-                android:textSize="@dimen/_14sdp"
                 android:layout_marginStart="@dimen/_5sdp"
+                android:gravity="center|start"
+                android:text="Invite Your Friends"
                 android:textColor="@android:color/black"
-                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="@dimen/_14sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/inviteImgV"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/inviteImgV"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:srcCompat="@drawable/ic_left_arrow"
-                android:scaleX="-1"
-                app:layout_constraintWidth_percent=".06"
                 android:layout_marginEnd="@dimen/_10sdp"
+                android:scaleX="-1"
                 android:tint="@android:color/darker_gray"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".06"
+                app:srcCompat="@drawable/ic_left_arrow" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -426,7 +531,7 @@
             android:background="@drawable/rect_sharp_corner_white"
             android:elevation="@dimen/_4sdp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent=".08"
+            app:layout_constraintHeight_percent=".068"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/inviteCL">
 
@@ -503,19 +608,18 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/guidBookToolsCL"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="@dimen/_10sdp"
-            app:layout_constraintHeight_percent=".2"
-            android:elevation="@dimen/_4sdp"
             android:background="@drawable/rect_sharp_corner_white"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintEnd_toStartOf="@+id/guidBookMusclesGroupCL"
-            app:layout_constraintStart_toStartOf="parent"
+            android:elevation="@dimen/_4sdp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guidBookMusclesGroupCL"
+            app:layout_constraintHeight_percent=".2"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/followUsCL">
 
 
@@ -523,40 +627,40 @@
                 android:id="@+id/guidBookImgV1"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_50sdp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias=".3"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:scaleType="fitXY"
                 android:layout_marginTop="@dimen/_10sdp"
-                app:srcCompat="@drawable/ic_guide"/>
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias=".3"
+                app:srcCompat="@drawable/ic_guide" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:gravity="center"
                 android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="center"
+                android:text="Guidbook\ngym machines  tools"
                 android:textColor="@android:color/black"
 
-                android:text="Guidbook\ngym machines  tools"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/guidBookImgV1"/>
+                app:layout_constraintTop_toBottomOf="@+id/guidBookImgV1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/guidBookMusclesGroupCL"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:elevation="@dimen/_4sdp"
             android:layout_margin="@dimen/_10sdp"
-            app:layout_constraintHeight_percent=".2"
             android:background="@drawable/rect_sharp_corner_white"
+            android:elevation="@dimen/_4sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".2"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toEndOf="@id/guidBookToolsCL"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/followUsCL">
 
 
@@ -564,27 +668,27 @@
                 android:id="@+id/guidBookImgV"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_50sdp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias=".3"
-                android:layout_marginTop="@dimen/_10sdp"
-                app:srcCompat="@drawable/ic_guide"/>
+                app:srcCompat="@drawable/ic_guide" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:textColor="@android:color/black"
-
-                app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="center"
                 android:text="Guidbook\nMuscles groups"
+
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/guidBookImgV"/>
+                app:layout_constraintTop_toBottomOf="@+id/guidBookImgV" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-   </ScrollView>
+</ScrollView>

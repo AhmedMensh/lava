@@ -101,6 +101,13 @@
 
         <action android:id="@+id/action_settingsFragment_to_myBookingFragment"
             app:destination="@+id/myBookingFragment"/>
+
+        <action android:id="@+id/action_settingsFragment_to_invitationFragment"
+            app:destination="@+id/invitationFragment"/>
+
+
+        <action android:id="@+id/action_settingsFragment_to_pointFragment"
+            app:destination="@+id/pointFragment"/>
     </fragment>
 
     <fragment android:id="@+id/myBookingFragment"
@@ -125,4 +132,12 @@
     <fragment android:id="@+id/offerFragment"
         android:name="com.android.pharous.app.lava.ui.offer.OfferFragment"
         tools:layout="@layout/fragment_offer"/>
+
+    <fragment android:id="@+id/invitationFragment"
+        tools:layout="@layout/fragment_invitation"
+        android:name="com.android.pharous.app.lava.ui.invitation.InvitationFragment"/>
+
+    <fragment android:id="@+id/pointFragment"
+        android:name="com.android.pharous.app.lava.ui.point.PointFragment"
+        tools:layout="@layout/fragment_point"/>
 </navigation>

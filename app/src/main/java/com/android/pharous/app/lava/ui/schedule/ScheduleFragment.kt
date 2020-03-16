@@ -32,12 +32,12 @@ class ScheduleFragment : Fragment() {
 
         sessionRV.adapter = SessionsScheduleAdapter()
 
-        swimmingClassesCL.setOnClickListener {
+        swimmingClassCL.setOnClickListener {
             var bundle = Bundle()
             bundle.putString("type","swimming")
             findNavController().navigate(R.id.action_scheduleFragment_to_bookingFragment) }
 
-        fitnessClassesCL.setOnClickListener {    var bundle = Bundle()
+        fittnessClassCL.setOnClickListener {    var bundle = Bundle()
             bundle.putString("type","class")
             findNavController().navigate(R.id.action_scheduleFragment_to_bookingFragment) }
     }

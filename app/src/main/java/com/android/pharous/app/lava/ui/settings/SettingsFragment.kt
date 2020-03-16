@@ -31,8 +31,10 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         membershipCL.setOnClickListener { findNavController().navigate(R.id.action_settingsFragment_to_membershipFragment) }
+        myPointCL.setOnClickListener { findNavController().navigate(R.id.action_settingsFragment_to_pointFragment) }
         offersCL.setOnClickListener { findNavController().navigate(R.id.action_settingsFragment_to_offersFragment) }
-        inviteCL.setOnClickListener { shareLavaApp() }
+        inviteCL.setOnClickListener { findNavController().navigate(R.id.action_settingsFragment_to_invitationFragment) }
+        shareCL.setOnClickListener { shareLavaApp() }
         guidBookToolsCL.setOnClickListener { findNavController().navigate(R.id.action_settingsFragment_to_guidFragment) }
         guidBookMusclesGroupCL.setOnClickListener { showBodyAnatomyDialog() }
         tellUsCL.setOnClickListener {  showGymRatingDialog() }
