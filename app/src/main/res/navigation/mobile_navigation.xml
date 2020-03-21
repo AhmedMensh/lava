@@ -53,7 +53,7 @@
 
     <fragment
         android:id="@+id/phoneVerificationFragment"
-        android:name="com.android.pharous.app.lava.ui.auth.phoneVerification.phoneVerificationFragment"
+        android:name="com.android.pharous.app.lava.ui.auth.phoneVerification.PhoneVerificationFragment"
         tools:layout="@layout/fragment_phone_verification">
 
         <action android:id="@+id/action_phoneVerficationFragment_to_registerFragment"

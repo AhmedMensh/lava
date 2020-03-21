@@ -1,6 +1,7 @@
 package com.android.pharous.app.lava.ui
 
 import android.app.Application
+import android.content.Context
 import android.provider.SyncStateContract
 import com.android.pharous.app.lava.BuildConfig
 import com.android.pharous.app.lava.common.Constants
@@ -24,4 +25,5 @@ class LavaApp : Application() {
             modules(*getModules())
         }
     }
+
 }

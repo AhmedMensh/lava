@@ -47,10 +47,12 @@ object Network {
                 request.newBuilder()
                     .removeHeader(REQUIRE_AUTHENTICATION)
                     .addHeader("Authorization", "Bearer $authToken")
+                    .addHeader("authorizationKey",  "as@dL8]Rn3\$2S!anR")
                     .addHeader("Accept", "application/json")
                     .build()
             } else {
                 request.newBuilder()
+                    .addHeader("authorizationKey",  "as@dL8]Rn3\$2S!anR")
                     .addHeader("Accept", "application/json")
                     .build()
             }

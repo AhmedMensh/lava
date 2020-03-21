@@ -4,6 +4,9 @@ import com.android.pharous.app.lava.network.Network
 import com.android.pharous.app.lava.network.RemoteDataSource
 import com.android.pharous.app.lava.repositories.ILavaRepo
 import com.android.pharous.app.lava.repositories.LavaRepo
+import com.android.pharous.app.lava.ui.auth.login.LoginViewModel
+import com.android.pharous.app.lava.ui.auth.phoneVerification.VerificationViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
@@ -18,6 +21,8 @@ private val repositoryModule = module { single<ILavaRepo> { LavaRepo(get() , get
 private val viewModelModule = module {
 
 
+    viewModel { LoginViewModel(get()) }
+    viewModel { VerificationViewModel(get()) }
 
 }
 
