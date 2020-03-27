@@ -61,7 +61,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/headQuestionLabel"/>
         <TextView
-            android:id="@+id/personNAmeTV"
+            android:id="@+id/userNameTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sara Alhumaid"
@@ -81,7 +81,7 @@
             android:text="active member"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
-            app:layout_constraintTop_toBottomOf="@id/personNAmeTV"
+            app:layout_constraintTop_toBottomOf="@id/userNameTv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 

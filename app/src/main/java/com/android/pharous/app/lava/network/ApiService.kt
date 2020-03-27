@@ -1,12 +1,7 @@
 package com.android.pharous.app.lava.network
 
-import com.android.pharous.app.lava.models.ApiResponse
-import com.android.pharous.app.lava.models.LoginResponse
-import com.android.pharous.app.lava.models.VerificationCodeRequest
-import retrofit2.http.Body
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import com.android.pharous.app.lava.models.*
+import retrofit2.http.*
 
 
 interface ApiService {
@@ -27,6 +22,11 @@ interface ApiService {
         @Field("AccessToken") AccessToken: String
     ): ApiResponse<LoginResponse>
 
+    @GET("user/profile")
+    suspend fun getProfile(@Query("AccessToken") token : String) : ApiResponse<ProfileResponse>
+
+    @GET("exercise/view")
+    suspend fun getExerciseReservations(@Query("AccessToken") token : String) : ApiResponse<List<ExerciseReservationResponse>>
 }
 
 

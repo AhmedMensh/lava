@@ -6,6 +6,7 @@ import com.android.pharous.app.lava.repositories.ILavaRepo
 import com.android.pharous.app.lava.repositories.LavaRepo
 import com.android.pharous.app.lava.ui.auth.login.LoginViewModel
 import com.android.pharous.app.lava.ui.auth.phoneVerification.VerificationViewModel
+import com.android.pharous.app.lava.ui.home.HomeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -23,6 +24,7 @@ private val viewModelModule = module {
 
     viewModel { LoginViewModel(get()) }
     viewModel { VerificationViewModel(get()) }
+    viewModel { HomeViewModel(get()) }
 
 }
 

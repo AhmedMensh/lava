@@ -14,4 +14,7 @@ class RemoteDataSource(private val api: ApiService) {
             verificationCodeRequest.accessToken!!
         )
     }
+
+    suspend fun getProfile(token : String) = safeApiCall { api.getProfile(token) }
+    suspend fun getExerciseReservations(token : String) = safeApiCall { api.getExerciseReservations(token) }
 }
