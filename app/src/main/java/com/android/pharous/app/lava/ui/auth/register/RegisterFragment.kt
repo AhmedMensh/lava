@@ -8,23 +8,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 
 import com.android.pharous.app.lava.R
+import com.android.pharous.app.lava.models.RegisterRequest
 import kotlinx.android.synthetic.main.fragment_register.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * A simple [Fragment] subclass.
  */
-class RegisterFragment : Fragment() {
+class RegisterFragment : Fragment(R.layout.fragment_register) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false)
-    }
+    private val registerRequest : RegisterRequest by lazy { RegisterRequest() }
+    private val viewModel : RegisterViewModel by viewModel()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,6 +33,29 @@ class RegisterFragment : Fragment() {
         content.setSpan(UnderlineSpan(), 0, content.length, 0)
         signInTV.text = content
 
+        viewModel.error.observe(viewLifecycleOwner , Observer {
+
+            it?.let {
+                Toast.makeText(context,it,Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        signUpBtn.setOnClickListener {
+//            registerRequest.birthDate = "25-2-1993"
+            registerRequest.cityID = "1"
+//            registerRequest.email = "a@e.com"
+            registerRequest.fullName = "ahmed"
+            registerRequest.mobileNumber = "966541114444"
+//            registerRequest.nationalityID = "1"
+//            registerRequest.regionID = "1"
+
+            viewModel.register(registerRequest).observe(viewLifecycleOwner , Observer {
+                it?.let {
+                    findNavController().navigate(R.id.action_registerFragment_to_homeFragment)
+                }
+            })
+
+        }
         signInTV.setOnClickListener { findNavController().navigate(R.id.action_registerFragment_to_loginFragment) }
     }
 }
