@@ -10,4 +10,5 @@ interface ILavaRepo {
     suspend fun getExerciseReservations() : DataResult<List<ExerciseReservationResponse>>
     suspend fun getBranches() :DataResult<List<BranchResponse>>
     suspend fun register(request: RegisterRequest) : DataResult<Boolean>
+    suspend fun getMembershipInfo() : DataResult<MembershipInfoResponse>
 }

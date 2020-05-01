@@ -28,4 +28,6 @@ class RemoteDataSource(private val api: ApiService) {
     suspend fun getBranches(token: String) = safeApiCall { api.getBranches(token) }
 
     suspend fun register(registerRequest: RegisterRequest) = safeApiCall { api.register(registerRequest) }
+
+    suspend fun getMembershipInfo(token: String) = safeApiCall { api.getMembershipInfo(token) }
 }

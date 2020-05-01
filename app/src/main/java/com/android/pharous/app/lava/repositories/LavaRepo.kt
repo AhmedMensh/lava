@@ -73,4 +73,12 @@ class LavaRepo(private val remoteDataSource: RemoteDataSource , private val cont
             is DataResult.Error -> DataResult.Error(result.exception)
         }
     }
+
+    override suspend fun getMembershipInfo(): DataResult<MembershipInfoResponse> {
+
+        return when(val result = remoteDataSource.getMembershipInfo(token)){
+            is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
 }

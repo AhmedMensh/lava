@@ -2,6 +2,7 @@ package com.android.pharous.app.lava.ui.home
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,11 +25,12 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 /**
  * A simple [Fragment] subclass.
  */
-class HomeFragment : Fragment(R.layout.fragment_home) , IItemClickListener<ExerciseReservationResponse>{
+class HomeFragment : Fragment(R.layout.fragment_home),
+    IItemClickListener<ExerciseReservationResponse> {
 
 
-    private val viewModel : HomeViewModel by viewModel()
-    private val adapter : UpcomingBookingsAdapter by lazy { UpcomingBookingsAdapter(this) }
+    private val viewModel: HomeViewModel by viewModel()
+    private val adapter: UpcomingBookingsAdapter by lazy { UpcomingBookingsAdapter(this) }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -36,28 +38,25 @@ class HomeFragment : Fragment(R.layout.fragment_home) , IItemClickListener<Exerc
 
         cardioCL.setOnClickListener {
             var bundle = Bundle()
-            bundle.putString("type","swim")
-            findNavController().navigate(R.id.action_homeFragment_to_workoutFragment,bundle) }
+            bundle.putString("type", "swim")
+            findNavController().navigate(R.id.action_homeFragment_to_workoutFragment, bundle)
+        }
         strengthCL.setOnClickListener {
             var bundle = Bundle()
-            bundle.putString("type","class")
-            findNavController().navigate(R.id.action_homeFragment_to_workoutFragment,bundle) }
+            bundle.putString("type", "class")
+            findNavController().navigate(R.id.action_homeFragment_to_workoutFragment, bundle)
+        }
 
 
-        viewModel.error.observe(this , Observer {
+        viewModel.error.observe(viewLifecycleOwner, Observer {
 
             it?.let {
-                Toast.makeText(context,it,Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
             }
         })
 
-        viewModel.getProfile().observe(this , Observer {
 
-            it?.let {
-                userNameTv.text = it.fullName
-            }
-        })
-        viewModel.isLoading.observe(this , Observer {
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
 
             it?.let {
                 if (it) activity?.progressBar?.visibility = View.VISIBLE
@@ -65,12 +64,37 @@ class HomeFragment : Fragment(R.layout.fragment_home) , IItemClickListener<Exerc
             }
         })
 
-        viewModel.getExerciseReservations().observe(this , Observer {
+        getProfile()
+        getExerciseReservations()
+        getMemberShipInfo()
+    }
+
+    private fun getProfile() {
+        viewModel.getProfile().observe(viewLifecycleOwner, Observer {
+
+            it?.let {
+                userNameTv.text = it.fullName
+            }
+        })
+    }
+
+    private fun getExerciseReservations() {
+        viewModel.getExerciseReservations().observe(viewLifecycleOwner, Observer {
 
             it?.let {
                 upcomingBookingRV.adapter = adapter
                 upcomingBookingRV.setHasFixedSize(true)
                 adapter.submitList(it)
+            }
+        })
+    }
+
+    private fun getMemberShipInfo() {
+
+        viewModel.getMembershipInfo().observe(viewLifecycleOwner, Observer {
+            it?.let {
+                for (servicse in it.serviceList())
+                Log.e("Membership", "${servicse.serviceName}")
             }
         })
     }
@@ -83,7 +107,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) , IItemClickListener<Exerc
     private fun showCancelBookingDialog(item: ExerciseReservationResponse) {
 
         var builder = AlertDialog.Builder(context!!)
-        var view =  activity?.layoutInflater?.inflate(R.layout.dialog_cancel_booking, null)
+        var view = activity?.layoutInflater?.inflate(R.layout.dialog_cancel_booking, null)
         builder.setView(view)
         var dialog = builder.create()
 

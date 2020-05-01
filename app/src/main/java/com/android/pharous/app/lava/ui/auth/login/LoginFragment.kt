@@ -33,12 +33,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         signUpTV.text = content
 
 
-//        SharedPreferencesManager.setStringValue(context!!,Constants.TOKEN,"7382e0474bcb43d731405e2a7e4f491e")
-//        findNavController().navigate(R.id.homeFragment)
+        SharedPreferencesManager.setStringValue(context!!,Constants.TOKEN,"6ff8d65aae6ee03b3e17056a1f4a07d0")
+        findNavController().navigate(R.id.homeFragment)
 
         signUpTV.setOnClickListener { findNavController().navigate(R.id.action_loginFragment_to_registerFragment) }
 
-        viewModel.isLoading.observe(this , Observer {
+        viewModel.isLoading.observe(viewLifecycleOwner , Observer {
 
             it?.let {
                 if (it) activity?.progressBar?.visibility = View.VISIBLE
@@ -46,7 +46,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             }
         })
 
-        viewModel.error.observe(this , Observer {
+        viewModel.error.observe(viewLifecycleOwner , Observer {
 
             it?.let {
 
@@ -59,7 +59,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 return@setOnClickListener
             }
 
-            viewModel.login(phoneNumberET.text.toString()).observe(this , Observer {
+            viewModel.login(phoneNumberET.text.toString()).observe(viewLifecycleOwner , Observer {
 
                 it?.let {
                     val bundle = Bundle()

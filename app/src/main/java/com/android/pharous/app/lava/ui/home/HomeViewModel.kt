@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.android.pharous.app.lava.models.DataResult
 import com.android.pharous.app.lava.models.ExerciseReservationResponse
+import com.android.pharous.app.lava.models.MembershipInfoResponse
 import com.android.pharous.app.lava.models.ProfileResponse
 import com.android.pharous.app.lava.repositories.ILavaRepo
 import kotlinx.coroutines.Dispatchers.IO
@@ -49,6 +50,29 @@ class HomeViewModel(private val iLavaRepo: ILavaRepo) : ViewModel() {
         viewModelScope.launch {
 
             when(val result = withContext(IO) { iLavaRepo.getExerciseReservations() }){
+
+                is DataResult.Success ->{
+                    data.value = result.content
+                    error.value = null
+                }
+
+                is DataResult.Error -> {
+                    data.value = null
+                    error.value = result.exception.message
+                }
+            }
+        }
+        return data
+    }
+
+
+    fun getMembershipInfo() : LiveData<MembershipInfoResponse>{
+
+        val data = MutableLiveData<MembershipInfoResponse>()
+
+        viewModelScope.launch {
+
+            when(val result = withContext(IO) { iLavaRepo.getMembershipInfo() }){
 
                 is DataResult.Success ->{
                     data.value = result.content

@@ -40,7 +40,10 @@ interface ApiService {
         @Query("AccessToken") token: String,
         @Query("BranchID") branchID: Int,
         @Query("type") type: Int
-    ) 
+    )
+
+    @GET("membership/index")
+    suspend fun getMembershipInfo(@Query("AccessToken") token: String) : ApiResponse<MembershipInfoResponse>
 }
 
 
