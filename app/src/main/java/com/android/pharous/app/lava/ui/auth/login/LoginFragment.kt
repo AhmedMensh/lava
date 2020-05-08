@@ -4,6 +4,7 @@ package com.android.pharous.app.lava.ui.auth.login
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.UnderlineSpan
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -33,7 +34,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         signUpTV.text = content
 
 
-        SharedPreferencesManager.setStringValue(context!!,Constants.TOKEN,"6ff8d65aae6ee03b3e17056a1f4a07d0")
+        SharedPreferencesManager.setStringValue(context!!,Constants.TOKEN,"7cbe51b47e0dd51803f97af639e187f9")
         findNavController().navigate(R.id.homeFragment)
 
         signUpTV.setOnClickListener { findNavController().navigate(R.id.action_loginFragment_to_registerFragment) }
@@ -62,6 +63,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             viewModel.login(phoneNumberET.text.toString()).observe(viewLifecycleOwner , Observer {
 
                 it?.let {
+                    Log.i("TAG","${it.verificationCode}")
                     val bundle = Bundle()
                     bundle.putString("phone_number",phoneNumberET.text.toString())
                     bundle.putString("code",it.verificationCode.toString().trim())

@@ -1,12 +1,18 @@
 package com.android.pharous.app.lava.ui
 
+import android.content.Context
 import android.graphics.Color
+import android.hardware.Sensor
+import android.hardware.SensorManager
+import android.hardware.TriggerEvent
+import android.hardware.TriggerEventListener
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavDestination
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -45,6 +51,7 @@ class MainActivity : AppCompatActivity() {
 
     }
     }
+
 
 
 

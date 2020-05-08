@@ -1,10 +1,13 @@
 package com.android.pharous.app.lava.repositories
 
+import CardioProgramResponse
 import android.content.Context
+import android.util.Log
 import com.android.pharous.app.lava.common.Constants
 import com.android.pharous.app.lava.common.SharedPreferencesManager
 import com.android.pharous.app.lava.models.*
 import com.android.pharous.app.lava.network.RemoteDataSource
+import com.android.pharous.app.lava.ui.workout.models.EvaluateProgramRequest
 
 class LavaRepo(private val remoteDataSource: RemoteDataSource , private val context: Context) : ILavaRepo {
 
@@ -78,6 +81,24 @@ class LavaRepo(private val remoteDataSource: RemoteDataSource , private val cont
 
         return when(val result = remoteDataSource.getMembershipInfo(token)){
             is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
+
+    override suspend fun getMemberCardioPrograms(): DataResult<List<CardioProgramResponse>> {
+
+        return when(val result = remoteDataSource.getMemberCardioPrograms(token)){
+            is DataResult.Success -> {
+                DataResult.Success(result.content?.values?.toList())
+            }
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
+
+    override suspend fun evaluateCardioProgram(evaluateProgramRequest: EvaluateProgramRequest): DataResult<Boolean> {
+        evaluateProgramRequest.accessToken = token
+        return when(val result = remoteDataSource.evaluateCardioProgram(evaluateProgramRequest)){
+            is DataResult.Success -> DataResult.Success(true)
             is DataResult.Error -> DataResult.Error(result.exception)
         }
     }

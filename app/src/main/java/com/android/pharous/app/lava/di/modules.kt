@@ -1,5 +1,6 @@
 package com.android.pharous.app.lava.di
 
+import com.android.pharous.app.lava.network.ApiService
 import com.android.pharous.app.lava.network.Network
 import com.android.pharous.app.lava.network.RemoteDataSource
 import com.android.pharous.app.lava.repositories.ILavaRepo
@@ -9,6 +10,7 @@ import com.android.pharous.app.lava.ui.auth.phoneVerification.VerificationViewMo
 import com.android.pharous.app.lava.ui.auth.register.RegisterViewModel
 import com.android.pharous.app.lava.ui.home.HomeViewModel
 import com.android.pharous.app.lava.ui.point.PointViewModel
+import com.android.pharous.app.lava.ui.workout.WorkoutViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -29,6 +31,7 @@ private val viewModelModule = module {
     viewModel { HomeViewModel(get()) }
     viewModel { PointViewModel(get()) }
     viewModel { RegisterViewModel(get()) }
+    viewModel { WorkoutViewModel(get()) }
 
 }
 

@@ -31,22 +31,19 @@ class PhoneVerificationFragment : Fragment(R.layout.fragment_phone_verification)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        verificationCodeRequest.VerificationCode  = "5032"
+        verificationCodeRequest.MobileNumber ="966576615319"
+        verificationCodeRequest.AccessToken = "473110b69daeed11406dae7df850640f"
         arguments?.let {
 
-//            verificationCodeRequest.mobileNumber = it.getString("phone_number")
-//            verificationCodeRequest.verificationCode = it.getString("code")
-//            verificationCodeRequest.accessToken = it.getString("token")
-            verificationCodeRequest.mobileNumber = "966576615319"
-            verificationCodeRequest.verificationCode = "4854"
-            verificationCodeRequest.accessToken = "c61df41b7a1fd6fdba821c5c407d0cb6"
-            phoneNumberTV.text = verificationCodeRequest.mobileNumber
-            verificationCodeET.setText(verificationCodeRequest.verificationCode)
+            verificationCodeRequest.MobileNumber = it.getString("phone_number")
+            verificationCodeRequest.VerificationCode = it.getString("code")
+            verificationCodeRequest.AccessToken = it.getString("token")
+            phoneNumberTV.text = verificationCodeRequest.MobileNumber
+            verificationCodeET.setText(verificationCodeRequest.VerificationCode)
             Log.e("CODE","$verificationCodeRequest")
         }
 
-        verificationCodeRequest.mobileNumber = "966541114444"
-        verificationCodeRequest.verificationCode = "7635"
-        verificationCodeRequest.accessToken = "440289bace3f0b08519d7a8083a19d3a"
         val content = SpannableString("Sign Up")
         content.setSpan(UnderlineSpan(), 0, content.length, 0)
         signUpTV.text = content

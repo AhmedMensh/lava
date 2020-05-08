@@ -1,8 +1,9 @@
 package com.android.pharous.app.lava.network
 
+import CardioProgramResponse
 import com.android.pharous.app.lava.models.*
+import com.android.pharous.app.lava.ui.workout.models.EvaluateProgramRequest
 import retrofit2.http.*
-import java.lang.reflect.Type
 
 
 interface ApiService {
@@ -16,14 +17,6 @@ interface ApiService {
 
     @POST("user/verify-token")
     suspend fun verifyPhoneNumber(@Body verificationCodeRequest: VerificationCodeRequest) : ApiResponse<LoginResponse>
-
-//    @FormUrlEncoded
-//    @POST("user/verify-token")
-//    suspend fun verifyPhoneNumber(
-//        @Field("MobileNumber") MobileNumber: String,
-//        @Field("VerificationCode") VerificationCode: String,
-//        @Field("AccessToken") AccessToken: String
-//    ): ApiResponse<LoginResponse>
 
     @GET("user/profile")
     suspend fun getProfile(@Query("AccessToken") token: String): ApiResponse<ProfileResponse>
@@ -44,6 +37,13 @@ interface ApiService {
 
     @GET("membership/index")
     suspend fun getMembershipInfo(@Query("AccessToken") token: String) : ApiResponse<MembershipInfoResponse>
+
+    @GET("cardio/programs")
+    suspend fun getMemberCardioPrograms(@Query("AccessToken") token: String)
+            : ApiResponse<Map<String ,CardioProgramResponse>>
+
+    @POST("cardio/evaluate-program")
+    suspend fun evaluateCardioProgram(@Body evaluateProgramRequest: EvaluateProgramRequest) : ApiResponse<String>
 }
 
 

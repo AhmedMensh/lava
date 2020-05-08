@@ -1,6 +1,8 @@
 package com.android.pharous.app.lava.ui.home
 
 
+import android.content.Context
+import android.hardware.*
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,6 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 
@@ -20,16 +23,20 @@ import com.android.pharous.app.lava.models.ExerciseReservationResponse
 import com.android.pharous.app.lava.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 /**
  * A simple [Fragment] subclass.
  */
 class HomeFragment : Fragment(R.layout.fragment_home),
-    IItemClickListener<ExerciseReservationResponse> {
+    IItemClickListener<ExerciseReservationResponse>  {
 
 
     private val viewModel: HomeViewModel by viewModel()
+//    private val viewModel: HomeViewModel by inject { parametersOf(this)  }
+
     private val adapter: UpcomingBookingsAdapter by lazy { UpcomingBookingsAdapter(this) }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -67,6 +74,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),
         getProfile()
         getExerciseReservations()
         getMemberShipInfo()
+        getStepCounts()
     }
 
     private fun getProfile() {
@@ -93,12 +101,33 @@ class HomeFragment : Fragment(R.layout.fragment_home),
 
         viewModel.getMembershipInfo().observe(viewLifecycleOwner, Observer {
             it?.let {
-                for (servicse in it.serviceList())
-                Log.e("Membership", "${servicse.serviceName}")
+                for (service in it.serviceList())
+                Log.e("Membership", "${service.serviceName}")
             }
         })
     }
 
+    private fun getStepCounts(){
+        activity?.let {
+            val sensorManager = it.getSystemService(Context.SENSOR_SERVICE) as SensorManager
+            val mSensor: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
+            val triggerEventListener = object : TriggerEventListener() {
+                override fun onTrigger(event: TriggerEvent?) {
+                    // Do work
+                   event?.let {
+
+                       Toast.makeText(context,"${event.values[0]}",Toast.LENGTH_LONG).show()
+//                       Toast.makeText(context,"${event.values[1]}",Toast.LENGTH_LONG).show()
+//                       Toast.makeText(context,"${event.values[2]}",Toast.LENGTH_LONG).show()
+                   }
+                }
+            }
+            mSensor?.also { sensor ->
+                sensorManager.requestTriggerSensor(triggerEventListener, sensor)
+            }
+        }
+
+    }
     override fun onItemClick(item: ExerciseReservationResponse) {
 
         showCancelBookingDialog(item)

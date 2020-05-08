@@ -5,9 +5,9 @@ import com.squareup.moshi.Json
 
 data class VerificationCodeRequest(
     @field:Json(name = "MobileNumber")
-    var mobileNumber: String? = null,
+    var MobileNumber: String? = null,
     @field:Json(name = "AccessToken")
-    var accessToken: String? = null,
+    var AccessToken: String? = null,
     @field:Json(name = "VerificationCode")
-    var verificationCode: String? = null
+    var VerificationCode: String? = null
 )

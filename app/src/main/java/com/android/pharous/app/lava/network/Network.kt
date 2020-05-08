@@ -54,7 +54,6 @@ object Network {
             } else {
                 request.newBuilder()
                     .addHeader("authorizationKey",  "as@dL8]Rn3\$2S!anR")
-                    .addHeader("Accept", "application/json")
                     .addHeader("Content-Type", "application/json")
                     .build()
             }

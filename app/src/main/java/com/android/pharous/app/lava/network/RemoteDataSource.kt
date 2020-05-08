@@ -2,6 +2,8 @@ package com.android.pharous.app.lava.network
 
 import com.android.pharous.app.lava.models.RegisterRequest
 import com.android.pharous.app.lava.models.VerificationCodeRequest
+import com.android.pharous.app.lava.ui.workout.models.EvaluateProgramRequest
+import retrofit2.http.Body
 
 
 class RemoteDataSource(private val api: ApiService) {
@@ -30,4 +32,8 @@ class RemoteDataSource(private val api: ApiService) {
     suspend fun register(registerRequest: RegisterRequest) = safeApiCall { api.register(registerRequest) }
 
     suspend fun getMembershipInfo(token: String) = safeApiCall { api.getMembershipInfo(token) }
+
+    suspend fun getMemberCardioPrograms(token: String) = safeApiCall { api.getMemberCardioPrograms(token) }
+
+    suspend fun evaluateCardioProgram(evaluateProgramRequest: EvaluateProgramRequest) = safeApiCall { api.evaluateCardioProgram(evaluateProgramRequest) }
 }
