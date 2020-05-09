@@ -1,36 +1,37 @@
-package com.android.pharous.app.lava.ui.auth.register
+package com.android.pharous.app.lava.ui.measurement
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.android.pharous.app.lava.models.CityResponse
 import com.android.pharous.app.lava.models.DataResult
-import com.android.pharous.app.lava.models.RegisterRequest
 import com.android.pharous.app.lava.repositories.ILavaRepo
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class RegisterViewModel(private val iLavaRepo: ILavaRepo) : ViewModel() {
+class MeasurementViewModel(private val iLavaRepo: ILavaRepo) : ViewModel() {
 
     var error = MutableLiveData<String>()
+    var isLoading = MutableLiveData<Boolean>()
 
-    fun register(registerRequest: RegisterRequest) : LiveData<Boolean>{
+    fun getMemberMeasurements() : LiveData<List<MemberMeasurementResponse>>{
 
-        val data = MutableLiveData<Boolean>()
+        val data = MutableLiveData<List<MemberMeasurementResponse>>()
+        isLoading.value = true
 
         viewModelScope.launch {
+            when(val result = withContext(IO) { iLavaRepo.getMemberMeasurements()}){
 
-            when(val result = withContext(IO) { iLavaRepo.register(registerRequest)}){
-
-                is DataResult.Success -> {
+                is DataResult.Success-> {
                     data.value = result.content
                     error.value = null
+                    isLoading.value = false
                 }
                 is DataResult.Error -> {
                     data.value = null
                     error.value = result.exception.message
+                    isLoading.value = false
                 }
             }
         }
@@ -38,22 +39,23 @@ class RegisterViewModel(private val iLavaRepo: ILavaRepo) : ViewModel() {
     }
 
 
+    fun getMemberInBodyResults() : LiveData<List<MemberInbodyresultResponse>>{
 
-    fun getCities() : LiveData<List<CityResponse>>{
-
-        val data = MutableLiveData<List<CityResponse>>()
+        val data = MutableLiveData<List<MemberInbodyresultResponse>>()
+        isLoading.value = true
 
         viewModelScope.launch {
+            when(val result = withContext(IO) { iLavaRepo.getMemberInbodyResults()}){
 
-            when(val result = withContext(IO) { iLavaRepo.getCities()}){
-
-                is DataResult.Success -> {
+                is DataResult.Success-> {
                     data.value = result.content
                     error.value = null
+                    isLoading.value = false
                 }
                 is DataResult.Error -> {
                     data.value = null
                     error.value = result.exception.message
+                    isLoading.value = false
                 }
             }
         }

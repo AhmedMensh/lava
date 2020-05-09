@@ -1,4 +1,4 @@
-package com.android.pharous.app.lava.ui.booking
+package com.android.pharous.app.lava.ui.training
 
 
 import android.os.Bundle

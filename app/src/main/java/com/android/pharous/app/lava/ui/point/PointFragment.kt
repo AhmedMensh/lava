@@ -35,21 +35,21 @@ class PointFragment : Fragment(R.layout.fragment_point) {
 
 
 
-        viewModel.error.observe(this, Observer {
+        viewModel.error.observe(viewLifecycleOwner, Observer {
 
             it?.let {
                 Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
             }
         })
 
-        viewModel.isLoading.observe(this, Observer {
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
             it?.let {
                 if (it) activity?.progressBar?.visibility = View.VISIBLE
                 else activity?.progressBar?.visibility = View.GONE
             }
         })
 
-        viewModel.getBranches().observe(this, Observer {
+        viewModel.getBranches().observe(viewLifecycleOwner, Observer {
 
             it?.let {
                 branchesList = it

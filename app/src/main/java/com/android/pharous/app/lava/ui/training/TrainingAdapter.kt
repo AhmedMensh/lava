@@ -1,12 +1,10 @@
-package com.android.pharous.app.lava.ui.booking
+package com.android.pharous.app.lava.ui.training
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.pharous.app.lava.R
-import kotlinx.android.synthetic.main.booking_session_item.view.*
-import kotlinx.android.synthetic.main.training_day_item.view.*
 import kotlinx.android.synthetic.main.training_item.view.*
 
 class TrainingAdapter(private val isFirstItem : Boolean = false) : RecyclerView.Adapter<TrainingAdapter.ViewHolder>() {

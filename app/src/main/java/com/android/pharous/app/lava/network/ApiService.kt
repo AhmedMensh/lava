@@ -2,11 +2,21 @@ package com.android.pharous.app.lava.network
 
 import CardioProgramResponse
 import com.android.pharous.app.lava.models.*
+import com.android.pharous.app.lava.ui.measurement.MemberInbodyresultResponse
+import com.android.pharous.app.lava.ui.measurement.MemberMeasurementResponse
+import com.android.pharous.app.lava.ui.training.models.SessionResponse
 import com.android.pharous.app.lava.ui.workout.models.EvaluateProgramRequest
 import retrofit2.http.*
 
 
 interface ApiService {
+
+    @GET("branch/index")
+    suspend fun getBranches(@Query("AccessToken") token: String): ApiResponse<List<BranchResponse>>
+
+    @GET("city/index")
+    suspend fun getCities(): ApiResponse<List<CityResponse>>
+
 
     @FormUrlEncoded
     @POST("user/login")
@@ -25,8 +35,7 @@ interface ApiService {
     suspend fun getExerciseReservations(@Query("AccessToken") token: String)
             : ApiResponse<List<ExerciseReservationResponse>>
 
-    @GET("branch/index")
-    suspend fun getBranches(@Query("AccessToken") token: String): ApiResponse<List<BranchResponse>>
+
 
     @GET("amtar-member-point/list-package")
     suspend fun getBranchPackages(
@@ -44,6 +53,15 @@ interface ApiService {
 
     @POST("cardio/evaluate-program")
     suspend fun evaluateCardioProgram(@Body evaluateProgramRequest: EvaluateProgramRequest) : ApiResponse<String>
+
+    @GET("personal-training-reservations/view")
+    suspend fun getSessions(@Query("AccessToken") token: String) : ApiResponse<List<SessionResponse>>
+
+    @GET("training/measurements")
+    suspend fun getMemberMeasurements(@Query("AccessToken") token: String) : ApiResponse<List<MemberMeasurementResponse>>
+
+    @GET("training/inbody-results")
+    suspend fun getMemberInbodyResults(@Query("AccessToken") token: String) : ApiResponse<List<MemberInbodyresultResponse>>
 }
 
 
