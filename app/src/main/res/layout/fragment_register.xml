@@ -32,6 +32,7 @@
 
 
         <ImageView
+            android:id="@+id/logoImgV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -47,12 +48,15 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_30sdp"
             android:text="Sign Up"
+            app:layout_constraintVertical_bias="0"
             android:textColor="@android:color/black"
             android:textSize="@dimen/_20sdp"
             android:textStyle="bold"
+            android:layout_marginTop="@dimen/_20sdp"
             app:layout_constraintBottom_toTopOf="@id/userNameET"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logoImgV" />
 
 
         <EditText
@@ -71,7 +75,8 @@
             android:padding="@dimen/_10sdp"
             app:layout_constraintBottom_toTopOf="@id/emailET"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signInLabel" />
 
         <EditText
             android:id="@+id/emailET"
@@ -81,15 +86,16 @@
             android:layout_marginEnd="@dimen/_20sdp"
             android:layout_marginBottom="@dimen/_10sdp"
             android:background="@drawable/rect_sharp_corner_white"
-            android:drawableStart="@drawable/ic_phone"
+            android:drawableStart="@drawable/ic_email"
             android:drawablePadding="@dimen/_20sdp"
             android:elevation="@dimen/_2sdp"
             android:hint="Enter your email"
-            android:inputType="phone"
+            android:inputType="textEmailAddress"
             android:padding="@dimen/_10sdp"
             app:layout_constraintBottom_toTopOf="@id/phoneNumberET"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userNameET" />
 
         <EditText
             android:id="@+id/phoneNumberET"
@@ -107,35 +113,36 @@
             android:padding="@dimen/_10sdp"
             app:layout_constraintBottom_toTopOf="@id/cityTI"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailET" />
 
 
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            android:id="@+id/cityTI"-->
-<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="@dimen/_45sdp"-->
-<!--            android:padding="@dimen/_10sdp"-->
-<!--            app:boxStrokeColor="@android:color/darker_gray"-->
-<!--            app:boxStrokeWidth="@dimen/_1sdp"-->
-<!--            app:hintEnabled="false"-->
-<!--            app:layout_constraintBottom_toTopOf="@id/signUpBtn"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent">-->
+        <!--        <com.google.android.material.textfield.TextInputLayout-->
+        <!--            android:id="@+id/cityTI"-->
+        <!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="@dimen/_45sdp"-->
+        <!--            android:padding="@dimen/_10sdp"-->
+        <!--            app:boxStrokeColor="@android:color/darker_gray"-->
+        <!--            app:boxStrokeWidth="@dimen/_1sdp"-->
+        <!--            app:hintEnabled="false"-->
+        <!--            app:layout_constraintBottom_toTopOf="@id/signUpBtn"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent">-->
 
 
-<!--            <AutoCompleteTextView-->
-<!--                android:id="@+id/cityTV"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
+        <!--            <AutoCompleteTextView-->
+        <!--                android:id="@+id/cityTV"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent"-->
 
-<!--                android:background="@drawable/rect_sharp_corner_white"-->
-<!--                android:drawableStart="@drawable/ic_pin"-->
-<!--                android:drawablePadding="@dimen/_20sdp"-->
-<!--                android:editable="false"-->
-<!--                android:elevation="@dimen/_2sdp"-->
-<!--                android:hint="Choose your city" />-->
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
+        <!--                android:background="@drawable/rect_sharp_corner_white"-->
+        <!--                android:drawableStart="@drawable/ic_pin"-->
+        <!--                android:drawablePadding="@dimen/_20sdp"-->
+        <!--                android:editable="false"-->
+        <!--                android:elevation="@dimen/_2sdp"-->
+        <!--                android:hint="Choose your city" />-->
+        <!--        </com.google.android.material.textfield.TextInputLayout>-->
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/cityTI"
@@ -143,25 +150,26 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"
             android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_6sdp"
             android:layout_marginEnd="@dimen/_20sdp"
-            android:gravity="center"
-            android:elevation="@dimen/_6sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
             android:background="@drawable/rect_sharp_corner_white"
+            android:elevation="@dimen/_6sdp"
+            android:gravity="center"
             app:boxStrokeColor="@android:color/white"
             app:boxStrokeWidth="@dimen/_1sdp"
             app:hintEnabled="false"
-            android:layout_marginBottom="@dimen/_10sdp"
+            app:layout_constraintBottom_toTopOf="@id/signUpBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/signUpBtn">
+            app:layout_constraintTop_toBottomOf="@+id/phoneNumberET">
 
             <AutoCompleteTextView
                 android:id="@+id/cityTV"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:drawableStart="@drawable/ic_pin"
                 android:backgroundTint="@color/white"
+                android:drawableStart="@drawable/ic_pin"
                 android:drawablePadding="@dimen/_8sdp"
                 android:editable="false"
                 android:hint="Choose your city"
@@ -173,17 +181,18 @@
             android:id="@+id/signUpBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_25sdp"
             android:background="@drawable/button_orange_background"
             android:minWidth="@dimen/_150sdp"
             android:text="Sign up"
-            android:layout_marginTop="@dimen/_10sdp"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:textSize="@dimen/_14sdp"
             app:layout_constraintBottom_toTopOf="@id/haveAccountLabel"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cityTI" />
 
         <TextView
             android:id="@+id/haveAccountLabel"
@@ -194,18 +203,19 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".4"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signUpBtn" />
 
         <TextView
             android:id="@+id/signInTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_20sdp"
-            android:text=""
+            android:layout_marginStart="@dimen/_5sdp"
+
             android:textColor="@color/orange_dark"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/haveAccountLabel" />
+            app:layout_constraintBottom_toBottomOf="@id/haveAccountLabel"
+            app:layout_constraintStart_toEndOf="@id/haveAccountLabel"
+            app:layout_constraintTop_toTopOf="@id/haveAccountLabel" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

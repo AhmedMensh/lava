@@ -31,17 +31,13 @@ class PhoneVerificationFragment : Fragment(R.layout.fragment_phone_verification)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        verificationCodeRequest.VerificationCode  = "5032"
-//        verificationCodeRequest.MobileNumber ="966576615319"
-//        verificationCodeRequest.AccessToken = "473110b69daeed11406dae7df850640f"
         arguments?.let {
 
             verificationCodeRequest.MobileNumber = it.getString("phone_number")
-            verificationCodeRequest.VerificationCode = it.getString("code")
-//            verificationCodeRequest.AccessToken = it.getString("token")
+            verificationCodeRequest.VerificationCode = it.getString("code")?.toInt()
+            verificationCodeRequest.AccessToken = it.getString("token")
             phoneNumberTV.text = verificationCodeRequest.MobileNumber
-            verificationCodeET.setText(verificationCodeRequest.VerificationCode)
-            Log.e("CODE","$verificationCodeRequest")
+//            verificationCodeET.setText(verificationCodeRequest.VerificationCode)
         }
 
         val content = SpannableString("Sign Up")

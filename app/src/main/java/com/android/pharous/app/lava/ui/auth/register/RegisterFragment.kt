@@ -24,9 +24,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 class RegisterFragment : Fragment(R.layout.fragment_register) {
 
-    private val registerRequest : RegisterRequest by lazy { RegisterRequest() }
-    private val viewModel : RegisterViewModel by viewModel()
-
+    private val registerRequest: RegisterRequest by lazy { RegisterRequest() }
+    private val viewModel: RegisterViewModel by viewModel()
+    private var cityId = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,14 +35,14 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         content.setSpan(UnderlineSpan(), 0, content.length, 0)
         signInTV.text = content
 
-        viewModel.error.observe(viewLifecycleOwner , Observer {
+        viewModel.error.observe(viewLifecycleOwner, Observer {
 
             it?.let {
-                Toast.makeText(context,it,Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
             }
         })
 
-        viewModel.getCities().observe(viewLifecycleOwner , Observer {
+        viewModel.getCities().observe(viewLifecycleOwner, Observer {
 
             it?.let {
                 val adapter = ArrayAdapter<String>(
@@ -52,22 +52,27 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 )
 
                 cityTV?.setAdapter(adapter)
-                cityTV.onItemClickListener = AdapterView.OnItemClickListener{_,_,_,_ ->
-
+                cityTV.onItemClickListener = AdapterView.OnItemClickListener { _, _, poition, _ ->
+                    cityId = it[poition].iD.toString()
                 }
             }
         })
 
         signUpBtn.setOnClickListener {
+
+            if (cityId.isEmpty() || userNameET.text.isEmpty() || emailET.text.isEmpty() || phoneNumberET.text.isEmpty()) {
+                Toast.makeText(context, "All Fields Required", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
 //            registerRequest.birthDate = "25-2-1993"
-            registerRequest.cityID = "1"
+            registerRequest.cityID = cityId
 //            registerRequest.email = "a@e.com"
-            registerRequest.fullName = "ahmed"
-            registerRequest.mobileNumber = "966541114444"
+            registerRequest.fullName = userNameET.text.toString()
+            registerRequest.mobileNumber = phoneNumberET.text.toString()
 //            registerRequest.nationalityID = "1"
 //            registerRequest.regionID = "1"
 
-            viewModel.register(registerRequest).observe(viewLifecycleOwner , Observer {
+            viewModel.register(registerRequest).observe(viewLifecycleOwner, Observer {
                 it?.let {
                     findNavController().navigate(R.id.action_registerFragment_to_homeFragment)
                 }

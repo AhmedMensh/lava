@@ -127,26 +127,26 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fitnessClassesRV"
+        android:id="@+id/strengthClassesRV"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
         android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/fitness_class_item"
+        tools:listitem="@layout/cardio_class_item"
         app:layout_constraintTop_toBottomOf="@id/classesProgressRV"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/swimmingClassesRV"
+        android:id="@+id/cardioClassesRV"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
         android:visibility="visible"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/fitness_class_item"
+        tools:listitem="@layout/cardio_class_item"
         app:layout_constraintTop_toBottomOf="@id/classesProgressRV"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

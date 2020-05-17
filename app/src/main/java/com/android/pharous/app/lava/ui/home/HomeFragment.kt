@@ -39,12 +39,12 @@ class HomeFragment : Fragment(R.layout.fragment_home),
 
         cardioCL.setOnClickListener {
             var bundle = Bundle()
-            bundle.putString("type", "swim")
+            bundle.putString("type", "cardio")
             findNavController().navigate(R.id.action_homeFragment_to_workoutFragment, bundle)
         }
         strengthCL.setOnClickListener {
             var bundle = Bundle()
-            bundle.putString("type", "class")
+            bundle.putString("type", "")
             findNavController().navigate(R.id.action_homeFragment_to_workoutFragment, bundle)
         }
 

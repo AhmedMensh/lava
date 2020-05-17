@@ -40,7 +40,7 @@ class LavaRepo(private val remoteDataSource: RemoteDataSource, private val conte
 
     override suspend fun verifyPhoneNumber(verificationCodeRequest: VerificationCodeRequest): DataResult<LoginResponse> {
 
-        verificationCodeRequest.AccessToken = token
+//        verificationCodeRequest.AccessToken = token
         return when (val result = remoteDataSource.verifyPhoneNumber(verificationCodeRequest)) {
             is DataResult.Success -> {
                 SharedPreferencesManager.setStringValue(

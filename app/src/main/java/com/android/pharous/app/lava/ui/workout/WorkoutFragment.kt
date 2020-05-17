@@ -1,12 +1,11 @@
 package com.android.pharous.app.lava.ui.workout
 
 
+import BodybuildingProgramDetails
+import CardioProgrameDetails
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -25,6 +24,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class WorkoutFragment : Fragment(R.layout.fragment_workout) {
 
     private val viewModel : WorkoutViewModel by viewModel()
+    private val strengthAdapter : StrengthClassesAdapter by lazy { StrengthClassesAdapter() }
+    private val cardioAdapter : CardioClassesAdapter by lazy { CardioClassesAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,18 +39,26 @@ class WorkoutFragment : Fragment(R.layout.fragment_workout) {
         viewModel.getMemberCardioPrograms().observe(viewLifecycleOwner , Observer {
 
             it?.let {
-                Log.e("CardioRe","$it")
+
+                var cardioList = mutableListOf<CardioProgrameDetails>()
+                var strengthList = mutableListOf<BodybuildingProgramDetails>()
+
+                it.forEach { it.cardioProgrameDetail.values.forEach {
+                    cardioList.add(it)
+                    strengthClassesRV.adapter = strengthAdapter
+                    cardioClassesRV.adapter = cardioAdapter
+                    cardioAdapter.submitList(cardioList)
+                } }
             }
         })
-        if (arguments?.getString("type").equals("class")){
-            fitnessClassesRV.visibility = View.VISIBLE
-            swimmingClassesRV.visibility = View.GONE
+        if (arguments?.getString("type").equals("cardio")){
+            strengthClassesRV.visibility = View.GONE
+            cardioClassesRV.visibility = View.VISIBLE
         }else{
-            fitnessClassesRV.visibility = View.GONE
-            swimmingClassesRV.visibility = View.VISIBLE
+            strengthClassesRV.visibility = View.VISIBLE
+            cardioClassesRV.visibility = View.GONE
         }
-        fitnessClassesRV.adapter = FitnessClassesAdapter()
-        swimmingClassesRV.adapter = SwimmingClassesAdapter()
+
 
         var layoutManger = GridLayoutManager(context,7,RecyclerView.VERTICAL,false)
         classesProgressRV.layoutManager = layoutManger

@@ -46,10 +46,10 @@ data class CardioProgramResponse (
     val creationDate: String,
 
     @field:Json(name = "CardioProgrameDetail")
-    val cardioProgrameDetail: Map<String, CardioProgrameDetail>
+    val cardioProgrameDetail: Map<String, CardioProgrameDetails>
 //
 //    @field:Json(name = "BodybuildingProgrameDetail")
-//    val bodybuildingProgrameDetail: Map<String, BodybuildingProgrameDetailValue>
+//    val bodybuildingProgrameDetail: Map<String, BodybuildingProgramDetails>
 )
 
 //sealed class BodybuildingProgrameDetailUnion {
@@ -70,7 +70,7 @@ data class CardioProgramResponse (
 //    }
 //}
 
-data class BodybuildingProgrameDetailValue (
+data class BodybuildingProgramDetails (
     @field:Json(name = "Equipment")
     val equipment: Equipment,
 
@@ -130,7 +130,7 @@ data class Muscle (
     val photo: Any? = null
 )
 
-data class CardioProgrameDetail (
+data class CardioProgrameDetails (
     @field:Json(name = "Equipment")
     val equipment: Equipment,
 
