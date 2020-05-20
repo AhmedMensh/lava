@@ -4,6 +4,7 @@ import CardioProgramResponse
 import com.android.pharous.app.lava.models.*
 import com.android.pharous.app.lava.ui.measurement.MemberInbodyresultResponse
 import com.android.pharous.app.lava.ui.measurement.MemberMeasurementResponse
+import com.android.pharous.app.lava.ui.training.models.ExerciseScheduleResponse
 import com.android.pharous.app.lava.ui.training.models.SessionResponse
 import com.android.pharous.app.lava.ui.workout.models.EvaluateProgramRequest
 
@@ -24,4 +25,5 @@ interface ILavaRepo {
     suspend fun getSessions() : DataResult<List<SessionResponse>>
     suspend fun getMemberMeasurements() : DataResult<List<MemberMeasurementResponse>>
     suspend fun getMemberInbodyResults() : DataResult<List<MemberInbodyresultResponse>>
+    suspend fun getExerciseSchedules() : DataResult<List<ExerciseScheduleResponse>>
 }

@@ -4,6 +4,7 @@ import CardioProgramResponse
 import com.android.pharous.app.lava.models.*
 import com.android.pharous.app.lava.ui.measurement.MemberInbodyresultResponse
 import com.android.pharous.app.lava.ui.measurement.MemberMeasurementResponse
+import com.android.pharous.app.lava.ui.training.models.ExerciseScheduleResponse
 import com.android.pharous.app.lava.ui.training.models.SessionResponse
 import com.android.pharous.app.lava.ui.workout.models.EvaluateProgramRequest
 import retrofit2.http.*
@@ -62,6 +63,10 @@ interface ApiService {
 
     @GET("training/inbody-results")
     suspend fun getMemberInbodyResults(@Query("AccessToken") token: String) : ApiResponse<List<MemberInbodyresultResponse>>
+
+
+    @GET("exercise/index?BranchID=1&Year=2018&Month=02&Type=0")
+    suspend fun getExerciseSchedules(@Query("AccessToken") token: String) : ApiResponse<List<ExerciseScheduleResponse>>
 }
 
 

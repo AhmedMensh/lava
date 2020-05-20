@@ -1,7 +1,6 @@
 package com.android.pharous.app.lava.ui.training
 
 import android.app.Activity
-import android.content.Context
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,13 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.pharous.app.lava.R
+import com.android.pharous.app.lava.ui.training.models.ExerciseScheduleResponse
 import kotlinx.android.synthetic.main.training_day_item.view.*
 
 
-class DaysAdapter(private val context: Context) : RecyclerView.Adapter<DaysAdapter.ViewHolder>() {
+class ExerciseScheduleAdapter() : RecyclerView.Adapter<ExerciseScheduleAdapter.ViewHolder>() {
 
 
 
+    private var  exerciseData: Map<String?, List<ExerciseScheduleResponse>> = HashMap()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -28,12 +29,12 @@ class DaysAdapter(private val context: Context) : RecyclerView.Adapter<DaysAdapt
     }
 
     override fun getItemCount(): Int {
-        return 10
+        return exerciseData.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.bindData(context,position)
+        holder.bindData(position, exerciseData.keys.toList()[position],exerciseData.values.toList().get(position))
 
 
 //
@@ -42,15 +43,25 @@ class DaysAdapter(private val context: Context) : RecyclerView.Adapter<DaysAdapt
 //        holder.image_view.getLayoutParams().height = deviceheight
     }
 
+    fun submitDate(exerciseData: Map<String?, List<ExerciseScheduleResponse>>) {
+
+        this.exerciseData = exerciseData
+    }
+
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)  {
 
 
-        fun bindData(context: Context, position: Int){
+        fun bindData(
+            position: Int,
+            date: String?,
+            exerciseData:  List<ExerciseScheduleResponse>
+        ){
 
+            itemView.currentDayTV.text = date
             if (position == 0){
                 Log.e("Position","$position")
                 val displaymetrics = DisplayMetrics()
-                (context as Activity).windowManager.defaultDisplay.getMetrics(displaymetrics)
+                (itemView.context as Activity).windowManager.defaultDisplay.getMetrics(displaymetrics)
                 //if you need three fix imageview in width
                 //if you need three fix imageview in width
                 val devicewidth = displaymetrics.widthPixels / 2
@@ -60,6 +71,7 @@ class DaysAdapter(private val context: Context) : RecyclerView.Adapter<DaysAdapt
 
                 var trainingAdapter  = TrainingAdapter(true)
                 itemView.trainingRV.adapter = trainingAdapter
+                trainingAdapter.submitList(exerciseData)
                 itemView.background = itemView.context.getDrawable(R.drawable.rect_sharp_corner_off_white)
 
 

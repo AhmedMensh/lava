@@ -3,9 +3,7 @@ package com.android.pharous.app.lava.ui.training
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 
 import com.android.pharous.app.lava.R
 import kotlinx.android.synthetic.main.fragment_training.*
@@ -48,7 +46,7 @@ class TrainingFragment : Fragment(R.layout.fragment_training) {
         swimmingImgV.visibility = View.VISIBLE
 
 
-        val calssesFragment = ClassesScheduleFragment()
+        val calssesFragment = ExerciseScheduleFragment()
         val fm = activity?.supportFragmentManager
         val ft = fm?.beginTransaction()
         ft?.replace(R.id.containerFragment,calssesFragment)

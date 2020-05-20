@@ -8,6 +8,7 @@ import com.android.pharous.app.lava.models.*
 import com.android.pharous.app.lava.network.RemoteDataSource
 import com.android.pharous.app.lava.ui.measurement.MemberInbodyresultResponse
 import com.android.pharous.app.lava.ui.measurement.MemberMeasurementResponse
+import com.android.pharous.app.lava.ui.training.models.ExerciseScheduleResponse
 import com.android.pharous.app.lava.ui.training.models.SessionResponse
 import com.android.pharous.app.lava.ui.workout.models.EvaluateProgramRequest
 
@@ -141,6 +142,13 @@ class LavaRepo(private val remoteDataSource: RemoteDataSource, private val conte
 
     override suspend fun getMemberInbodyResults(): DataResult<List<MemberInbodyresultResponse>> {
         return when (val result = remoteDataSource.getMemberInbodyResults(token)) {
+            is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
+
+    override suspend fun getExerciseSchedules(): DataResult<List<ExerciseScheduleResponse>> {
+        return when (val result = remoteDataSource.getExerciseSchedules(token)) {
             is DataResult.Success -> DataResult.Success(result.content)
             is DataResult.Error -> DataResult.Error(result.exception)
         }

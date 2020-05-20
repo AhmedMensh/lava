@@ -3,7 +3,7 @@ package com.android.pharous.app.lava.network
 import com.android.pharous.app.lava.models.RegisterRequest
 import com.android.pharous.app.lava.models.VerificationCodeRequest
 import com.android.pharous.app.lava.ui.workout.models.EvaluateProgramRequest
-
+import retrofit2.http.Query
 
 
 class RemoteDataSource(private val api: ApiService) {
@@ -37,4 +37,6 @@ class RemoteDataSource(private val api: ApiService) {
 
     suspend fun getMemberMeasurements(token: String) = safeApiCall { api.getMemberMeasurements(token) }
     suspend fun getMemberInbodyResults(token: String) = safeApiCall { api.getMemberInbodyResults(token) }
+
+    suspend fun getExerciseSchedules(token: String) = safeApiCall { api.getExerciseSchedules(token) }
 }
