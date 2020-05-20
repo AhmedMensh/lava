@@ -153,4 +153,13 @@ class LavaRepo(private val remoteDataSource: RemoteDataSource, private val conte
             is DataResult.Error -> DataResult.Error(result.exception)
         }
     }
+
+    override suspend fun reserveExercise(
+        exerciseScheduleID: String
+    ): DataResult<Boolean> {
+        return when (val result = remoteDataSource.reserveExercise(token,exerciseScheduleID)) {
+            is DataResult.Success -> DataResult.Success(true)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
 }

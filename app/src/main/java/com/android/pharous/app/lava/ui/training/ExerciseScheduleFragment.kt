@@ -20,7 +20,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class ExerciseScheduleFragment : Fragment(R.layout.fragment_exercise_schedule) {
 
     private val viewModel : TrainingViewModel by viewModel()
-    private val adapter by lazy {  ExerciseScheduleAdapter()}
+    private val adapter by lazy {  ExerciseScheduleAdapter(viewModel)}
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

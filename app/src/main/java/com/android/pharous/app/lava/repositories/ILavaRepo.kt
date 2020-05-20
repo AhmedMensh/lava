@@ -26,4 +26,5 @@ interface ILavaRepo {
     suspend fun getMemberMeasurements() : DataResult<List<MemberMeasurementResponse>>
     suspend fun getMemberInbodyResults() : DataResult<List<MemberInbodyresultResponse>>
     suspend fun getExerciseSchedules() : DataResult<List<ExerciseScheduleResponse>>
+    suspend fun reserveExercise(exerciseScheduleID : String) : DataResult<Boolean>
 }

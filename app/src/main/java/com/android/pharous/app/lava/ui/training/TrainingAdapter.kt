@@ -3,6 +3,9 @@ package com.android.pharous.app.lava.ui.training
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +13,7 @@ import com.android.pharous.app.lava.R
 import com.android.pharous.app.lava.ui.training.models.ExerciseScheduleResponse
 import kotlinx.android.synthetic.main.training_item.view.*
 
-class TrainingAdapter(private val isFirstItem : Boolean = false) :
+class TrainingAdapter(private val isFirstItem : Boolean = false,private val viewModel: TrainingViewModel) :
     ListAdapter<ExerciseScheduleResponse,TrainingAdapter.ViewHolder>(DiffCallback) {
 
 
@@ -57,7 +60,7 @@ class TrainingAdapter(private val isFirstItem : Boolean = false) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.bindData(position,isFirstItem,getItem(position))
+        holder.bindData(position,isFirstItem,getItem(position),viewModel)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)  {
@@ -65,10 +68,24 @@ class TrainingAdapter(private val isFirstItem : Boolean = false) :
         fun bindData(
             position: Int,
             isFirstItem: Boolean,
-            item: ExerciseScheduleResponse
+            item: ExerciseScheduleResponse,
+            viewModel: TrainingViewModel
         ){
 
-            itemView.trainTypeTV.text = item.branchName
+
+            itemView.trainTypeTV.text = item.exerciseTitle
+            itemView.coachNameTV.text = item.coachName
+            itemView.trainingScheduleTV.text = item.date
+
+            itemView.setOnClickListener { item.exerciseID?.let { it1 ->
+                viewModel.reserveExercise(
+                    it1
+                ).observe(itemView.context as LifecycleOwner, Observer {
+                    it?.let {
+                        Toast.makeText(itemView.context,"Done",Toast.LENGTH_LONG).show()
+                    }
+                })
+            } }
 //            if (position%2 == 0 && isFirstItem){
 //                itemView.mainViewCL.visibility = View.INVISIBLE
 //            }

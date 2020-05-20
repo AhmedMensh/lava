@@ -12,7 +12,7 @@ import com.android.pharous.app.lava.ui.training.models.ExerciseScheduleResponse
 import kotlinx.android.synthetic.main.training_day_item.view.*
 
 
-class ExerciseScheduleAdapter() : RecyclerView.Adapter<ExerciseScheduleAdapter.ViewHolder>() {
+class ExerciseScheduleAdapter(private val viewModel: TrainingViewModel) : RecyclerView.Adapter<ExerciseScheduleAdapter.ViewHolder>() {
 
 
     private var exerciseData: Map<String?, List<ExerciseScheduleResponse>> = HashMap()
@@ -35,6 +35,7 @@ class ExerciseScheduleAdapter() : RecyclerView.Adapter<ExerciseScheduleAdapter.V
 
         holder.bindData(
             position,
+            viewModel,
             exerciseData.keys.toList()[position],
             exerciseData.values.toList().get(position)
         )
@@ -56,12 +57,13 @@ class ExerciseScheduleAdapter() : RecyclerView.Adapter<ExerciseScheduleAdapter.V
 
         fun bindData(
             position: Int,
+            viewModel : TrainingViewModel,
             date: String?,
             exerciseData: List<ExerciseScheduleResponse>
         ) {
 
             itemView.currentDayTV.text = date
-            var trainingAdapter = TrainingAdapter(true)
+            var trainingAdapter = TrainingAdapter(true,viewModel)
             itemView.trainingRV.adapter = trainingAdapter
             trainingAdapter.submitList(exerciseData)
 

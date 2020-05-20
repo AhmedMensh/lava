@@ -67,6 +67,11 @@ interface ApiService {
 
     @GET("exercise/index?BranchID=1&Year=2018&Month=02&Type=0")
     suspend fun getExerciseSchedules(@Query("AccessToken") token: String) : ApiResponse<List<ExerciseScheduleResponse>>
+
+    @FormUrlEncoded
+    @POST("exercise/reserve")
+    suspend fun reserveExercise(@Field("AccessToken") token: String,
+    @Field("ExerciseScheduleID") exerciseScheduleID : String) : ApiResponse<String>
 }
 
 

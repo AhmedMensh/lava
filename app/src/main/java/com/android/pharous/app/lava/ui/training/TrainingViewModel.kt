@@ -62,4 +62,26 @@ class TrainingViewModel(private val iLavaRepo: ILavaRepo) : ViewModel() {
         }
         return data
     }
+
+    fun reserveExercise(exerciseScheduleId: String) : LiveData<Boolean>{
+
+        val data = MutableLiveData<Boolean>()
+        isLoading.value = true
+        viewModelScope.launch {
+            when(val result = withContext(IO) { iLavaRepo.reserveExercise(exerciseScheduleId)}){
+
+                is DataResult.Success -> {
+                    isLoading.value = false
+                    data.value = result.content
+                    error.value = null
+                }
+                is DataResult.Error -> {
+                    isLoading.value = false
+                    data.value = null
+                    error.value = result.exception.message
+                }
+            }
+        }
+        return data
+    }
 }
