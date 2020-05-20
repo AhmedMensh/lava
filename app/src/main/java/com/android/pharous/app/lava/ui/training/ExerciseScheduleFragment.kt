@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 import com.android.pharous.app.lava.R
 import kotlinx.android.synthetic.main.fragment_exercise_schedule.*
@@ -31,8 +33,9 @@ class ExerciseScheduleFragment : Fragment(R.layout.fragment_exercise_schedule) {
         viewModel.getExerciseSchedules().observe(viewLifecycleOwner , Observer {
 
             it?.let {
-                Log.i("Ecrcise","${it.groupBy { it.date?.split(" ")?.get(0) }.keys}")
+                var layoutManger = GridLayoutManager(context,1,RecyclerView.HORIZONTAL,false)
                 exerciseScheduleRV.adapter = adapter
+                exerciseScheduleRV.layoutManager = layoutManger
                 adapter.submitDate(it.groupBy { it.date?.split(" ")?.get(0)})
 
             }

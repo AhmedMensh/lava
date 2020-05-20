@@ -17,23 +17,31 @@ class TrainingAdapter(private val isFirstItem : Boolean = false) :
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        if (isFirstItem){
-            return ViewHolder(
-                LayoutInflater.from(parent.context).inflate(
-                    R.layout.training_item,
-                    parent,
-                    false
-                )
+
+        return ViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.training_item,
+                parent,
+                false
             )
-        }else {
-            return ViewHolder(
-                LayoutInflater.from(parent.context).inflate(
-                    R.layout.shrink_training_item,
-                    parent,
-                    false
-                )
-            )
-        }
+        )
+//        if (isFirstItem){
+//            return ViewHolder(
+//                LayoutInflater.from(parent.context).inflate(
+//                    R.layout.training_item,
+//                    parent,
+//                    false
+//                )
+//            )
+//        }else {
+//            return ViewHolder(
+//                LayoutInflater.from(parent.context).inflate(
+//                    R.layout.shrink_training_item,
+//                    parent,
+//                    false
+//                )
+//            )
+//        }
     }
 
     object DiffCallback : DiffUtil.ItemCallback<ExerciseScheduleResponse>() {
@@ -61,9 +69,9 @@ class TrainingAdapter(private val isFirstItem : Boolean = false) :
         ){
 
             itemView.trainTypeTV.text = item.branchName
-            if (position%2 == 0 && isFirstItem){
-                itemView.mainViewCL.visibility = View.INVISIBLE
-            }
+//            if (position%2 == 0 && isFirstItem){
+//                itemView.mainViewCL.visibility = View.INVISIBLE
+//            }
 
         }
 

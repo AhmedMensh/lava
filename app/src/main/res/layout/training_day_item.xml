@@ -2,35 +2,37 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
-    android:orientation="vertical"
     android:layout_width="wrap_content"
-    android:padding="@dimen/_2sdp"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/_4sdp">
-
+    android:layout_margin="@dimen/_4sdp"
+    android:orientation="vertical"
+    android:padding="@dimen/_2sdp">
 
 
     <TextView
         android:id="@+id/currentDayTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minWidth="@dimen/_120sdp"
-        android:gravity="center"
-        android:elevation="@dimen/_4sdp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/rect_sharp_corner_white_with_gray_border"
+        android:elevation="@dimen/_4sdp"
+        android:gravity="center"
+        android:minWidth="@dimen/_150sdp"
         android:padding="@dimen/_10sdp"
-        android:text="TODAY"/>
+        android:text="TODAY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".5" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/trainingRV"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_4sdp"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/currentDayTV"
         app:layout_constraintStart_toStartOf="@id/currentDayTV"
-        app:layout_constraintTop_toBottomOf="@id/currentDayTV"/>
+        app:layout_constraintTop_toBottomOf="@id/currentDayTV" />
 </androidx.constraintlayout.widget.ConstraintLayout>

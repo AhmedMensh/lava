@@ -15,8 +15,7 @@ import kotlinx.android.synthetic.main.training_day_item.view.*
 class ExerciseScheduleAdapter() : RecyclerView.Adapter<ExerciseScheduleAdapter.ViewHolder>() {
 
 
-
-    private var  exerciseData: Map<String?, List<ExerciseScheduleResponse>> = HashMap()
+    private var exerciseData: Map<String?, List<ExerciseScheduleResponse>> = HashMap()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -34,7 +33,11 @@ class ExerciseScheduleAdapter() : RecyclerView.Adapter<ExerciseScheduleAdapter.V
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.bindData(position, exerciseData.keys.toList()[position],exerciseData.values.toList().get(position))
+        holder.bindData(
+            position,
+            exerciseData.keys.toList()[position],
+            exerciseData.values.toList().get(position)
+        )
 
 
 //
@@ -48,40 +51,34 @@ class ExerciseScheduleAdapter() : RecyclerView.Adapter<ExerciseScheduleAdapter.V
         this.exerciseData = exerciseData
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)  {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 
         fun bindData(
             position: Int,
             date: String?,
-            exerciseData:  List<ExerciseScheduleResponse>
-        ){
+            exerciseData: List<ExerciseScheduleResponse>
+        ) {
 
             itemView.currentDayTV.text = date
-            if (position == 0){
-                Log.e("Position","$position")
-                val displaymetrics = DisplayMetrics()
-                (itemView.context as Activity).windowManager.defaultDisplay.getMetrics(displaymetrics)
-                //if you need three fix imageview in width
-                //if you need three fix imageview in width
-                val devicewidth = displaymetrics.widthPixels / 2
-                itemView.currentDayTV.layoutParams.width = devicewidth
-                itemView.currentDayTV.setTextColor(itemView.context.resources.getColor(R.color.white))
-                itemView.currentDayTV.background = itemView.context.resources.getDrawable(R.drawable.rect_left_corner_orange)
+            var trainingAdapter = TrainingAdapter(true)
+            itemView.trainingRV.adapter = trainingAdapter
+            trainingAdapter.submitList(exerciseData)
 
-                var trainingAdapter  = TrainingAdapter(true)
-                itemView.trainingRV.adapter = trainingAdapter
-                trainingAdapter.submitList(exerciseData)
-                itemView.background = itemView.context.getDrawable(R.drawable.rect_sharp_corner_off_white)
-
-
-            }else{
+            Log.e("Position", "$position")
+            val displaymetrics = DisplayMetrics()
+            (itemView.context as Activity).windowManager.defaultDisplay.getMetrics(displaymetrics)
+            //if you need three fix imageview in width
+            //if you need three fix imageview in width
+            val devicewidth = displaymetrics.widthPixels / 2
+            itemView.currentDayTV.layoutParams.width = devicewidth
+            itemView.currentDayTV.setTextColor(itemView.context.resources.getColor(R.color.white))
+            itemView.currentDayTV.background =
+                itemView.context.resources.getDrawable(R.drawable.rect_left_corner_orange)
 
 
-                var trainingAdapter  = TrainingAdapter()
-                itemView.trainingRV.adapter = trainingAdapter
-            }
-
+//            itemView.background =
+//                itemView.context.getDrawable(R.drawable.rect_sharp_corner_off_white)
 
 
         }
