@@ -2,6 +2,7 @@ package com.android.pharous.app.lava.ui.measurement
 
 
 import android.os.Bundle
+import android.os.Parcelable
 import android.text.SpannableString
 import android.text.style.UnderlineSpan
 import android.util.Log
@@ -18,6 +19,7 @@ import com.android.pharous.app.lava.common.IItemClickListener
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_measurement.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.ArrayList
 
 /**
  * A simple [Fragment] subclass.
@@ -26,6 +28,7 @@ class MeasurementFragment : Fragment(R.layout.fragment_measurement),IItemClickLi
 
     private val viewModel : MeasurementViewModel by viewModel()
 
+    var memberBodyMeasurements  = emptyList<MemberMeasurementResponse>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -55,7 +58,14 @@ class MeasurementFragment : Fragment(R.layout.fragment_measurement),IItemClickLi
         viewModel.getMemberMeasurements().observe(viewLifecycleOwner , Observer {
 
             it?.let {
-                Log.e("getMemberMeasurements","$it")
+                memberBodyMeasurements = it
+               it[0].let {
+                   bodyWeightTV.text = "${it.weight} KG"
+                   hipsValueTV.text = "${it.buttocks} CM"
+                   breastValueTV.text = "${it.chest} CM"
+                   waistValueTV.text = "${it.waist} CM"
+                   legValueTV.text = "${it.calf} CM"
+               }
             }
         })
 
@@ -63,13 +73,23 @@ class MeasurementFragment : Fragment(R.layout.fragment_measurement),IItemClickLi
         viewModel.getMemberInBodyResults().observe(viewLifecycleOwner , Observer {
 
             it?.let {
-                Log.e("getMemberInBodyResults","$it")
+              it[0].let {
+
+                  val waterPercentage = it.weight?.toDouble()?.let { it1 -> it.totalBodyWater?.toDouble()?.div(it1) }
+                      ?.times(100)
+
+                  val bodyFatPercentage = it.weight?.toDouble()?.let { it1 -> it.bodyFatMass?.toDouble()?.div(it1) }
+                      ?.times(100)
+                  waterPercentageTV.text = "${it.totalBodyWater} KG ($waterPercentage %)"
+                  bodyFatPercentageTV.text = "${it.bodyFatMass} KG ($bodyFatPercentage %)"
+
+              }
             }
         })
     }
 
     override fun onItemClick(item: String) {
-        findNavController().navigate(R.id.weightLogHistoryFragment)
+        findNavController().navigate(R.id.action_measurementFragment_to_measurementHistoryFragment)
     }
 
 

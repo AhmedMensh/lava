@@ -1,6 +1,8 @@
 package com.android.pharous.app.lava.ui.measurement
 
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 

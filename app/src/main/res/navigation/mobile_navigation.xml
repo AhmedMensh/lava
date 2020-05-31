@@ -38,6 +38,7 @@
 
         <action android:id="@+id/action_measurementFragment_to_measurementHistoryFragment"
              app:destination="@id/measurementHistoryFragment"/>
+
     </fragment>
 
     <fragment

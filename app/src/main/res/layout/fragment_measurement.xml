@@ -120,10 +120,9 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/text1"
+                android:id="@+id/bodyWeightTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="61 kg"
                 android:textStyle="bold"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:textColor="@android:color/black"
@@ -139,7 +138,7 @@
                 android:layout_marginStart="@dimen/_10sdp"
                 android:textSize="@dimen/_12sdp"
                 app:layout_constraintStart_toEndOf="@+id/rightImage"
-                app:layout_constraintTop_toBottomOf="@+id/text1" />
+                app:layout_constraintTop_toBottomOf="@+id/bodyWeightTV" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -186,6 +185,7 @@
                 android:background="@android:color/darker_gray"/>
 
             <TextView
+                android:id="@+id/waterPercentageTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="27 KG ( 20%)"
@@ -220,6 +220,7 @@
                 android:background="@android:color/darker_gray"/>
 
             <TextView
+                android:id="@+id/proteinPercentageTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="7 KG ( 10%)"
@@ -282,7 +283,7 @@
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_20sdp"
                 app:layout_constraintVertical_bias=".3"
                 app:layout_constraintEnd_toStartOf="@id/measurementImgV"
                 app:layout_constraintBottom_toBottomOf="@id/measurementImgV"
@@ -290,6 +291,7 @@
                 android:background="@android:color/darker_gray"/>
 
             <TextView
+                android:id="@+id/bodyFatPercentageTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="22 KG ( 50%)"
@@ -455,6 +457,7 @@
 
 
             <TextView
+                android:id="@+id/hipsValueTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="33 Cm"
@@ -490,6 +493,7 @@
 
 
             <TextView
+                android:id="@+id/breastValueTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="33 Cm"
@@ -525,6 +529,7 @@
 
 
             <TextView
+                android:id="@+id/waistValueTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="33 Cm"
@@ -560,6 +565,7 @@
                 android:layout_height="1dp"/>
 
             <TextView
+                android:id="@+id/legValueTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="33 Cm"
