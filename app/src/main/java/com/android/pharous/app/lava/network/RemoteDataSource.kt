@@ -4,6 +4,7 @@ import com.android.pharous.app.lava.models.RegisterRequest
 import com.android.pharous.app.lava.models.VerificationCodeRequest
 import com.android.pharous.app.lava.ui.workout.models.EvaluateProgramRequest
 import retrofit2.http.Field
+import retrofit2.http.Query
 
 
 class RemoteDataSource(private val api: ApiService) {
@@ -74,4 +75,11 @@ class RemoteDataSource(private val api: ApiService) {
         fullName: String,
         mobileNumber: String
     ) = safeApiCall { api.inviteFriendBySMS(token, fullName, mobileNumber) }
+
+
+    suspend fun getBranchPackages(token: String, branchID: Int, type: Int) = safeApiCall { api.getBranchPackages(token, branchID, type) }
+    suspend fun getPackagePeriods(token: String, packageID: Int) = safeApiCall { api.getPackagePeriods(token, packageID) }
+    suspend fun getPackageDetails(token: String, peroidID: Int) = safeApiCall { api.getPackageDetails(token, peroidID) }
+    suspend fun checkStartDate(token: String, peroidID: Int , startDate : String) = safeApiCall { api.checkStartDate(token, peroidID,startDate) }
+    suspend fun createContract(token: String, peroidID: Int ,branchID: Int, startDate : String) = safeApiCall { api.createContract(token, peroidID,branchID,startDate) }
 }

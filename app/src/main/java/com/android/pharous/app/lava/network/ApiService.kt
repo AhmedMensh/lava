@@ -49,8 +49,32 @@ interface ApiService {
     suspend fun getBranchPackages(
         @Query("AccessToken") token: String,
         @Query("BranchID") branchID: Int,
-        @Query("type") type: Int
-    )
+        @Query("Type") type: Int
+    ): ApiResponse<Map<String, String>>
+
+    @GET("amtar-member-point/list-period")
+    suspend fun getPackagePeriods(
+        @Query("AccessToken") token: String,
+        @Query("PackageID") packageID: Int) : ApiResponse<Map<String, Int>>
+
+    @GET("amtar-member-point/package-detail")
+    suspend fun getPackageDetails(
+        @Query("AccessToken") token: String,
+        @Query("PeroidID") peroidID: Int) : ApiResponse<PackageDetailsResponse>
+
+
+    @GET("amtar-member-point/startdatecheck")
+    suspend fun checkStartDate(
+        @Query("AccessToken") token: String,
+        @Query("PeriodID") peroidID: Int,
+        @Query("StartDate") StartDate : String) : ApiResponse<Int>
+
+    @FormUrlEncoded
+    @POST("amtar-member-point/create-contract")
+    suspend fun createContract(@Field("AccessToken") token: String,
+                               @Field("PeriodID") peroidID: Int,
+                               @Field("BranchID") BranchID: Int,
+                               @Field("StartDate") StartDate : String) : ApiResponse<Int>
 
     @GET("membership/index")
     suspend fun getMembershipInfo(@Query("AccessToken") token: String): ApiResponse<MembershipInfoResponse>
@@ -75,7 +99,8 @@ interface ApiService {
     @GET("exercise/index?BranchID=1&Year=2020&Month=07&Type=0")
     suspend fun getExerciseSchedules(
         @Query("AccessToken") token: String,
-    @Query("SearchInput") searchName : String): ApiResponse<List<ExerciseScheduleResponse>>
+        @Query("SearchInput") searchName: String
+    ): ApiResponse<List<ExerciseScheduleResponse>>
 
     @FormUrlEncoded
     @POST("exercise/reserve")

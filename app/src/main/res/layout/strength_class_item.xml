@@ -43,7 +43,7 @@
             app:boxCornerRadiusTopEnd="@dimen/_6sdp"
             app:boxCornerRadiusTopStart="@dimen/_6sdp"
             app:boxStrokeColor="@color/orange_dark"
-            app:boxStrokeWidth="@dimen/_4sdp"
+            app:boxStrokeWidth="@dimen/_1sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/classNameLabel"
             app:layout_constraintWidth_percent=".7">

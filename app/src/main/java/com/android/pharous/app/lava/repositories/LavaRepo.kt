@@ -205,4 +205,47 @@ class LavaRepo(private val remoteDataSource: RemoteDataSource, private val conte
             is DataResult.Error -> DataResult.Error(result.exception)
         }
     }
+
+    override suspend fun getBranchPackages(
+        branchID: Int,
+        type: Int
+    ): DataResult<Map<String, String>> {
+
+        return when (val result = remoteDataSource.getBranchPackages(token,branchID, type)) {
+            is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
+
+    override suspend fun getPackagePeriods(packageID: Int): DataResult<Map<String, Int>> {
+        return when (val result = remoteDataSource.getPackagePeriods(token,packageID)) {
+            is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
+
+    override suspend fun getPackageDetails(peroidID: Int): DataResult<PackageDetailsResponse> {
+        return when (val result = remoteDataSource.getPackageDetails(token,peroidID)) {
+            is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
+
+    override suspend fun checkStartDate(peroidID: Int, startDate: String): DataResult<Int> {
+        return when (val result = remoteDataSource.checkStartDate(token,peroidID,startDate)) {
+            is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
+
+    override suspend fun createContract(
+        peroidID: Int,
+        branchID: Int,
+        startDate: String
+    ): DataResult<Int> {
+        return when (val result = remoteDataSource.createContract(token,peroidID,branchID,startDate)) {
+            is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
 }

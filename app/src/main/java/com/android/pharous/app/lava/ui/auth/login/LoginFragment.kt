@@ -34,7 +34,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         signUpTV.text = content
 
 
-        SharedPreferencesManager.setStringValue(context!!,Constants.TOKEN,"d8df2f1ff0ceb0f03ac8fe45a2ac1ea5")
+        SharedPreferencesManager.setStringValue(context!!,Constants.TOKEN,"6668e7dc110648b90103cff5ac82f459")
         findNavController().navigate(R.id.homeFragment)
 
         signUpTV.setOnClickListener { findNavController().navigate(R.id.action_loginFragment_to_registerFragment) }

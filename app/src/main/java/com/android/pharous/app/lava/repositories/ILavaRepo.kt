@@ -33,4 +33,11 @@ interface ILavaRepo {
 
     suspend fun inviteFriendByMail(fullName: String, email: String, mobileNumber: String) : DataResult<Result>
     suspend fun inviteFriendBySMS(fullName: String, mobileNumber: String) : DataResult<Result>
+
+
+    suspend fun getBranchPackages(branchID: Int, type: Int) : DataResult<Map<String ,String>>
+    suspend fun getPackagePeriods(packageID: Int) : DataResult<Map<String ,Int>>
+    suspend fun getPackageDetails(peroidID: Int) : DataResult<PackageDetailsResponse>
+    suspend fun checkStartDate(peroidID: Int , startDate : String) : DataResult<Int>
+    suspend fun createContract(peroidID: Int ,branchID: Int, startDate : String) : DataResult<Int>
 }
