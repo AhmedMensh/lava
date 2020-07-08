@@ -136,6 +136,7 @@
 
 
         <TextView
+            android:id="@+id/smsInvitationTV"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/_5sdp"
@@ -191,7 +192,7 @@
 
 
         <TextView
-            android:id="@+id/tellUsLabel"
+            android:id="@+id/mailInvitationTV"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/_5sdp"

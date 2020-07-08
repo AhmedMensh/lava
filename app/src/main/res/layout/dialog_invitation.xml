@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/rect_sharp_corner_white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_cross" />
+
+    <TextView
+        android:id="@+id/invitationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="Invitation"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/_16sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fullNameTI"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_40sdp"
+        app:layout_constraintTop_toBottomOf="@id/invitationLabel"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@android:color/darker_gray"
+        app:boxStrokeWidth="@dimen/_1sdp"
+        app:hintEnabled="false"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_height="@dimen/_45sdp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fullNameET"
+            android:layout_width="match_parent"
+            android:hint="Full Name"
+            android:padding="@dimen/_6sdp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:drawablePadding="@dimen/_8sdp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/mobileNumberTI"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        app:hintEnabled="false"
+        app:layout_constraintTop_toBottomOf="@id/fullNameTI"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@android:color/darker_gray"
+        app:boxStrokeWidth="@dimen/_1sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_height="@dimen/_45sdp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/mobileNumberET"
+            android:layout_width="match_parent"
+            android:hint="Mobile Number"
+            android:padding="@dimen/_6sdp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:drawablePadding="@dimen/_8sdp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailTI"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/mobileNumberTI"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@android:color/darker_gray"
+        app:boxStrokeWidth="@dimen/_1sdp"
+        app:hintEnabled="false"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_height="@dimen/_45sdp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sessionDurationTV"
+            android:layout_width="match_parent"
+            android:hint="Email"
+            android:padding="@dimen/_6sdp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:drawablePadding="@dimen/_8sdp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/sendBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:minWidth="@dimen/_150sdp"
+        android:text="Send"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:layout_marginBottom="@dimen/_25sdp"
+        android:textSize="@dimen/_14sdp"
+        android:background="@drawable/button_orange_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_margin="@dimen/_40sdp"
+        app:layout_constraintTop_toBottomOf="@+id/emailTI"
+        android:layout_height="wrap_content"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,13 +8,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.Observer
 
 import com.android.pharous.app.lava.R
 import com.android.pharous.app.lava.common.Constants
 import com.android.pharous.app.lava.common.SharedPreferencesManager
+import com.android.pharous.app.lava.common.pickDateDialog
 import com.android.pharous.app.lava.models.MembershipInfoResponse
 import kotlinx.android.synthetic.main.fragment_membership.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -22,6 +28,9 @@ import kotlinx.android.synthetic.main.fragment_membership.*
 class MembershipFragment : Fragment(R.layout.fragment_membership) {
 
     private val membershipServicesAdapter by lazy { MembershipServicesAdapter() }
+    private val viewModel : MembershipViewModel by viewModel()
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -29,8 +38,24 @@ class MembershipFragment : Fragment(R.layout.fragment_membership) {
         arguments?.let {
             it.getParcelable<MembershipInfoResponse>("membership_info")?.let { it1 -> renderData(it1) }
         }
-        suspendBtn.setOnClickListener { showMembershipSuspensionDialog() }
+        suspendBtn.setOnClickListener { checkMembershipSuspension() }
 
+
+        viewModel.error.observe(viewLifecycleOwner, Observer {
+
+                it?.let {
+                    Toast.makeText(context,it,Toast.LENGTH_SHORT).show()
+                }
+            })
+    }
+
+    private fun checkMembershipSuspension(){
+
+        viewModel.checkMembershipSuspension().observe(viewLifecycleOwner , Observer {
+            it?.let {
+                showMembershipSuspensionDialog()
+            }
+        })
     }
 
     private fun renderData(membership: MembershipInfoResponse){
@@ -46,15 +71,28 @@ class MembershipFragment : Fragment(R.layout.fragment_membership) {
 
     private fun showMembershipSuspensionDialog(){
 
-        var builder = AlertDialog.Builder(context!!)
-        var view =  activity?.layoutInflater?.inflate(R.layout.dialog_membership_suspension, null)
+        val builder = AlertDialog.Builder(context!!)
+        val view =  activity?.layoutInflater?.inflate(R.layout.dialog_membership_suspension, null)
+
+        val startDateTV =  view?.findViewById<TextView>(R.id.startDateTV)
+        val endDateTV =  view?.findViewById<TextView>(R.id.endDateTV)
+
+        startDateTV?.setOnClickListener { pickDateDialog(startDateTV) }
+        endDateTV?.setOnClickListener { pickDateDialog(endDateTV) }
 
 
         builder.setView(view)
-        var dialog = builder.create()
-        view?.findViewById<Button>(R.id.bookBtn)?.setOnClickListener {
+        val dialog = builder.create()
+        view?.findViewById<Button>(R.id.suspendBtn)?.setOnClickListener {
 
-            dialog.dismiss()
+           viewModel.suspendMembership(startDateTV?.text.toString() , endDateTV?.text.toString())
+               .observe(viewLifecycleOwner, Observer {
+
+                   it?.let {
+                       Toast.makeText(context,it.result,Toast.LENGTH_SHORT).show()
+                       dialog.dismiss()
+                   }
+               })
         }
 
 

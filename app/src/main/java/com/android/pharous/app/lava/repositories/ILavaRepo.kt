@@ -16,15 +16,21 @@ interface ILavaRepo {
     suspend fun verifyPhoneNumber(verificationCodeRequest: VerificationCodeRequest) : DataResult<LoginResponse>
     suspend fun getProfile() : DataResult<ProfileResponse>
     suspend fun getExerciseReservations() : DataResult<List<ExerciseReservationResponse>>
+    suspend fun updateReservation(id : String , canceled : String) : DataResult<String>
     suspend fun getBranches() :DataResult<List<BranchResponse>>
     suspend fun register(request: RegisterRequest) : DataResult<Boolean>
     suspend fun getMembershipInfo() : DataResult<MembershipInfoResponse>
+    suspend fun suspendMembership(startDate: String, endDate: String) : DataResult<Result>
+    suspend fun checkMembershipSuspension() : DataResult<Result>
     suspend fun getMemberCardioPrograms() : DataResult<List<CardioProgramResponse>>
     suspend fun evaluateCardioProgram(evaluateProgramRequest: EvaluateProgramRequest) : DataResult<Boolean>
 
     suspend fun getSessions() : DataResult<List<SessionResponse>>
     suspend fun getMemberMeasurements() : DataResult<List<MemberMeasurementResponse>>
     suspend fun getMemberInbodyResults() : DataResult<List<MemberInbodyresultResponse>>
-    suspend fun getExerciseSchedules() : DataResult<List<ExerciseScheduleResponse>>
+    suspend fun getExerciseSchedules(searchName : String) : DataResult<List<ExerciseScheduleResponse>>
     suspend fun reserveExercise(exerciseScheduleID : String) : DataResult<Boolean>
+
+    suspend fun inviteFriendByMail(fullName: String, email: String, mobileNumber: String) : DataResult<Result>
+    suspend fun inviteFriendBySMS(fullName: String, mobileNumber: String) : DataResult<Result>
 }

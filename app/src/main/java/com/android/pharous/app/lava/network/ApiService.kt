@@ -24,10 +24,10 @@ interface ApiService {
     suspend fun userLogin(@Field("MobileNumber") mobileNumber: String): ApiResponse<LoginResponse>
 
     @POST("user/register")
-    suspend fun register(@Body registerRequest: RegisterRequest) : ApiResponse<LoginResponse>
+    suspend fun register(@Body registerRequest: RegisterRequest): ApiResponse<LoginResponse>
 
     @POST("user/verify-token")
-    suspend fun verifyPhoneNumber(@Body verificationCodeRequest: VerificationCodeRequest) : ApiResponse<LoginResponse>
+    suspend fun verifyPhoneNumber(@Body verificationCodeRequest: VerificationCodeRequest): ApiResponse<LoginResponse>
 
     @GET("user/profile")
     suspend fun getProfile(@Query("AccessToken") token: String): ApiResponse<ProfileResponse>
@@ -36,6 +36,13 @@ interface ApiService {
     suspend fun getExerciseReservations(@Query("AccessToken") token: String)
             : ApiResponse<List<ExerciseReservationResponse>>
 
+    @FormUrlEncoded
+    @POST("exercise/update")
+    suspend fun updateReservation(
+        @Field("AccessToken") token: String,
+        @Field("ID") id: String,
+        @Field("Canceled") canceled: String
+    ): ApiResponse<String>
 
 
     @GET("amtar-member-point/list-package")
@@ -46,32 +53,67 @@ interface ApiService {
     )
 
     @GET("membership/index")
-    suspend fun getMembershipInfo(@Query("AccessToken") token: String) : ApiResponse<MembershipInfoResponse>
+    suspend fun getMembershipInfo(@Query("AccessToken") token: String): ApiResponse<MembershipInfoResponse>
 
     @GET("cardio/programs")
     suspend fun getMemberCardioPrograms(@Query("AccessToken") token: String)
-            : ApiResponse<Map<String ,CardioProgramResponse>>
+            : ApiResponse<Map<String, CardioProgramResponse>>
 
     @POST("cardio/evaluate-program")
-    suspend fun evaluateCardioProgram(@Body evaluateProgramRequest: EvaluateProgramRequest) : ApiResponse<String>
+    suspend fun evaluateCardioProgram(@Body evaluateProgramRequest: EvaluateProgramRequest): ApiResponse<String>
 
     @GET("personal-training-reservations/view")
-    suspend fun getSessions(@Query("AccessToken") token: String) : ApiResponse<List<SessionResponse>>
+    suspend fun getSessions(@Query("AccessToken") token: String): ApiResponse<List<SessionResponse>>
 
     @GET("training/measurements")
-    suspend fun getMemberMeasurements(@Query("AccessToken") token: String) : ApiResponse<List<MemberMeasurementResponse>>
+    suspend fun getMemberMeasurements(@Query("AccessToken") token: String): ApiResponse<List<MemberMeasurementResponse>>
 
     @GET("training/inbody-results")
-    suspend fun getMemberInbodyResults(@Query("AccessToken") token: String) : ApiResponse<List<MemberInbodyresultResponse>>
+    suspend fun getMemberInbodyResults(@Query("AccessToken") token: String): ApiResponse<List<MemberInbodyresultResponse>>
 
 
-    @GET("exercise/index?BranchID=1&Year=2018&Month=02&Type=0")
-    suspend fun getExerciseSchedules(@Query("AccessToken") token: String) : ApiResponse<List<ExerciseScheduleResponse>>
+    @GET("exercise/index?BranchID=1&Year=2020&Month=07&Type=0")
+    suspend fun getExerciseSchedules(
+        @Query("AccessToken") token: String,
+    @Query("SearchInput") searchName : String): ApiResponse<List<ExerciseScheduleResponse>>
 
     @FormUrlEncoded
     @POST("exercise/reserve")
-    suspend fun reserveExercise(@Field("AccessToken") token: String,
-    @Field("ExerciseScheduleID") exerciseScheduleID : String) : ApiResponse<String>
+    suspend fun reserveExercise(
+        @Field("AccessToken") token: String,
+        @Field("ExerciseScheduleID") exerciseScheduleID: String
+    ): ApiResponse<String>
+
+    @FormUrlEncoded
+    @POST("membership/invite-friend-bysms")
+    suspend fun inviteFriendBySMS(
+        @Field("AccessToken") token: String,
+        @Field("FullName") fullName: String,
+        @Field("MobileNumber") mobileNumber: String
+    ): ApiResponse<Result>
+
+
+    @FormUrlEncoded
+    @POST("membership/invite-friend-bymail")
+    suspend fun inviteFriendByMail(
+        @Field("AccessToken") token: String,
+        @Field("FullName") fullName: String,
+        @Field("Email") email: String,
+        @Field("MobileNumber") mobileNumber: String
+    ): ApiResponse<Result>
+
+
+    @FormUrlEncoded
+    @POST("membership/create-suspension")
+    suspend fun suspendMembership(
+        @Field("AccessToken") token: String,
+        @Field("StartDate") startDate: String,
+        @Field("EndDate") endDate: String
+    ): ApiResponse<Result>
+
+    @FormUrlEncoded
+    @POST("membership/check-suspension")
+    suspend fun checkMembershipSuspension(@Field("AccessToken") token: String): ApiResponse<Result>
 }
 
 

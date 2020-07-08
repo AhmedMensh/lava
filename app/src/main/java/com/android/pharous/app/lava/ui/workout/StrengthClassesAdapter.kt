@@ -1,16 +1,19 @@
 package com.android.pharous.app.lava.ui.workout
 
+import BodybuildingProgramDetails
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.android.pharous.app.lava.R
 import com.android.pharous.app.lava.models.ExerciseReservationResponse
 import com.chauthai.swipereveallayout.SwipeRevealLayout
 import com.chauthai.swipereveallayout.ViewBinderHelper
+import kotlinx.android.synthetic.main.strength_class_item.view.*
 
-class StrengthClassesAdapter : RecyclerView.Adapter<StrengthClassesAdapter.ViewHolder>() {
+class StrengthClassesAdapter : ListAdapter<BodybuildingProgramDetails,StrengthClassesAdapter.ViewHolder>(DiffCallback) {
 
 
     private var viewBinderHelper : ViewBinderHelper = ViewBinderHelper()
@@ -19,17 +22,21 @@ class StrengthClassesAdapter : RecyclerView.Adapter<StrengthClassesAdapter.ViewH
 
         var swipeRevealLayout = itemView.findViewById<SwipeRevealLayout>(R.id.swipeRevealLayout)
 
+        fun bind(item : BodybuildingProgramDetails){
 
+            itemView.strengthNameTV.text = item.equipment.nameEN
+            itemView.durationTV.text = "${item.duration}"
+        }
 
     }
 
 
-    object DiffCallback : DiffUtil.ItemCallback<ExerciseReservationResponse>() {
-        override fun areItemsTheSame(oldItem: ExerciseReservationResponse, newItem: ExerciseReservationResponse): Boolean {
+    object DiffCallback : DiffUtil.ItemCallback<BodybuildingProgramDetails>() {
+        override fun areItemsTheSame(oldItem: BodybuildingProgramDetails, newItem: BodybuildingProgramDetails): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: ExerciseReservationResponse, newItem: ExerciseReservationResponse): Boolean {
+        override fun areContentsTheSame(oldItem: BodybuildingProgramDetails, newItem: BodybuildingProgramDetails): Boolean {
             return oldItem == newItem
         }
     }
@@ -37,13 +44,11 @@ class StrengthClassesAdapter : RecyclerView.Adapter<StrengthClassesAdapter.ViewH
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.strength_class_item, parent, false))
     }
 
-    override fun getItemCount(): Int {
-        return 10
-    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
 
+        holder.bind(getItem(position))
         viewBinderHelper.bind(holder.swipeRevealLayout,position.toString())
     }
 }

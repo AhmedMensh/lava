@@ -144,7 +144,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/cardio_class_item"
         app:layout_constraintTop_toBottomOf="@id/classesProgressRV"

@@ -82,7 +82,7 @@ class TrainingAdapter(private val isFirstItem : Boolean = false,private val view
                     it1
                 ).observe(itemView.context as LifecycleOwner, Observer {
                     it?.let {
-                        Toast.makeText(itemView.context,"Done",Toast.LENGTH_LONG).show()
+                        Toast.makeText(itemView.context,"Reservation has been added to your schedule",Toast.LENGTH_LONG).show()
                     }
                 })
             } }

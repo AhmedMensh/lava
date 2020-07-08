@@ -77,6 +77,13 @@ class LavaRepo(private val remoteDataSource: RemoteDataSource, private val conte
         }
     }
 
+    override suspend fun updateReservation(id: String, canceled: String): DataResult<String> {
+        return when (val result = remoteDataSource.updateReservation(token,id,canceled)) {
+            is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
+
     override suspend fun getBranches(): DataResult<List<BranchResponse>> {
 
         return when (val result = remoteDataSource.getBranches(token)) {
@@ -103,6 +110,21 @@ class LavaRepo(private val remoteDataSource: RemoteDataSource, private val conte
     override suspend fun getMembershipInfo(): DataResult<MembershipInfoResponse> {
 
         return when (val result = remoteDataSource.getMembershipInfo(token)) {
+            is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
+
+    override suspend fun suspendMembership(startDate: String, endDate: String): DataResult<Result> {
+
+        return when (val result = remoteDataSource.suspendMembership(token,startDate,endDate)) {
+            is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
+
+    override suspend fun checkMembershipSuspension(): DataResult<Result> {
+        return when (val result = remoteDataSource.checkMembershipSuspension(token)) {
             is DataResult.Success -> DataResult.Success(result.content)
             is DataResult.Error -> DataResult.Error(result.exception)
         }
@@ -147,8 +169,8 @@ class LavaRepo(private val remoteDataSource: RemoteDataSource, private val conte
         }
     }
 
-    override suspend fun getExerciseSchedules(): DataResult<List<ExerciseScheduleResponse>> {
-        return when (val result = remoteDataSource.getExerciseSchedules(token)) {
+    override suspend fun getExerciseSchedules(searchName : String): DataResult<List<ExerciseScheduleResponse>> {
+        return when (val result = remoteDataSource.getExerciseSchedules(token,searchName)) {
             is DataResult.Success -> DataResult.Success(result.content)
             is DataResult.Error -> DataResult.Error(result.exception)
         }
@@ -159,6 +181,27 @@ class LavaRepo(private val remoteDataSource: RemoteDataSource, private val conte
     ): DataResult<Boolean> {
         return when (val result = remoteDataSource.reserveExercise(token,exerciseScheduleID)) {
             is DataResult.Success -> DataResult.Success(true)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
+
+    override suspend fun inviteFriendByMail(
+        fullName: String,
+        email: String,
+        mobileNumber: String
+    ): DataResult<Result> {
+        return when (val result = remoteDataSource.inviteFriendByMail(token,fullName,email,mobileNumber)) {
+            is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
+
+    override suspend fun inviteFriendBySMS(
+        fullName: String,
+        mobileNumber: String
+    ): DataResult<Result> {
+        return when (val result = remoteDataSource.inviteFriendBySMS(token,fullName,mobileNumber)) {
+            is DataResult.Success -> DataResult.Success(result.content)
             is DataResult.Error -> DataResult.Error(result.exception)
         }
     }

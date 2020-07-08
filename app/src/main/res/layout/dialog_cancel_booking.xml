@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/bookBtn"
+        android:id="@+id/cancelReservationBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:minWidth="@dimen/_150sdp"

@@ -34,10 +34,10 @@ class PhoneVerificationFragment : Fragment(R.layout.fragment_phone_verification)
         arguments?.let {
 
             verificationCodeRequest.MobileNumber = it.getString("phone_number")
-            verificationCodeRequest.VerificationCode = it.getString("code")?.toInt()
+            verificationCodeRequest.VerificationCode = "${it.getString("code")}"
             verificationCodeRequest.AccessToken = it.getString("token")
             phoneNumberTV.text = verificationCodeRequest.MobileNumber
-//            verificationCodeET.setText(verificationCodeRequest.VerificationCode)
+            verificationCodeET.setText(verificationCodeRequest.VerificationCode.toString())
         }
 
         val content = SpannableString("Sign Up")

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -37,6 +38,13 @@ class HomeFragment : Fragment(R.layout.fragment_home),
         super.onActivityCreated(savedInstanceState)
 
 
+        swiperefresh.setOnRefreshListener {
+            getProfile()
+            getExerciseReservations()
+            getMemberShipInfo()
+            getStepCounts()
+            swiperefresh.isRefreshing = false
+        }
         cardioCL.setOnClickListener {
             var bundle = Bundle()
             bundle.putString("type", "cardio")
@@ -86,7 +94,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),
             it?.let {
                 upcomingBookingRV.adapter = adapter
                 upcomingBookingRV.setHasFixedSize(true)
-                adapter.submitList(it)
+                adapter.submitList(it )
             }
         })
     }
@@ -128,15 +136,26 @@ class HomeFragment : Fragment(R.layout.fragment_home),
 
     private fun showCancelBookingDialog(item: ExerciseReservationResponse) {
 
+        Log.e("ID","${item.iD}")
         var builder = AlertDialog.Builder(context!!)
         var view = activity?.layoutInflater?.inflate(R.layout.dialog_cancel_booking, null)
         builder.setView(view)
         var dialog = builder.create()
 
         view?.findViewById<TextView>(R.id.exerciseNameTV)?.text = item.exerciseTitle
-        view?.findViewById<TextView>(R.id.exerciseDurationTV)?.text = item.duration
+        view?.findViewById<TextView>(R.id.exerciseDurationTV)?.text = "${item.duration} Min"
         view?.findViewById<TextView>(R.id.exerciseDateTV)?.text = item.date
         view?.findViewById<ImageView>(R.id.cancelImgV)?.setOnClickListener { dialog.dismiss() }
+        view?.findViewById<Button>(R.id.cancelReservationBtn)?.setOnClickListener {
+
+            item.iD?.let { it1 -> viewModel.updateReservations(it1,"1")
+                .observe(viewLifecycleOwner , Observer {
+
+                    it?.let {
+                        Toast.makeText(context,"Reservation has been canceled", Toast.LENGTH_SHORT).show()
+                    }
+                }) }
+             }
 
 
 

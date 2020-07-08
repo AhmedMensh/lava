@@ -9,7 +9,9 @@ import com.android.pharous.app.lava.ui.auth.login.LoginViewModel
 import com.android.pharous.app.lava.ui.auth.phoneVerification.VerificationViewModel
 import com.android.pharous.app.lava.ui.auth.register.RegisterViewModel
 import com.android.pharous.app.lava.ui.home.HomeViewModel
+import com.android.pharous.app.lava.ui.invitation.InvitationViewModel
 import com.android.pharous.app.lava.ui.measurement.MeasurementViewModel
+import com.android.pharous.app.lava.ui.membership.MembershipViewModel
 import com.android.pharous.app.lava.ui.point.PointViewModel
 import com.android.pharous.app.lava.ui.settings.SettingsViewModel
 import com.android.pharous.app.lava.ui.training.TrainingViewModel
@@ -38,6 +40,8 @@ private val viewModelModule = module {
     viewModel { TrainingViewModel(get()) }
     viewModel { SettingsViewModel(get()) }
     viewModel { MeasurementViewModel(get()) }
+    viewModel { MembershipViewModel(get()) }
+    viewModel { InvitationViewModel(get()) }
 
 }
 

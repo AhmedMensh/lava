@@ -66,6 +66,28 @@ class HomeViewModel(private val iLavaRepo: ILavaRepo) : ViewModel() {
     }
 
 
+    fun updateReservations(id : String , canceled : String) : LiveData<String>{
+
+        val data = MutableLiveData<String>()
+
+        viewModelScope.launch {
+
+            when(val result = withContext(IO) { iLavaRepo.updateReservation(id, canceled) }){
+
+                is DataResult.Success ->{
+                    data.value = result.content
+                    error.value = null
+                }
+
+                is DataResult.Error -> {
+                    data.value = null
+                    error.value = result.exception.message
+                }
+            }
+        }
+        return data
+    }
+
     fun getMembershipInfo() : LiveData<MembershipInfoResponse>{
 
         val data = MutableLiveData<MembershipInfoResponse>()

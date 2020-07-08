@@ -9,5 +9,5 @@ data class VerificationCodeRequest(
     @field:Json(name = "AccessToken")
     var AccessToken: String? = null,
     @field:Json(name = "VerificationCode")
-    var VerificationCode: Int? = null
+    var VerificationCode: String? = null
 )
