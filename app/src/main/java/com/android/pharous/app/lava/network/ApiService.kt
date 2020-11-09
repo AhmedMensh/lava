@@ -1,6 +1,6 @@
 package com.android.pharous.app.lava.network
 
-import CardioProgramResponse
+import com.android.pharous.app.lava.ui.workout.models.CardioProgramResponse
 import com.android.pharous.app.lava.models.*
 import com.android.pharous.app.lava.ui.measurement.MemberInbodyresultResponse
 import com.android.pharous.app.lava.ui.measurement.MemberMeasurementResponse
@@ -67,14 +67,20 @@ interface ApiService {
     suspend fun checkStartDate(
         @Query("AccessToken") token: String,
         @Query("PeriodID") peroidID: Int,
-        @Query("StartDate") StartDate : String) : ApiResponse<Int>
+        @Query("StartDate") StartDate : String) : ApiResponse<Boolean>
 
     @FormUrlEncoded
     @POST("amtar-member-point/create-contract")
     suspend fun createContract(@Field("AccessToken") token: String,
                                @Field("PeriodID") peroidID: Int,
                                @Field("BranchID") BranchID: Int,
-                               @Field("StartDate") StartDate : String) : ApiResponse<Int>
+                               @Field("StartDate") StartDate : String) : ApiResponse<Boolean>
+
+    @GET("amtar-level/get-level")
+    suspend fun getTotalPoints(@Query("AccessToken") token: String) : ApiResponse<TotalPointResponse>
+
+    @GET("amtar-earn-event/get-earn-history")
+    suspend fun getPointsHistory(@Query("AccessToken") token: String) : ApiResponse<List<PointHistoryResponse>>
 
     @GET("membership/index")
     suspend fun getMembershipInfo(@Query("AccessToken") token: String): ApiResponse<MembershipInfoResponse>

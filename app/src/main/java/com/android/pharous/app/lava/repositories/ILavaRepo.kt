@@ -1,6 +1,6 @@
 package com.android.pharous.app.lava.repositories
 
-import CardioProgramResponse
+import com.android.pharous.app.lava.ui.workout.models.CardioProgramResponse
 import com.android.pharous.app.lava.models.*
 import com.android.pharous.app.lava.ui.measurement.MemberInbodyresultResponse
 import com.android.pharous.app.lava.ui.measurement.MemberMeasurementResponse
@@ -34,10 +34,12 @@ interface ILavaRepo {
     suspend fun inviteFriendByMail(fullName: String, email: String, mobileNumber: String) : DataResult<Result>
     suspend fun inviteFriendBySMS(fullName: String, mobileNumber: String) : DataResult<Result>
 
+    suspend fun getTotalPoints() : DataResult<TotalPointResponse>
+    suspend fun getPointsHistory() : DataResult<List<PointHistoryResponse>>
 
     suspend fun getBranchPackages(branchID: Int, type: Int) : DataResult<Map<String ,String>>
     suspend fun getPackagePeriods(packageID: Int) : DataResult<Map<String ,Int>>
     suspend fun getPackageDetails(peroidID: Int) : DataResult<PackageDetailsResponse>
-    suspend fun checkStartDate(peroidID: Int , startDate : String) : DataResult<Int>
-    suspend fun createContract(peroidID: Int ,branchID: Int, startDate : String) : DataResult<Int>
+    suspend fun checkStartDate(peroidID: Int , startDate : String) : DataResult<Boolean>
+    suspend fun createContract(peroidID: Int ,branchID: Int, startDate : String) : DataResult<Boolean>
 }

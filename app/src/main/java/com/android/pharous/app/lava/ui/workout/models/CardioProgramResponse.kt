@@ -1,28 +1,11 @@
-import com.beust.klaxon.*
+package com.android.pharous.app.lava.ui.workout.models
+
+import android.os.Parcelable
 import com.squareup.moshi.Json
-
-//private fun <T> Klaxon.convert(k: kotlin.reflect.KClass<*>, fromJson: (JsonValue) -> T, toJson: (T) -> String, isUnion: Boolean = false) =
-//    this.converter(object: Converter {
-//        @Suppress("UNCHECKED_CAST")
-//        override fun toJson(value: Any)        = toJson(value as T)
-//        override fun fromJson(jv: JsonValue)   = fromJson(jv) as Any
-//        override fun canConvert(cls: Class<*>) = cls == k.java || (isUnion && cls.superclass == k.java)
-//    })
-//
-//private val klaxon = Klaxon()
-//    .convert(BodybuildingProgrameDetailUnion::class, { BodybuildingProgrameDetailUnion.fromJson(it) }, { it.toJson() }, true)
-//
-//class Welcome(elements: Map<String, WelcomeValue>) : HashMap<String, WelcomeValue>(elements) {
-//    public fun toJson() = klaxon.toJsonString(this)
-//
-//    companion object {
-//        public fun fromJson(json: String) = Welcome (
-//            klaxon.parseJsonObject(java.io.StringReader(json)) as Map<String, WelcomeValue>
-//        )
-//    }
-//}
+import kotlinx.android.parcel.Parcelize
 
 
+@Parcelize
 data class CardioProgramResponse (
     @field:Json(name = "ID")
     val id: String,
@@ -50,26 +33,10 @@ data class CardioProgramResponse (
 
     @field:Json(name = "BodybuildingProgrameDetail")
     val bodybuildingProgrameDetail: Map<String, BodybuildingProgramDetails> ? = null
-)
+) : Parcelable
 
-//sealed class BodybuildingProgrameDetailUnion {
-//    class AnythingArrayValue(val value: List<Any?>)                                                        : BodybuildingProgrameDetailUnion()
-//    class BodybuildingProgrameDetailValueMapValue(val value: Map<String, BodybuildingProgrameDetailValue>) : BodybuildingProgrameDetailUnion()
-//
-//    public fun toJson(): String = klaxon.toJsonString(when (this) {
-//        is AnythingArrayValue                      -> this.value
-//        is BodybuildingProgrameDetailValueMapValue -> this.value
-//    })
-//
-//    companion object {
-//        public fun fromJson(jv: JsonValue): BodybuildingProgrameDetailUnion = when (jv.inside) {
-//            is JsonArray<*> -> AnythingArrayValue(jv.array?.let { klaxon.parseFromJsonArray<Any?>(it) }!!)
-//            is JsonObject -> BodybuildingProgrameDetailValueMapValue(jv.obj?.let { klaxon.parseFromJsonObject<Map<String, BodybuildingProgrameDetailValue>>(it) }!!)
-//            else            -> throw IllegalArgumentException()
-//        }
-//    }
-//}
 
+@Parcelize
 data class BodybuildingProgramDetails (
     @field:Json(name = "Equipment")
     val equipment: Equipment,
@@ -97,8 +64,10 @@ data class BodybuildingProgramDetails (
 
     @field:Json(name = "Photo2")
     val photo2: String? = null
-)
+) : Parcelable
 
+
+@Parcelize
 data class Equipment (
     @field:Json(name = "ID")
     val id: Long,
@@ -114,8 +83,9 @@ data class Equipment (
 
     @field:Json(name = "Photo")
     val photo: String? = null
-)
+) : Parcelable
 
+@Parcelize
 data class Muscle (
     @field:Json(name = "ID")
     val id: Long,
@@ -127,9 +97,11 @@ data class Muscle (
     val nameAR: String,
 
     @field:Json(name = "Photo")
-    val photo: Any? = null
-)
+    val photo: String? = null
+) : Parcelable
 
+
+@Parcelize
 data class CardioProgrameDetails (
     @field:Json(name = "Equipment")
     val equipment: Equipment,
@@ -151,4 +123,4 @@ data class CardioProgrameDetails (
 
     @field:Json(name = "DescriptionEN")
     val descriptionEN: String
-)
+) : Parcelable

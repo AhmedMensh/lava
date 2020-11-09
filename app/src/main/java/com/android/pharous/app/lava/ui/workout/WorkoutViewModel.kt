@@ -1,6 +1,6 @@
 package com.android.pharous.app.lava.ui.workout
 
-import CardioProgramResponse
+import com.android.pharous.app.lava.ui.workout.models.CardioProgramResponse
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

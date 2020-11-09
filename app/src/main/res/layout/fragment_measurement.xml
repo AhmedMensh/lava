@@ -188,7 +188,7 @@
                 android:id="@+id/waterPercentageTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="27 KG ( 20%)"
+                tools:text="27 KG ( 20%)"
                 app:layout_constraintEnd_toEndOf="@id/view1"
                 app:layout_constraintBottom_toTopOf="@id/view1"/>
 
@@ -196,7 +196,7 @@
                 android:id="@+id/waterLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Water"
+                tools:text="Water"
                 app:layout_constraintEnd_toEndOf="@id/view1"
                 app:layout_constraintTop_toBottomOf="@id/view1"/>
 
@@ -425,7 +425,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="33 Cm"
+                tools:text="33 Cm"
                 app:layout_constraintEnd_toEndOf="@+id/view5"
                 app:layout_constraintBottom_toTopOf="@+id/view5"/>
 
@@ -439,7 +439,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="38 Cm a year ago"
+                tools:text="38 Cm a year ago"
                 android:textSize="@dimen/_6sdp"
                 app:layout_constraintTop_toBottomOf="@+id/breastLabel"
                 app:layout_constraintEnd_toEndOf="@+id/breastLabel"/>
@@ -460,7 +460,7 @@
                 android:id="@+id/hipsValueTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="33 Cm"
+                tools:text="33 Cm"
                 app:layout_constraintEnd_toEndOf="@+id/view6"
                 app:layout_constraintBottom_toTopOf="@+id/view6"/>
 
@@ -474,7 +474,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="38 Cm a year ago"
+                tools:text="38 Cm a year ago"
                 android:textSize="@dimen/_6sdp"
                 app:layout_constraintTop_toBottomOf="@+id/HipsLabel"
                 app:layout_constraintEnd_toEndOf="@+id/HipsLabel"/>
@@ -496,7 +496,7 @@
                 android:id="@+id/breastValueTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="33 Cm"
+                tools:text="33 Cm"
                 app:layout_constraintStart_toStartOf="@+id/view7"
                 app:layout_constraintBottom_toTopOf="@+id/view7"/>
 
@@ -510,7 +510,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="38 Cm a year ago"
+                tools:text="38 Cm a year ago"
                 android:textSize="@dimen/_6sdp"
                 app:layout_constraintTop_toBottomOf="@+id/armLabel"
                 app:layout_constraintStart_toStartOf="@+id/armLabel"/>
@@ -532,7 +532,7 @@
                 android:id="@+id/waistValueTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="33 Cm"
+                tools:text="33 Cm"
                 app:layout_constraintStart_toStartOf="@+id/view8"
                 app:layout_constraintBottom_toTopOf="@+id/view8"/>
 
@@ -546,7 +546,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="38 Cm a year ago"
+                tools:text="38 Cm a year ago"
                 android:textSize="@dimen/_6sdp"
                 app:layout_constraintTop_toBottomOf="@+id/waistLabel"
                 app:layout_constraintStart_toStartOf="@+id/waistLabel"/>
@@ -568,7 +568,7 @@
                 android:id="@+id/legValueTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="33 Cm"
+                tools:text="33 Cm"
                 app:layout_constraintStart_toStartOf="@+id/view9"
                 app:layout_constraintBottom_toTopOf="@+id/view9"/>
 
@@ -582,7 +582,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="38 Cm a year ago"
+                tools:text="38 Cm a year ago"
                 android:textSize="@dimen/_6sdp"
                 app:layout_constraintTop_toBottomOf="@+id/legsLabel"
                 app:layout_constraintStart_toStartOf="@+id/legsLabel"/>

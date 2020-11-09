@@ -4,6 +4,7 @@ package com.android.pharous.app.lava.ui.home
 import android.content.Context
 import android.hardware.*
 import android.os.Bundle
+import android.os.Parcelable
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -18,17 +19,24 @@ import androidx.navigation.fragment.findNavController
 import com.android.pharous.app.lava.R
 import com.android.pharous.app.lava.common.IItemClickListener
 import com.android.pharous.app.lava.models.ExerciseReservationResponse
+import com.android.pharous.app.lava.ui.workout.models.BodybuildingProgramDetails
+import com.android.pharous.app.lava.ui.workout.models.CardioProgrameDetails
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_workout.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.ArrayList
 
 /**
  * A simple [Fragment] subclass.
  */
 class HomeFragment : Fragment(R.layout.fragment_home),
-    IItemClickListener<ExerciseReservationResponse>  {
+    IItemClickListener<ExerciseReservationResponse> {
 
-
+    var cardioList = mutableListOf<CardioProgrameDetails>()
+    var strengthList = mutableListOf<BodybuildingProgramDetails>()
+    private var isUserHasCardioProgram = false
+    private var isUserHasBodyBuildingProgram = false
     private val viewModel: HomeViewModel by viewModel()
 //    private val viewModel: HomeViewModel by inject { parametersOf(this)  }
 
@@ -46,14 +54,21 @@ class HomeFragment : Fragment(R.layout.fragment_home),
             swiperefresh.isRefreshing = false
         }
         cardioCL.setOnClickListener {
-            var bundle = Bundle()
-            bundle.putString("type", "cardio")
-            findNavController().navigate(R.id.action_homeFragment_to_workoutFragment, bundle)
+            if (isUserHasCardioProgram){
+                var bundle = Bundle()
+                bundle.putString("type", "cardio")
+                bundle.putParcelableArrayList("cardio_list",cardioList as ArrayList<out Parcelable>)
+                findNavController().navigate(R.id.action_homeFragment_to_workoutFragment, bundle)
+            }
+
         }
         strengthCL.setOnClickListener {
+            if (isUserHasBodyBuildingProgram){
             var bundle = Bundle()
             bundle.putString("type", "")
+            bundle.putParcelableArrayList("strength_list",strengthList as ArrayList<out Parcelable>)
             findNavController().navigate(R.id.action_homeFragment_to_workoutFragment, bundle)
+        }
         }
 
 
@@ -77,6 +92,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),
         getExerciseReservations()
         getMemberShipInfo()
         getStepCounts()
+        getCaridoPrograms()
     }
 
     private fun getProfile() {
@@ -94,7 +110,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),
             it?.let {
                 upcomingBookingRV.adapter = adapter
                 upcomingBookingRV.setHasFixedSize(true)
-                adapter.submitList(it )
+                adapter.submitList(it)
             }
         })
     }
@@ -108,19 +124,50 @@ class HomeFragment : Fragment(R.layout.fragment_home),
         })
     }
 
-    private fun getStepCounts(){
+    private fun getCaridoPrograms() {
+
+        viewModel.getMemberCardioPrograms().observe(viewLifecycleOwner, Observer {
+
+            it?.let {
+
+                it.forEach {
+                    it.cardioProgrameDetail?.values?.forEach {
+                        isUserHasCardioProgram = true
+                        it?.let { cardioList.add(it) }
+
+                    }
+                }
+                cardioProgramNameTV.text = cardioList[0]?.equipment?.nameEN
+                cardioProgramDurationTV.text = "${cardioList[0]?.duration} min"
+
+                Log.e("DATA","$cardioList")
+                it.forEach {
+                    it.bodybuildingProgrameDetail?.values?.forEach {
+                        isUserHasBodyBuildingProgram = true
+                        it?.let { strengthList.add(it) }
+                    }
+                }
+                bodBuildingProgramNameTV.text = strengthList[0]?.equipment?.nameEN
+                bodBuildingProgramDurationTV.text = "${strengthList[0]?.duration} min"
+            }
+
+
+        })
+    }
+
+    private fun getStepCounts() {
         activity?.let {
             val sensorManager = it.getSystemService(Context.SENSOR_SERVICE) as SensorManager
             val mSensor: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
             val triggerEventListener = object : TriggerEventListener() {
                 override fun onTrigger(event: TriggerEvent?) {
                     // Do work
-                   event?.let {
+                    event?.let {
 
-                       Toast.makeText(context,"${event.values[0]}",Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, "${event.values[0]}", Toast.LENGTH_LONG).show()
 //                       Toast.makeText(context,"${event.values[1]}",Toast.LENGTH_LONG).show()
 //                       Toast.makeText(context,"${event.values[2]}",Toast.LENGTH_LONG).show()
-                   }
+                    }
                 }
             }
             mSensor?.also { sensor ->
@@ -129,6 +176,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),
         }
 
     }
+
     override fun onItemClick(item: ExerciseReservationResponse) {
 
         showCancelBookingDialog(item)
@@ -136,7 +184,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),
 
     private fun showCancelBookingDialog(item: ExerciseReservationResponse) {
 
-        Log.e("ID","${item.iD}")
+        Log.e("ID", "${item.iD}")
         var builder = AlertDialog.Builder(context!!)
         var view = activity?.layoutInflater?.inflate(R.layout.dialog_cancel_booking, null)
         builder.setView(view)
@@ -148,14 +196,20 @@ class HomeFragment : Fragment(R.layout.fragment_home),
         view?.findViewById<ImageView>(R.id.cancelImgV)?.setOnClickListener { dialog.dismiss() }
         view?.findViewById<Button>(R.id.cancelReservationBtn)?.setOnClickListener {
 
-            item.iD?.let { it1 -> viewModel.updateReservations(it1,"1")
-                .observe(viewLifecycleOwner , Observer {
+            item.iD?.let { it1 ->
+                viewModel.updateReservations(it1, "1")
+                    .observe(viewLifecycleOwner, Observer {
 
-                    it?.let {
-                        Toast.makeText(context,"Reservation has been canceled", Toast.LENGTH_SHORT).show()
-                    }
-                }) }
-             }
+                        it?.let {
+                            Toast.makeText(
+                                context,
+                                "Reservation has been canceled",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    })
+            }
+        }
 
 
 

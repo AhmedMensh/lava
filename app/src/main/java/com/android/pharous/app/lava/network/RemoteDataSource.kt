@@ -76,6 +76,8 @@ class RemoteDataSource(private val api: ApiService) {
         mobileNumber: String
     ) = safeApiCall { api.inviteFriendBySMS(token, fullName, mobileNumber) }
 
+    suspend fun getTotalPoints(token: String) = safeApiCall { api.getTotalPoints(token) }
+    suspend fun getPointsHistory(token: String) = safeApiCall { api.getPointsHistory(token) }
 
     suspend fun getBranchPackages(token: String, branchID: Int, type: Int) = safeApiCall { api.getBranchPackages(token, branchID, type) }
     suspend fun getPackagePeriods(token: String, packageID: Int) = safeApiCall { api.getPackagePeriods(token, packageID) }

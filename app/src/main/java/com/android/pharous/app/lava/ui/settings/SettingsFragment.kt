@@ -44,15 +44,17 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
             it?.let {
                 membershipInfoResponse = it
+
                 if (isActiveMember(it.endDate!!)) membershipState.visibility = View.VISIBLE
             }
         })
+        val bundle = Bundle()
+        bundle.putParcelable("membership_info",membershipInfoResponse)
         membershipCL.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putParcelable("membership_info",membershipInfoResponse)
+
             findNavController().navigate(R.id.action_settingsFragment_to_membershipFragment,bundle) }
 
-        myPointCL.setOnClickListener { findNavController().navigate(R.id.action_settingsFragment_to_pointFragment) }
+        myPointCL.setOnClickListener { findNavController().navigate(R.id.action_settingsFragment_to_pointFragment,bundle) }
         offersCL.setOnClickListener { findNavController().navigate(R.id.action_settingsFragment_to_offersFragment) }
         inviteCL.setOnClickListener { findNavController().navigate(R.id.action_settingsFragment_to_invitationFragment) }
         shareCL.setOnClickListener { shareLavaApp() }

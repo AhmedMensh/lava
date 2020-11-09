@@ -59,13 +59,16 @@ class MeasurementFragment : Fragment(R.layout.fragment_measurement),IItemClickLi
 
             it?.let {
                 memberBodyMeasurements = it
-               it[0].let {
-                   bodyWeightTV.text = "${it.weight} KG"
-                   hipsValueTV.text = "${it.buttocks} CM"
-                   breastValueTV.text = "${it.chest} CM"
-                   waistValueTV.text = "${it.waist} CM"
-                   legValueTV.text = "${it.calf} CM"
-               }
+                if(!it.isNullOrEmpty()){
+                    it[0].let {
+                        bodyWeightTV.text = "${it.weight} KG"
+                        hipsValueTV.text = "${it.buttocks} CM"
+                        breastValueTV.text = "${it.chest} CM"
+                        waistValueTV.text = "${it.waist} CM"
+                        legValueTV.text = "${it.calf} CM"
+                    }
+                }
+
             }
         })
 
@@ -73,17 +76,21 @@ class MeasurementFragment : Fragment(R.layout.fragment_measurement),IItemClickLi
         viewModel.getMemberInBodyResults().observe(viewLifecycleOwner , Observer {
 
             it?.let {
-              it[0].let {
+                if (!it.isNullOrEmpty()){
 
-                  val waterPercentage = it.weight?.toDouble()?.let { it1 -> it.totalBodyWater?.toDouble()?.div(it1) }
-                      ?.times(100)
+                    it[0].let {
 
-                  val bodyFatPercentage = it.weight?.toDouble()?.let { it1 -> it.bodyFatMass?.toDouble()?.div(it1) }
-                      ?.times(100)
-                  waterPercentageTV.text = "${it.totalBodyWater} KG ($waterPercentage %)"
-                  bodyFatPercentageTV.text = "${it.bodyFatMass} KG ($bodyFatPercentage %)"
+                        val waterPercentage = it.weight?.toDouble()?.let { it1 -> it.totalBodyWater?.toDouble()?.div(it1) }
+                            ?.times(100)
 
-              }
+                        val bodyFatPercentage = it.weight?.toDouble()?.let { it1 -> it.bodyFatMass?.toDouble()?.div(it1) }
+                            ?.times(100)
+                        waterPercentageTV.text = "${it.totalBodyWater} KG ($waterPercentage %)"
+                        bodyFatPercentageTV.text = "${it.bodyFatMass} KG ($bodyFatPercentage %)"
+
+                    }
+                }
+
             }
         })
     }

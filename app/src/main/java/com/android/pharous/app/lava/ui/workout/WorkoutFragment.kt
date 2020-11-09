@@ -1,8 +1,8 @@
 package com.android.pharous.app.lava.ui.workout
 
 
-import BodybuildingProgramDetails
-import CardioProgrameDetails
+import com.android.pharous.app.lava.ui.workout.models.BodybuildingProgramDetails
+import com.android.pharous.app.lava.ui.workout.models.CardioProgrameDetails
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -32,45 +32,13 @@ class WorkoutFragment : Fragment(R.layout.fragment_workout) , IItemClickListener
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        getMemberCardioPrograms()
         viewModel.error.observe(viewLifecycleOwner, Observer {
             it?.let {
                 Toast.makeText(context, it, Toast.LENGTH_LONG).show()
             }
         })
 
-        viewModel.getMemberCardioPrograms().observe(viewLifecycleOwner, Observer {
-
-            it?.let {
-
-                var cardioList = mutableListOf<CardioProgrameDetails>()
-                var strengthList = mutableListOf<BodybuildingProgramDetails>()
-
-                if (arguments?.getString("type").equals("cardio")) {
-                    cardioClassesRV.visibility = View.VISIBLE
-                    it.forEach {
-                        it.cardioProgrameDetail?.values?.forEach {
-                            it?.let { cardioList.add(it) }
-
-                        }
-                    }
-                    cardioClassesRV.adapter = cardioAdapter
-                    cardioAdapter.submitList(cardioList)
-                } else {
-
-                    strengthClassesRV.visibility = View.VISIBLE
-                    it.forEach {
-                        it.bodybuildingProgrameDetail?.values?.forEach {
-
-                            it?.let { strengthList.add(it) }
-                        }
-                    }
-                    strengthClassesRV.adapter = strengthAdapter
-                    strengthAdapter.submitList(strengthList)
-                }
-
-
-            }
-        })
 
 
         var layoutManger = GridLayoutManager(context, 7, RecyclerView.VERTICAL, false)
@@ -80,6 +48,63 @@ class WorkoutFragment : Fragment(R.layout.fragment_workout) , IItemClickListener
         finishWorkoutBtn.setOnClickListener { showWorkoutCompletionDialog() }
     }
 
+    private fun getMemberCardioPrograms(){
+        var cardioList: MutableList<CardioProgrameDetails>
+        var strengthList: MutableList<BodybuildingProgramDetails>
+
+        arguments?.let {
+
+            val type = it.getString("type")
+
+            if (type.equals("cardio")) {
+                cardioClassesRV.visibility = View.VISIBLE
+                cardioClassesRV.adapter = cardioAdapter
+                cardioList = it.getParcelableArrayList<CardioProgrameDetails>("cardio_list")!!
+                cardioAdapter.submitList(cardioList)
+            } else {
+                strengthClassesRV.visibility = View.VISIBLE
+                strengthClassesRV.adapter = strengthAdapter
+                strengthList =
+                    it.getParcelableArrayList<BodybuildingProgramDetails>("strength_list")!!
+                strengthAdapter.submitList(strengthList)
+
+            }
+//
+//        viewModel.getMemberCardioPrograms().observe(viewLifecycleOwner, Observer {
+//
+//            it?.let {
+//
+//
+//                }
+//                if (arguments?.getString("type").equals("cardio")) {
+//                    cardioClassesRV.visibility = View.VISIBLE
+//
+////                    it.forEach {
+////                        it.cardioProgrameDetail?.values?.forEach {
+////                            it?.let { cardioList.add(it) }
+////
+////                        }
+////                    }
+//                    cardioClassesRV.adapter = cardioAdapter
+//                    cardioAdapter.submitList(cardioList)
+//                } else {
+//
+//                    strengthClassesRV.visibility = View.VISIBLE
+//                    it.forEach {
+//                        it.bodybuildingProgrameDetail?.values?.forEach {
+//
+//                            it?.let { strengthList.add(it) }
+//                        }
+//                    }
+//                    strengthClassesRV.adapter = strengthAdapter
+//                    strengthAdapter.submitList(strengthList)
+//                }
+//
+//
+//            }
+//        })
+        }
+    }
     private fun showWorkoutCompletionDialog() {
 
         var builder = AlertDialog.Builder(context!!)
@@ -115,8 +140,8 @@ class WorkoutFragment : Fragment(R.layout.fragment_workout) , IItemClickListener
         var builder = AlertDialog.Builder(context!!)
         var view = activity?.layoutInflater?.inflate(R.layout.dialog_offer, null)
 
-        view?.findViewById<TextView>(R.id.descriptionTV)?.text = item.descriptionEN
-        view?.findViewById<TextView>(R.id.titleTV)?.text = item.equipment.nameEN
+        view?.findViewById<TextView>(R.id.descriptionTV)?.text = item?.descriptionEN
+        view?.findViewById<TextView>(R.id.titleTV)?.text = item?.equipment?.nameEN
         view?.findViewById<ImageView>(R.id.equipmentIV)?.visibility = View.VISIBLE
         builder.setView(view)
         var dialog = builder.create()

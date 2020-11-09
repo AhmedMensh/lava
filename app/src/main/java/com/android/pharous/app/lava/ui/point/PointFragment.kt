@@ -2,6 +2,8 @@ package com.android.pharous.app.lava.ui.point
 
 
 import android.os.Bundle
+import android.os.Parcelable
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.*
@@ -10,11 +12,16 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 
 import com.android.pharous.app.lava.R
+import com.android.pharous.app.lava.common.Constants
+import com.android.pharous.app.lava.common.SharedPreferencesManager
 import com.android.pharous.app.lava.common.pickDateDialog
 import com.android.pharous.app.lava.models.BranchResponse
+import com.android.pharous.app.lava.models.MembershipInfoResponse
+import com.android.pharous.app.lava.models.PointHistoryResponse
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_point.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.ArrayList
 
 /**
  * A simple [Fragment] subclass.
@@ -24,6 +31,7 @@ class PointFragment : Fragment(R.layout.fragment_point) {
 
     private val viewModel: PointViewModel by viewModel()
     private var branchesList: List<BranchResponse> = emptyList()
+    private var pointHistoryList: List<PointHistoryResponse> = emptyList()
     private var dialogView : View ? = null
     private var selectedPackageId = ""
     private var selectedPeriodId = -1
@@ -33,23 +41,40 @@ class PointFragment : Fragment(R.layout.fragment_point) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        arguments?.let {
+            it.getParcelable<MembershipInfoResponse>("membership_info")?.let { it1 -> renderData(it1) }
+        }
         newMembershipCL.setOnClickListener {
             contractType = 0
             showCreateNewServiceDialog() }
+
         newServiceCL.setOnClickListener {
             contractType = 1
             showCreateNewServiceDialog("Create New Service") }
-        detailsTV.setOnClickListener { findNavController().navigate(R.id.action_pointFragment_to_achivementPointFragment) }
+
+        detailsTV.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putParcelableArrayList("list",pointHistoryList as ArrayList<out Parcelable>)
+            findNavController().navigate(R.id.action_pointFragment_to_achivementPointFragment,bundle) }
 
 
 
         viewModel.error.observe(viewLifecycleOwner, Observer {
 
             it?.let {
-                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, it, Toast.LENGTH_LONG).show()
             }
         })
 
+        viewModel.getTotalPoints().observe(viewLifecycleOwner , Observer {
+
+            it?.let {
+                totalAchievementPointLabel.text = "Total Achievement Point : ${it.totalPoint}"
+                packageTypeTV.text = "Package : ${it.currentLevel}"
+                userNameTv.text = SharedPreferencesManager.getStringValue(requireContext(),Constants.USER_NAME)
+            }
+        })
         viewModel.isLoading.observe(viewLifecycleOwner, Observer {
             it?.let {
                 if (it) activity?.progressBar?.visibility = View.VISIBLE
@@ -57,12 +82,25 @@ class PointFragment : Fragment(R.layout.fragment_point) {
             }
         })
 
+        viewModel.getPointHistory().observe(viewLifecycleOwner , Observer {
+
+            it?.let {
+                Log.e("LIST","$it")
+                pointHistoryList = it
+            }
+        })
         viewModel.getBranches().observe(viewLifecycleOwner, Observer {
 
             it?.let {
                 branchesList = it
             }
         })
+    }
+
+    private fun renderData(it1: MembershipInfoResponse) {
+
+        periodTV.text = "Period :${it1.period}"
+        durationTV.text = "${it1.startDate} - ${it1.endDate}"
     }
 
     private fun showCreateNewServiceDialog(title: String = "Create New Membership") {
@@ -99,14 +137,18 @@ class PointFragment : Fragment(R.layout.fragment_point) {
     private fun checkStartDate(startDate: String) {
         viewModel.checkStartDate(selectedPeriodId,startDate).observe(viewLifecycleOwner , Observer {
 
-
-
+            it?.let {
                 viewModel.createContract(selectedPeriodId,selectedBranchId,startDate).observe(viewLifecycleOwner,
                     Observer {
 
+                        it?.let {
+
                             Toast.makeText(context,"Done",Toast.LENGTH_LONG).show()
+                        }
 
                     })
+            }
+
 
         })
     }

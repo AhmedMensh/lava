@@ -1,5 +1,6 @@
 package com.android.pharous.app.lava.ui.home
 
+import com.android.pharous.app.lava.ui.workout.models.CardioProgramResponse
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -43,6 +44,24 @@ class HomeViewModel(private val iLavaRepo: ILavaRepo) : ViewModel() {
         return data
     }
 
+    fun getMemberCardioPrograms() : LiveData<List<CardioProgramResponse>>{
+        val data = MutableLiveData<List<CardioProgramResponse>>()
+
+        viewModelScope.launch {
+            when(val result = withContext(IO) { iLavaRepo.getMemberCardioPrograms()}){
+
+                is DataResult.Success ->{
+                    data.value = result.content
+                    error.value = null
+                }
+                is DataResult.Error -> {
+                    data.value = null
+                    error.value = result.exception.message
+                }
+            }
+        }
+        return data
+    }
     fun getExerciseReservations() : LiveData<List<ExerciseReservationResponse>>{
 
         val data = MutableLiveData<List<ExerciseReservationResponse>>()

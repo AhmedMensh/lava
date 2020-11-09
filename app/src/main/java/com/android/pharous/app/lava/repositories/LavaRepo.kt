@@ -1,6 +1,6 @@
 package com.android.pharous.app.lava.repositories
 
-import CardioProgramResponse
+import com.android.pharous.app.lava.ui.workout.models.CardioProgramResponse
 import android.content.Context
 import com.android.pharous.app.lava.common.Constants
 import com.android.pharous.app.lava.common.SharedPreferencesManager
@@ -206,6 +206,20 @@ class LavaRepo(private val remoteDataSource: RemoteDataSource, private val conte
         }
     }
 
+    override suspend fun getTotalPoints(): DataResult<TotalPointResponse> {
+        return when (val result = remoteDataSource.getTotalPoints(token)) {
+            is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
+
+    override suspend fun getPointsHistory(): DataResult<List<PointHistoryResponse>> {
+        return when (val result = remoteDataSource.getPointsHistory(token)) {
+            is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
+
     override suspend fun getBranchPackages(
         branchID: Int,
         type: Int
@@ -231,9 +245,9 @@ class LavaRepo(private val remoteDataSource: RemoteDataSource, private val conte
         }
     }
 
-    override suspend fun checkStartDate(peroidID: Int, startDate: String): DataResult<Int> {
+    override suspend fun checkStartDate(peroidID: Int, startDate: String): DataResult<Boolean> {
         return when (val result = remoteDataSource.checkStartDate(token,peroidID,startDate)) {
-            is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Success -> DataResult.Success(true)
             is DataResult.Error -> DataResult.Error(result.exception)
         }
     }
@@ -242,9 +256,9 @@ class LavaRepo(private val remoteDataSource: RemoteDataSource, private val conte
         peroidID: Int,
         branchID: Int,
         startDate: String
-    ): DataResult<Int> {
+    ): DataResult<Boolean> {
         return when (val result = remoteDataSource.createContract(token,peroidID,branchID,startDate)) {
-            is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Success -> DataResult.Success(true)
             is DataResult.Error -> DataResult.Error(result.exception)
         }
     }

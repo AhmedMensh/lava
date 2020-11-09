@@ -4,9 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.android.pharous.app.lava.models.BranchResponse
-import com.android.pharous.app.lava.models.DataResult
-import com.android.pharous.app.lava.models.PackageDetailsResponse
+import com.android.pharous.app.lava.models.*
 import com.android.pharous.app.lava.repositories.ILavaRepo
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -121,10 +119,10 @@ class PointViewModel(private val iLavaRepo: ILavaRepo) : ViewModel() {
         return data
     }
 
-    fun checkStartDate(periodId : Int, startDate : String) : LiveData<Int>{
+    fun checkStartDate(periodId : Int, startDate : String) : LiveData<Boolean>{
 
         isLoading.value = true
-        val data = MutableLiveData<Int>()
+        val data = MutableLiveData<Boolean>()
 
         viewModelScope.launch {
 
@@ -147,14 +145,68 @@ class PointViewModel(private val iLavaRepo: ILavaRepo) : ViewModel() {
         return data
     }
 
-    fun createContract(periodId : Int,branchId : Int, startDate : String) : LiveData<Int>{
+    fun createContract(periodId : Int,branchId : Int, startDate : String) : LiveData<Boolean>{
 
         isLoading.value = true
-        val data = MutableLiveData<Int>()
+        val data = MutableLiveData<Boolean>()
 
         viewModelScope.launch {
 
             when(val result = withContext(IO) { iLavaRepo.createContract(periodId,branchId,startDate)}){
+
+                is DataResult.Success -> {
+                    isLoading.value = false
+                    error.value = null
+                    data.value = result.content
+                }
+
+                is DataResult.Error -> {
+                    isLoading.value = false
+                    data.value = null
+                    error.value = result.exception.message
+                }
+            }
+        }
+
+        return data
+    }
+
+
+    fun getTotalPoints() : LiveData<TotalPointResponse>{
+
+        isLoading.value = true
+        val data = MutableLiveData<TotalPointResponse>()
+
+        viewModelScope.launch {
+
+            when(val result = withContext(IO) { iLavaRepo.getTotalPoints()}){
+
+                is DataResult.Success -> {
+                    isLoading.value = false
+                    error.value = null
+                    data.value = result.content
+                }
+
+                is DataResult.Error -> {
+                    isLoading.value = false
+                    data.value = null
+                    error.value = result.exception.message
+                }
+            }
+        }
+
+        return data
+    }
+
+
+    fun getPointHistory() : LiveData<List<PointHistoryResponse>>{
+
+        isLoading.value = true
+        val data = MutableLiveData<List<PointHistoryResponse>>()
+
+        viewModelScope.launch {
+
+            when(val result = withContext(IO) { iLavaRepo.getPointsHistory()}){
 
                 is DataResult.Success -> {
                     isLoading.value = false

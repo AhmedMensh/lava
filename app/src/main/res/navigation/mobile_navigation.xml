@@ -6,6 +6,9 @@
     app:startDestination="@id/loginFragment">
 
 
+    <fragment android:id="@+id/profileFragment"
+        tools:layout="@layout/fragment_profile"
+        android:name="com.android.pharous.app.lava.ui.profile.ProfileFragment"/>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.android.pharous.app.lava.ui.auth.login.LoginFragment"

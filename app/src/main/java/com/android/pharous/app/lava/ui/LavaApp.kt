@@ -16,7 +16,6 @@ class LavaApp : Application() {
         super.onCreate()
 
 
-
         Network.init(Constants.BASE_URL, BuildConfig.DEBUG)
 
         startKoin {
@@ -26,4 +25,15 @@ class LavaApp : Application() {
         }
     }
 
+    init {
+        instance = this
+    }
+
+    companion object {
+        private var instance: LavaApp? = null
+
+        fun applicationContext() : Context {
+            return instance!!.applicationContext
+        }
+    }
 }

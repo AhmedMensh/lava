@@ -11,4 +11,9 @@
     <string name="phone_number_required">Phone Number Required</string>
     <string name="change">Change</string>
     <string name="cancel">Cancel</string>
+    <string name="general_info">General Info</string>
+    <string name="basic_info">Basic Info</string>
+    <string name="profile_info">Profile Info</string>
+    <string name="contact_info">Contact Info</string>
+    <string name="presence">Presence</string>
 </resources>

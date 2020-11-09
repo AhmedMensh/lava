@@ -79,7 +79,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
         android:drawablePadding="@dimen/_4sdp"
-        android:text="5454"
         android:textColor="@color/white"
         android:textSize="@dimen/_12sdp"
         app:layout_constraintStart_toEndOf="@id/backArrowImgV"
@@ -111,12 +110,14 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:id="@+id/packageTypeTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/orange"
                 android:textSize="@dimen/_14sdp"
                 android:text="Package : Global Package"/>
             <TextView
+                android:id="@+id/periodTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_6sdp"
@@ -125,6 +126,7 @@
                 android:text="Period : 30 day"/>
 
             <TextView
+                android:id="@+id/durationTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"

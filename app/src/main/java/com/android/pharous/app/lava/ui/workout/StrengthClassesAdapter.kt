@@ -1,6 +1,6 @@
 package com.android.pharous.app.lava.ui.workout
 
-import BodybuildingProgramDetails
+import com.android.pharous.app.lava.ui.workout.models.BodybuildingProgramDetails
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.android.pharous.app.lava.R
-import com.android.pharous.app.lava.models.ExerciseReservationResponse
 import com.chauthai.swipereveallayout.SwipeRevealLayout
 import com.chauthai.swipereveallayout.ViewBinderHelper
 import kotlinx.android.synthetic.main.strength_class_item.view.*
@@ -24,7 +23,7 @@ class StrengthClassesAdapter : ListAdapter<BodybuildingProgramDetails,StrengthCl
 
         fun bind(item : BodybuildingProgramDetails){
 
-            itemView.strengthNameTV.text = item.equipment.nameEN
+            itemView.strengthNameTV.text = item?.equipment?.nameEN
             itemView.durationTV.text = "${item.duration}"
         }
 

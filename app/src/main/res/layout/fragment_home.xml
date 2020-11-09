@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:text="What do you think about"
                 android:gravity="center"
-
+                android:visibility="invisible"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/_16sdp"
                 app:layout_constraintVertical_bias=".2"
@@ -61,7 +61,7 @@
                 layout="@layout/rate_opitions"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/headQuestionLabel"/>
@@ -234,7 +234,7 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:id="@+id/text2"
+                    android:id="@+id/cardioProgramNameTV"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/cardioLabel"
                     android:text="tone muscles"
@@ -248,16 +248,16 @@
                     android:layout_width="@dimen/_1sdp"
                     android:layout_height="@dimen/_10sdp"
                     android:background="@android:color/darker_gray"
-                    app:layout_constraintBottom_toBottomOf="@id/text2"
+                    app:layout_constraintBottom_toBottomOf="@id/cardioProgramNameTV"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
-                    app:layout_constraintTop_toTopOf="@id/text2"
-                    app:layout_constraintEnd_toStartOf="@id/text3"
-                    app:layout_constraintStart_toEndOf="@id/text2"/>
+                    app:layout_constraintTop_toTopOf="@id/cardioProgramNameTV"
+                    app:layout_constraintEnd_toStartOf="@id/cardioProgramDurationTV"
+                    app:layout_constraintStart_toEndOf="@id/cardioProgramNameTV"/>
                 <TextView
-                    android:id="@+id/text3"
+                    android:id="@+id/cardioProgramDurationTV"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/text2"
+                    app:layout_constraintStart_toEndOf="@id/cardioProgramNameTV"
                     app:layout_constraintTop_toBottomOf="@id/cardioLabel"
                     android:text="30 min"
                     android:textColor="@color/white"
@@ -268,7 +268,7 @@
 
                 <TextView
                     android:id="@+id/text4"
-                    app:layout_constraintTop_toBottomOf="@id/text3"
+                    app:layout_constraintTop_toBottomOf="@id/cardioProgramDurationTV"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_20sdp"
@@ -316,7 +316,7 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:id="@+id/StrengthText2"
+                    android:id="@+id/bodBuildingProgramNameTV"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/strengthLabel"
                     android:text="tone muscles"
@@ -330,16 +330,16 @@
                     android:layout_width="@dimen/_1sdp"
                     android:layout_height="@dimen/_10sdp"
                     android:background="@android:color/darker_gray"
-                    app:layout_constraintBottom_toBottomOf="@id/StrengthText2"
+                    app:layout_constraintBottom_toBottomOf="@id/bodBuildingProgramNameTV"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
-                    app:layout_constraintTop_toTopOf="@id/StrengthText2"
-                    app:layout_constraintEnd_toStartOf="@id/StrengthText3"
-                    app:layout_constraintStart_toEndOf="@id/StrengthText2"/>
+                    app:layout_constraintTop_toTopOf="@id/bodBuildingProgramNameTV"
+                    app:layout_constraintEnd_toStartOf="@id/bodBuildingProgramDurationTV"
+                    app:layout_constraintStart_toEndOf="@id/bodBuildingProgramNameTV"/>
                 <TextView
-                    android:id="@+id/StrengthText3"
+                    android:id="@+id/bodBuildingProgramDurationTV"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/StrengthText2"
+                    app:layout_constraintStart_toEndOf="@id/bodBuildingProgramNameTV"
                     app:layout_constraintTop_toBottomOf="@id/strengthLabel"
                     android:text="30 min"
                     android:textColor="@android:color/black"
@@ -350,7 +350,7 @@
 
                 <TextView
                     android:id="@+id/StrengthText4"
-                    app:layout_constraintTop_toBottomOf="@id/StrengthText3"
+                    app:layout_constraintTop_toBottomOf="@id/bodBuildingProgramDurationTV"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_20sdp"
@@ -390,6 +390,42 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_width="0dp"
                 app:layout_constraintStart_toEndOf="@id/addImgV"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/addPTReservationImgV"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                app:srcCompat="@drawable/ic_squar_add"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                app:layout_constraintTop_toBottomOf="@id/upcomingPTReservationLabel"
+                app:layout_constraintEnd_toStartOf="@id/upcomingBookingRV"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+
+
+            <TextView
+                android:id="@+id/upcomingPTReservationLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upcoming PT Reservation"
+                android:textSize="@dimen/_16sdp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_margin="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/addImgV"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/upcomingPTReservationRV"
+                app:layout_constraintTop_toBottomOf="@id/upcomingPTReservationLabel"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_width="0dp"
+                app:layout_constraintStart_toEndOf="@id/addPTReservationImgV"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_height="wrap_content"/>
 
