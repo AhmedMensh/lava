@@ -2,125 +2,145 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/rect_sharp_corner_white"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/rect_sharp_corner_white">
 
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_cross" />
 
     <TextView
         android:id="@+id/invitationLabel"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20sdp"
-        android:text="Invitation"
-        android:textStyle="bold"
+        android:gravity="center"
+        android:text="@string/invitation_hint"
         android:textColor="@android:color/black"
         android:textSize="@dimen/_16sdp"
+
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".85" />
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_6sdp"
+        android:text="Your Friend Full Name"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@id/fullNameET"
+        app:layout_constraintStart_toStartOf="@id/fullNameET" />
 
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fullNameTI"
-        android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_marginTop="@dimen/_40sdp"
+    <EditText
+        android:id="@+id/fullNameET"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginBottom="@dimen/_30sdp"
+        android:background="@drawable/rect_sharp_corner_white"
+        android:drawableStart="@drawable/ic_email"
+        android:drawablePadding="@dimen/_10sdp"
+        android:elevation="@dimen/_2sdp"
+        android:hint="Your Friend Full Name"
+        android:inputType="phone"
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/invitationLabel"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxStrokeColor="@android:color/darker_gray"
-        app:boxStrokeWidth="@dimen/_1sdp"
-        app:hintEnabled="false"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:layout_height="@dimen/_45sdp">
+        app:layout_constraintWidth_percent=".88" />
+    <TextView
+        android:id="@+id/friendEmailAddressTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_6sdp"
+        android:text="Your Friend Email Address"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@id/friendEmailET"
+        app:layout_constraintStart_toStartOf="@id/friendEmailET" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fullNameET"
-            android:layout_width="match_parent"
-            android:hint="Full Name"
-            android:padding="@dimen/_6sdp"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:drawablePadding="@dimen/_8sdp" />
-    </com.google.android.material.textfield.TextInputLayout>
+    <EditText
+        android:id="@+id/friendEmailET"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginBottom="@dimen/_30sdp"
+        android:background="@drawable/rect_sharp_corner_white"
+        android:drawableStart="@drawable/ic_email"
+        android:drawablePadding="@dimen/_10sdp"
+        android:elevation="@dimen/_2sdp"
+        android:hint="Your Friend Email Address"
+        android:inputType="phone"
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fullNameET"
+        app:layout_constraintWidth_percent=".88" />
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/mobileNumberTI"
-        android:layout_width="match_parent"
-        android:gravity="center"
-        app:hintEnabled="false"
-        app:layout_constraintTop_toBottomOf="@id/fullNameTI"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxStrokeColor="@android:color/darker_gray"
-        app:boxStrokeWidth="@dimen/_1sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:layout_height="@dimen/_45sdp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_6sdp"
+        android:text="Your Friend Phone Number"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@id/friendPhoneEt"
+        app:layout_constraintStart_toStartOf="@id/friendPhoneEt" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/mobileNumberET"
-            android:layout_width="match_parent"
-            android:hint="Mobile Number"
-            android:padding="@dimen/_6sdp"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:drawablePadding="@dimen/_8sdp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailTI"
-        android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_marginTop="@dimen/_10sdp"
-        app:layout_constraintTop_toBottomOf="@id/mobileNumberTI"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxStrokeColor="@android:color/darker_gray"
-        app:boxStrokeWidth="@dimen/_1sdp"
-        app:hintEnabled="false"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:layout_height="@dimen/_45sdp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/sessionDurationTV"
-            android:layout_width="match_parent"
-            android:hint="Email"
-            android:padding="@dimen/_6sdp"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:drawablePadding="@dimen/_8sdp" />
-    </com.google.android.material.textfield.TextInputLayout>
+    <EditText
+        android:id="@+id/friendPhoneEt"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginBottom="@dimen/_30sdp"
+        android:background="@drawable/rect_sharp_corner_white"
+        android:drawableStart="@drawable/ic_phone"
+        android:drawablePadding="@dimen/_10sdp"
+        android:elevation="@dimen/_2sdp"
+        android:hint="Your Friend Phone Number"
+        android:inputType="phone"
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/friendEmailET"
+        app:layout_constraintWidth_percent=".88" />
 
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/sendBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:minWidth="@dimen/_150sdp"
-        android:text="Send"
-        android:textColor="@android:color/white"
+        android:id="@+id/backBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:backgroundTint="@color/white"
+        android:elevation="@dimen/_8sdp"
+        android:text="@string/back"
         android:textAllCaps="false"
-        android:layout_marginBottom="@dimen/_25sdp"
+        android:textColor="@color/colorPrimary"
         android:textSize="@dimen/_14sdp"
-        android:background="@drawable/button_orange_background"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_margin="@dimen/_40sdp"
-        app:layout_constraintTop_toBottomOf="@+id/emailTI"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintEnd_toStartOf="@id/sendBtn"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/friendPhoneEt"
+        app:layout_constraintWidth_percent=".42" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/sendBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/button_orange_background"
+        android:text="Send"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@id/backBtn"
+        app:layout_constraintTop_toBottomOf="@+id/friendPhoneEt"
+        app:layout_constraintWidth_percent=".42" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,4 +16,6 @@
     <string name="profile_info">Profile Info</string>
     <string name="contact_info">Contact Info</string>
     <string name="presence">Presence</string>
+    <string name="invitation_hint">Please enter your friend mobile number, he will receive an SMS invitation to enjoy our center</string>
+    <string name="back">Back</string>
 </resources>

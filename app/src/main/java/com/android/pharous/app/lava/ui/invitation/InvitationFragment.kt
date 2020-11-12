@@ -6,10 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 
@@ -22,19 +19,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 /**
  * A simple [Fragment] subclass.
  */
-class InvitationFragment : Fragment() {
+class InvitationFragment : Fragment(R.layout.fragment_invitation) {
 
     private val viewModel: InvitationViewModel by viewModel()
 
-    private var isItMailInvitation = false
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_invitation, container, false)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,33 +35,41 @@ class InvitationFragment : Fragment() {
         })
         mailInvitationTV.setOnClickListener {
 
-            isItMailInvitation = true
-            showInvitationDialog()
+            showInvitationDialog(true)
         }
 
         smsInvitationTV.setOnClickListener {
-            isItMailInvitation = false
+
             showInvitationDialog()
         }
     }
 
-    private fun showInvitationDialog() {
+    private fun showInvitationDialog(isItMailInvitation  : Boolean = false) {
 
         val builder = AlertDialog.Builder(context!!)
         val view = activity?.layoutInflater?.inflate(R.layout.dialog_invitation, null)
 
+        val mobileNumberET = view?.findViewById<EditText>(R.id.friendPhoneEt)
+        val emailET = view?.findViewById<EditText>(R.id.friendEmailET)
         val fullNameET = view?.findViewById<EditText>(R.id.fullNameET)
-        val mobileNumberET = view?.findViewById<EditText>(R.id.mobileNumberET)
-        val emailET = view?.findViewById<EditText>(R.id.emailET)
-        val emailTI = view?.findViewById<TextInputLayout>(R.id.emailTI)
+        val friendEmailAddressTV = view?.findViewById<TextView>(R.id.friendEmailAddressTV)
 
-        if (isItMailInvitation) emailTI?.visibility = View.VISIBLE
-        else emailTI?.visibility = View.GONE
+        if (isItMailInvitation) {
+            emailET?.visibility = View.VISIBLE
+            friendEmailAddressTV?.visibility = View.VISIBLE
+        }
+        else {
+            emailET?.visibility = View.GONE
+            friendEmailAddressTV?.visibility = View.GONE
+        }
 
 
 
         builder.setView(view)
         val dialog = builder.create()
+        view?.findViewById<Button>(R.id.backBtn)?.setOnClickListener {
+            dialog.dismiss()
+        }
         view?.findViewById<Button>(R.id.sendBtn)?.setOnClickListener {
 
             if (isItMailInvitation) {
@@ -87,6 +83,7 @@ class InvitationFragment : Fragment() {
                     it?.let {
                         dialog.dismiss()
                         Toast.makeText(context, it.result, Toast.LENGTH_LONG).show()
+                        showSuccessDialog()
                     }
                 })
             } else {
@@ -99,6 +96,7 @@ class InvitationFragment : Fragment() {
                     it?.let {
                         dialog.dismiss()
                         Toast.makeText(context, it.result, Toast.LENGTH_LONG).show()
+                        showSuccessDialog()
                     }
                 })
             }
@@ -108,4 +106,16 @@ class InvitationFragment : Fragment() {
         dialog.show()
     }
 
+    private fun showSuccessDialog(){
+
+        val builder = AlertDialog.Builder(context!!)
+        val view = activity?.layoutInflater?.inflate(R.layout.dialog_verifcation, null)
+
+
+        builder.setView(view)
+        val dialog = builder.create()
+
+        view?.findViewById<ImageView>(R.id.closeImgV)?.setOnClickListener { dialog.dismiss() }
+        dialog.show()
+    }
 }
