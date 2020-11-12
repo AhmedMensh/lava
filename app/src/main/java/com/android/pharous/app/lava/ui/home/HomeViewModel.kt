@@ -10,6 +10,7 @@ import com.android.pharous.app.lava.models.ExerciseReservationResponse
 import com.android.pharous.app.lava.models.MembershipInfoResponse
 import com.android.pharous.app.lava.models.ProfileResponse
 import com.android.pharous.app.lava.repositories.ILavaRepo
+import com.android.pharous.app.lava.ui.training.models.SessionResponse
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -19,16 +20,16 @@ class HomeViewModel(private val iLavaRepo: ILavaRepo) : ViewModel() {
     var error = MutableLiveData<String>()
     var isLoading = MutableLiveData<Boolean>()
 
-    fun getProfile() : LiveData<ProfileResponse>{
+    fun getProfile(): LiveData<ProfileResponse> {
 
         val data = MutableLiveData<ProfileResponse>()
 
         isLoading.value = true
         viewModelScope.launch {
 
-            when(val result = withContext(IO) { iLavaRepo.getProfile() }){
+            when (val result = withContext(IO) { iLavaRepo.getProfile() }) {
 
-                is DataResult.Success ->{
+                is DataResult.Success -> {
                     data.value = result.content
                     error.value = null
                     isLoading.value = false
@@ -44,13 +45,35 @@ class HomeViewModel(private val iLavaRepo: ILavaRepo) : ViewModel() {
         return data
     }
 
-    fun getMemberCardioPrograms() : LiveData<List<CardioProgramResponse>>{
+    fun getPersonalTrainingSessions(): LiveData<List<SessionResponse>> {
+
+        val data = MutableLiveData<List<SessionResponse>>()
+        isLoading.value = true
+        viewModelScope.launch {
+            when (val result = withContext(IO) { iLavaRepo.getPersonalTrainingSessions() }) {
+
+                is DataResult.Success -> {
+                    isLoading.value = false
+                    data.value = result.content
+                    error.value = null
+                }
+                is DataResult.Error -> {
+                    isLoading.value = false
+                    data.value = null
+                    error.value = result.exception.message
+                }
+            }
+        }
+        return data
+    }
+
+    fun getMemberCardioPrograms(): LiveData<List<CardioProgramResponse>> {
         val data = MutableLiveData<List<CardioProgramResponse>>()
 
         viewModelScope.launch {
-            when(val result = withContext(IO) { iLavaRepo.getMemberCardioPrograms()}){
+            when (val result = withContext(IO) { iLavaRepo.getMemberCardioPrograms() }) {
 
-                is DataResult.Success ->{
+                is DataResult.Success -> {
                     data.value = result.content
                     error.value = null
                 }
@@ -62,15 +85,16 @@ class HomeViewModel(private val iLavaRepo: ILavaRepo) : ViewModel() {
         }
         return data
     }
-    fun getExerciseReservations() : LiveData<List<ExerciseReservationResponse>>{
+
+    fun getExerciseReservations(): LiveData<List<ExerciseReservationResponse>> {
 
         val data = MutableLiveData<List<ExerciseReservationResponse>>()
 
         viewModelScope.launch {
 
-            when(val result = withContext(IO) { iLavaRepo.getExerciseReservations() }){
+            when (val result = withContext(IO) { iLavaRepo.getExerciseReservations() }) {
 
-                is DataResult.Success ->{
+                is DataResult.Success -> {
                     data.value = result.content
                     error.value = null
                 }
@@ -85,15 +109,15 @@ class HomeViewModel(private val iLavaRepo: ILavaRepo) : ViewModel() {
     }
 
 
-    fun updateReservations(id : String , canceled : String) : LiveData<String>{
+    fun updateReservations(id: String, canceled: String = "0",isAttended: String = "0"): LiveData<Boolean> {
 
-        val data = MutableLiveData<String>()
+        val data = MutableLiveData<Boolean>()
 
         viewModelScope.launch {
 
-            when(val result = withContext(IO) { iLavaRepo.updateReservation(id, canceled) }){
+            when (val result = withContext(IO) { iLavaRepo.updateReservation(id, canceled,isAttended) }) {
 
-                is DataResult.Success ->{
+                is DataResult.Success -> {
                     data.value = result.content
                     error.value = null
                 }
@@ -107,15 +131,47 @@ class HomeViewModel(private val iLavaRepo: ILavaRepo) : ViewModel() {
         return data
     }
 
-    fun getMembershipInfo() : LiveData<MembershipInfoResponse>{
+     fun updatePersonalTrainingReservation(
+        id: String,
+        canceled: String = "0",
+        isAttended: String = "0"
+    ): LiveData<Boolean> {
+
+        val data = MutableLiveData<Boolean>()
+
+        viewModelScope.launch {
+
+            when (val result = withContext(IO) {
+                iLavaRepo.updatePersonalTrainingReservation(
+                    id,
+                    canceled,
+                    isAttended
+                )
+            }) {
+
+                is DataResult.Success -> {
+                    data.value = result.content
+                    error.value = null
+                }
+
+                is DataResult.Error -> {
+                    data.value = null
+                    error.value = result.exception.message
+                }
+            }
+        }
+        return data
+    }
+
+    fun getMembershipInfo(): LiveData<MembershipInfoResponse> {
 
         val data = MutableLiveData<MembershipInfoResponse>()
 
         viewModelScope.launch {
 
-            when(val result = withContext(IO) { iLavaRepo.getMembershipInfo() }){
+            when (val result = withContext(IO) { iLavaRepo.getMembershipInfo() }) {
 
-                is DataResult.Success ->{
+                is DataResult.Success -> {
                     data.value = result.content
                     error.value = null
                 }

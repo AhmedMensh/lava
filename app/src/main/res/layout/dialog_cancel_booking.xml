@@ -36,6 +36,14 @@
         app:layout_constraintTop_toTopOf="@id/bookingImgV" />
 
     <TextView
+        android:id="@+id/trainerTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="@dimen/_14sdp"
+        app:layout_constraintTop_toBottomOf="@id/bookingImgV"
+        app:layout_constraintStart_toStartOf="@id/bookingImgV"/>
+    <TextView
         android:id="@+id/exerciseDurationTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,7 +60,7 @@
         android:background="@color/gray_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/exerciseDurationTV" />
+        app:layout_constraintTop_toBottomOf="@id/trainerTV" />
 
     <TextView
         android:id="@+id/exerciseDateTV"

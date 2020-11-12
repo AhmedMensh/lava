@@ -41,7 +41,8 @@ interface ApiService {
     suspend fun updateReservation(
         @Field("AccessToken") token: String,
         @Field("ID") id: String,
-        @Field("Canceled") canceled: String
+        @Field("Canceled") canceled: String,
+        @Field("IsAttended") isAttended: String
     ): ApiResponse<String>
 
 
@@ -55,32 +56,37 @@ interface ApiService {
     @GET("amtar-member-point/list-period")
     suspend fun getPackagePeriods(
         @Query("AccessToken") token: String,
-        @Query("PackageID") packageID: Int) : ApiResponse<Map<String, Int>>
+        @Query("PackageID") packageID: Int
+    ): ApiResponse<Map<String, Int>>
 
     @GET("amtar-member-point/package-detail")
     suspend fun getPackageDetails(
         @Query("AccessToken") token: String,
-        @Query("PeroidID") peroidID: Int) : ApiResponse<PackageDetailsResponse>
+        @Query("PeroidID") peroidID: Int
+    ): ApiResponse<PackageDetailsResponse>
 
 
     @GET("amtar-member-point/startdatecheck")
     suspend fun checkStartDate(
         @Query("AccessToken") token: String,
         @Query("PeriodID") peroidID: Int,
-        @Query("StartDate") StartDate : String) : ApiResponse<Boolean>
+        @Query("StartDate") StartDate: String
+    ): ApiResponse<Boolean>
 
     @FormUrlEncoded
     @POST("amtar-member-point/create-contract")
-    suspend fun createContract(@Field("AccessToken") token: String,
-                               @Field("PeriodID") peroidID: Int,
-                               @Field("BranchID") BranchID: Int,
-                               @Field("StartDate") StartDate : String) : ApiResponse<Boolean>
+    suspend fun createContract(
+        @Field("AccessToken") token: String,
+        @Field("PeriodID") peroidID: Int,
+        @Field("BranchID") BranchID: Int,
+        @Field("StartDate") StartDate: String
+    ): ApiResponse<Boolean>
 
     @GET("amtar-level/get-level")
-    suspend fun getTotalPoints(@Query("AccessToken") token: String) : ApiResponse<TotalPointResponse>
+    suspend fun getTotalPoints(@Query("AccessToken") token: String): ApiResponse<TotalPointResponse>
 
     @GET("amtar-earn-event/get-earn-history")
-    suspend fun getPointsHistory(@Query("AccessToken") token: String) : ApiResponse<List<PointHistoryResponse>>
+    suspend fun getPointsHistory(@Query("AccessToken") token: String): ApiResponse<List<PointHistoryResponse>>
 
     @GET("membership/index")
     suspend fun getMembershipInfo(@Query("AccessToken") token: String): ApiResponse<MembershipInfoResponse>
@@ -93,7 +99,16 @@ interface ApiService {
     suspend fun evaluateCardioProgram(@Body evaluateProgramRequest: EvaluateProgramRequest): ApiResponse<String>
 
     @GET("personal-training-reservations/view")
-    suspend fun getSessions(@Query("AccessToken") token: String): ApiResponse<List<SessionResponse>>
+    suspend fun getPersonalTrainingSessions(@Query("AccessToken") token: String): ApiResponse<List<SessionResponse>>
+
+    @FormUrlEncoded
+    @POST("personal-training-reservations/update")
+    suspend fun updatePersonalTrainingReservation(
+        @Field("AccessToken") token: String,
+        @Field("ID") id: String,
+        @Field("Canceled") canceled: String,
+        @Field("IsAttended") IsAttended: String
+    ) : ApiResponse<String>
 
     @GET("training/measurements")
     suspend fun getMemberMeasurements(@Query("AccessToken") token: String): ApiResponse<List<MemberMeasurementResponse>>

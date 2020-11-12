@@ -77,9 +77,9 @@ class LavaRepo(private val remoteDataSource: RemoteDataSource, private val conte
         }
     }
 
-    override suspend fun updateReservation(id: String, canceled: String): DataResult<String> {
-        return when (val result = remoteDataSource.updateReservation(token,id,canceled)) {
-            is DataResult.Success -> DataResult.Success(result.content)
+    override suspend fun updateReservation(id: String, canceled: String,isAttended: String): DataResult<Boolean> {
+        return when (val result = remoteDataSource.updateReservation(token,id,canceled,isAttended)) {
+            is DataResult.Success -> DataResult.Success(true)
             is DataResult.Error -> DataResult.Error(result.exception)
         }
     }
@@ -148,9 +148,20 @@ class LavaRepo(private val remoteDataSource: RemoteDataSource, private val conte
         }
     }
 
-    override suspend fun getSessions(): DataResult<List<SessionResponse>> {
-        return when (val result = remoteDataSource.getSessions(token)) {
+    override suspend fun getPersonalTrainingSessions(): DataResult<List<SessionResponse>> {
+        return when (val result = remoteDataSource.getPersonalTrainingSessions(token)) {
             is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
+
+    override suspend fun updatePersonalTrainingReservation(
+        id: String,
+        canceled: String,
+        IsAttended: String
+    ): DataResult<Boolean> {
+        return when (val result = remoteDataSource.updatePersonalTrainingReservation(token,id, canceled, IsAttended)) {
+            is DataResult.Success -> DataResult.Success(true)
             is DataResult.Error -> DataResult.Error(result.exception)
         }
     }

@@ -16,7 +16,7 @@ interface ILavaRepo {
     suspend fun verifyPhoneNumber(verificationCodeRequest: VerificationCodeRequest) : DataResult<LoginResponse>
     suspend fun getProfile() : DataResult<ProfileResponse>
     suspend fun getExerciseReservations() : DataResult<List<ExerciseReservationResponse>>
-    suspend fun updateReservation(id : String , canceled : String) : DataResult<String>
+    suspend fun updateReservation(id : String , canceled : String,isAttended: String) : DataResult<Boolean>
     suspend fun getBranches() :DataResult<List<BranchResponse>>
     suspend fun register(request: RegisterRequest) : DataResult<Boolean>
     suspend fun getMembershipInfo() : DataResult<MembershipInfoResponse>
@@ -25,7 +25,8 @@ interface ILavaRepo {
     suspend fun getMemberCardioPrograms() : DataResult<List<CardioProgramResponse>>
     suspend fun evaluateCardioProgram(evaluateProgramRequest: EvaluateProgramRequest) : DataResult<Boolean>
 
-    suspend fun getSessions() : DataResult<List<SessionResponse>>
+    suspend fun getPersonalTrainingSessions() : DataResult<List<SessionResponse>>
+    suspend fun updatePersonalTrainingReservation(id: String, canceled: String, IsAttended: String) : DataResult<Boolean>
     suspend fun getMemberMeasurements() : DataResult<List<MemberMeasurementResponse>>
     suspend fun getMemberInbodyResults() : DataResult<List<MemberInbodyresultResponse>>
     suspend fun getExerciseSchedules(searchName : String) : DataResult<List<ExerciseScheduleResponse>>

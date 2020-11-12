@@ -24,8 +24,8 @@ class RemoteDataSource(private val api: ApiService) {
     suspend fun getExerciseReservations(token: String) =
         safeApiCall { api.getExerciseReservations(token) }
 
-    suspend fun updateReservation(token: String, id: String, canceled: String) =
-        safeApiCall { api.updateReservation(token, id, canceled) }
+    suspend fun updateReservation(token: String, id: String, canceled: String,isAttended: String) =
+        safeApiCall { api.updateReservation(token, id, canceled,isAttended) }
 
     suspend fun getBranches(token: String) = safeApiCall { api.getBranches(token) }
 
@@ -48,8 +48,15 @@ class RemoteDataSource(private val api: ApiService) {
     suspend fun evaluateCardioProgram(evaluateProgramRequest: EvaluateProgramRequest) =
         safeApiCall { api.evaluateCardioProgram(evaluateProgramRequest) }
 
-    suspend fun getSessions(token: String) = safeApiCall { api.getSessions(token) }
+    suspend fun getPersonalTrainingSessions(token: String) =
+        safeApiCall { api.getPersonalTrainingSessions(token) }
 
+    suspend fun updatePersonalTrainingReservation(
+        token: String,
+        id: String,
+        canceled: String,
+        IsAttended: String
+    ) = safeApiCall { api.updatePersonalTrainingReservation(token, id, canceled, IsAttended) }
 
     suspend fun getMemberMeasurements(token: String) =
         safeApiCall { api.getMemberMeasurements(token) }
@@ -79,9 +86,18 @@ class RemoteDataSource(private val api: ApiService) {
     suspend fun getTotalPoints(token: String) = safeApiCall { api.getTotalPoints(token) }
     suspend fun getPointsHistory(token: String) = safeApiCall { api.getPointsHistory(token) }
 
-    suspend fun getBranchPackages(token: String, branchID: Int, type: Int) = safeApiCall { api.getBranchPackages(token, branchID, type) }
-    suspend fun getPackagePeriods(token: String, packageID: Int) = safeApiCall { api.getPackagePeriods(token, packageID) }
-    suspend fun getPackageDetails(token: String, peroidID: Int) = safeApiCall { api.getPackageDetails(token, peroidID) }
-    suspend fun checkStartDate(token: String, peroidID: Int , startDate : String) = safeApiCall { api.checkStartDate(token, peroidID,startDate) }
-    suspend fun createContract(token: String, peroidID: Int ,branchID: Int, startDate : String) = safeApiCall { api.createContract(token, peroidID,branchID,startDate) }
+    suspend fun getBranchPackages(token: String, branchID: Int, type: Int) =
+        safeApiCall { api.getBranchPackages(token, branchID, type) }
+
+    suspend fun getPackagePeriods(token: String, packageID: Int) =
+        safeApiCall { api.getPackagePeriods(token, packageID) }
+
+    suspend fun getPackageDetails(token: String, peroidID: Int) =
+        safeApiCall { api.getPackageDetails(token, peroidID) }
+
+    suspend fun checkStartDate(token: String, peroidID: Int, startDate: String) =
+        safeApiCall { api.checkStartDate(token, peroidID, startDate) }
+
+    suspend fun createContract(token: String, peroidID: Int, branchID: Int, startDate: String) =
+        safeApiCall { api.createContract(token, peroidID, branchID, startDate) }
 }

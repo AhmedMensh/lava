@@ -18,12 +18,12 @@ class TrainingViewModel(private val iLavaRepo: ILavaRepo) : ViewModel() {
     var error = MutableLiveData<String>()
     var isLoading = MutableLiveData<Boolean>()
 
-    fun getSessions() : LiveData<List<SessionResponse>>{
+    fun getPersonalTrainingSessions() : LiveData<List<SessionResponse>>{
 
         val data = MutableLiveData<List<SessionResponse>>()
         isLoading.value = true
         viewModelScope.launch {
-            when(val result = withContext(IO) { iLavaRepo.getSessions()}){
+            when(val result = withContext(IO) { iLavaRepo.getPersonalTrainingSessions()}){
 
                 is DataResult.Success -> {
                     isLoading.value = false

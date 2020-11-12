@@ -19,6 +19,7 @@ import androidx.navigation.fragment.findNavController
 import com.android.pharous.app.lava.R
 import com.android.pharous.app.lava.common.IItemClickListener
 import com.android.pharous.app.lava.models.ExerciseReservationResponse
+import com.android.pharous.app.lava.ui.training.models.SessionResponse
 import com.android.pharous.app.lava.ui.workout.models.BodybuildingProgramDetails
 import com.android.pharous.app.lava.ui.workout.models.CardioProgrameDetails
 import kotlinx.android.synthetic.main.activity_main.*
@@ -31,7 +32,7 @@ import java.util.ArrayList
  * A simple [Fragment] subclass.
  */
 class HomeFragment : Fragment(R.layout.fragment_home),
-    IItemClickListener<ExerciseReservationResponse> {
+    IItemClickListener<Any> {
 
     var cardioList = mutableListOf<CardioProgrameDetails>()
     var strengthList = mutableListOf<BodybuildingProgramDetails>()
@@ -40,7 +41,8 @@ class HomeFragment : Fragment(R.layout.fragment_home),
     private val viewModel: HomeViewModel by viewModel()
 //    private val viewModel: HomeViewModel by inject { parametersOf(this)  }
 
-    private val adapter: UpcomingBookingsAdapter by lazy { UpcomingBookingsAdapter(this) }
+    private val upcomingBookingsAdapter: UpcomingBookingsAdapter by lazy { UpcomingBookingsAdapter(this) }
+    private val personalTrainingSessionsAdapter: PersonalTrainingSessionsAdapter by lazy { PersonalTrainingSessionsAdapter(this) }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -49,7 +51,6 @@ class HomeFragment : Fragment(R.layout.fragment_home),
         swiperefresh.setOnRefreshListener {
             getProfile()
             getExerciseReservations()
-            getMemberShipInfo()
             getStepCounts()
             swiperefresh.isRefreshing = false
         }
@@ -90,9 +91,9 @@ class HomeFragment : Fragment(R.layout.fragment_home),
 
         getProfile()
         getExerciseReservations()
-        getMemberShipInfo()
         getStepCounts()
         getCaridoPrograms()
+        getPersonalTrainingSessions()
     }
 
     private fun getProfile() {
@@ -108,21 +109,33 @@ class HomeFragment : Fragment(R.layout.fragment_home),
         viewModel.getExerciseReservations().observe(viewLifecycleOwner, Observer {
 
             it?.let {
-                upcomingBookingRV.adapter = adapter
+                upcomingBookingRV.adapter = upcomingBookingsAdapter
                 upcomingBookingRV.setHasFixedSize(true)
-                adapter.submitList(it)
+                upcomingBookingsAdapter.submitList(it)
             }
         })
     }
 
-    private fun getMemberShipInfo() {
+    fun getPersonalTrainingSessions(){
 
-        viewModel.getMembershipInfo().observe(viewLifecycleOwner, Observer {
+        viewModel.getPersonalTrainingSessions().observe(viewLifecycleOwner, Observer {
+
             it?.let {
-
+                personalTrainingSessionsRV.adapter = personalTrainingSessionsAdapter
+                personalTrainingSessionsRV.setHasFixedSize(true)
+                personalTrainingSessionsAdapter.submitList(it)
             }
         })
     }
+
+//    private fun getMemberShipInfo() {
+//
+//        viewModel.getMembershipInfo().observe(viewLifecycleOwner, Observer {
+//            it?.let {
+//
+//            }
+//        })
+//    }
 
     private fun getCaridoPrograms() {
 
@@ -177,38 +190,79 @@ class HomeFragment : Fragment(R.layout.fragment_home),
 
     }
 
-    override fun onItemClick(item: ExerciseReservationResponse) {
+    override fun onItemClick(item: Any) {
 
-        showCancelBookingDialog(item)
+             showCancelBookingDialog(item)
+
     }
 
-    private fun showCancelBookingDialog(item: ExerciseReservationResponse) {
+    private fun showCancelBookingDialog(item: Any) {
 
-        Log.e("ID", "${item.iD}")
         var builder = AlertDialog.Builder(context!!)
         var view = activity?.layoutInflater?.inflate(R.layout.dialog_cancel_booking, null)
         builder.setView(view)
         var dialog = builder.create()
 
-        view?.findViewById<TextView>(R.id.exerciseNameTV)?.text = item.exerciseTitle
-        view?.findViewById<TextView>(R.id.exerciseDurationTV)?.text = "${item.duration} Min"
-        view?.findViewById<TextView>(R.id.exerciseDateTV)?.text = item.date
-        view?.findViewById<ImageView>(R.id.cancelImgV)?.setOnClickListener { dialog.dismiss() }
-        view?.findViewById<Button>(R.id.cancelReservationBtn)?.setOnClickListener {
+        when(item){
+            is ExerciseReservationResponse -> {
 
-            item.iD?.let { it1 ->
-                viewModel.updateReservations(it1, "1")
-                    .observe(viewLifecycleOwner, Observer {
+                view?.findViewById<TextView>(R.id.exerciseNameTV)?.text = item.exerciseTitle
+                view?.findViewById<TextView>(R.id.trainerTV)?.text = " Trainer : ${item.coachName}"
+                view?.findViewById<TextView>(R.id.exerciseDurationTV)?.text = "${item.duration} Min"
+                view?.findViewById<TextView>(R.id.exerciseDateTV)?.text = item.date
+                view?.findViewById<ImageView>(R.id.cancelImgV)?.setOnClickListener { dialog.dismiss() }
+                view?.findViewById<Button>(R.id.cancelReservationBtn)?.setOnClickListener {
 
-                        it?.let {
-                            Toast.makeText(
-                                context,
-                                "Reservation has been canceled",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    })
+                    item.iD?.let { it1 ->
+                        viewModel.updateReservations(it1, canceled = "1")
+                            .observe(viewLifecycleOwner, Observer {
+                                dialog.dismiss()
+                            })
+                    }
             }
+
+                view?.findViewById<Button>(R.id.presenceBtn)?.setOnClickListener {
+
+                    item.iD?.let { it1 ->
+                        viewModel.updateReservations(it1, isAttended = "1")
+                            .observe(viewLifecycleOwner, Observer {
+                                dialog.dismiss()
+                            })
+                    }
+                }
+        }
+            is SessionResponse -> {
+                view?.findViewById<TextView>(R.id.exerciseNameTV)?.text = item.serviceName
+                view?.findViewById<TextView>(R.id.exerciseDurationTV)?.text = "${item.time} Min"
+                view?.findViewById<TextView>(R.id.exerciseDateTV)?.text = item.date
+                view?.findViewById<TextView>(R.id.trainerTV)?.text = "Trainer : ${item.trainerName} "
+
+                view?.findViewById<ImageView>(R.id.cancelImgV)?.setOnClickListener { dialog.dismiss() }
+
+
+                view?.findViewById<Button>(R.id.cancelReservationBtn)?.setOnClickListener {
+
+                    item.iD?.let { it1 ->
+                        viewModel.updatePersonalTrainingReservation(id = it1,canceled =  "1")
+                            .observe(viewLifecycleOwner, Observer {
+                                dialog.dismiss()
+                            })
+                    }
+                }
+
+                view?.findViewById<Button>(R.id.presenceBtn)?.setOnClickListener {
+
+                    item.iD?.let { it1 ->
+                        viewModel.updatePersonalTrainingReservation(id = it1,isAttended =  "1")
+                            .observe(viewLifecycleOwner, Observer {
+
+                                dialog.dismiss()
+
+                            })
+                    }
+                }
+            }
+
         }
 
 

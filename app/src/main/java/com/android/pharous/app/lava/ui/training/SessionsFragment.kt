@@ -41,7 +41,7 @@ class SessionsFragment : Fragment(R.layout.fragment_sessions) , IItemClickListen
             }
         })
 
-        viewModel.getSessions().observe(viewLifecycleOwner , Observer {
+        viewModel.getPersonalTrainingSessions().observe(viewLifecycleOwner , Observer {
 
             it?.let {
                 sessionsRV.adapter = sessionsAdapter

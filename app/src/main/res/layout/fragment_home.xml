@@ -420,7 +420,7 @@
                 app:layout_constraintStart_toStartOf="parent"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/upcomingPTReservationRV"
+                android:id="@+id/personalTrainingSessionsRV"
                 app:layout_constraintTop_toBottomOf="@id/upcomingPTReservationLabel"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
