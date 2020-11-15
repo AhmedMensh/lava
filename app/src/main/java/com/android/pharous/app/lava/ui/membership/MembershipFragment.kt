@@ -13,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 
 import com.android.pharous.app.lava.R
 import com.android.pharous.app.lava.common.Constants
@@ -40,7 +41,7 @@ class MembershipFragment : Fragment(R.layout.fragment_membership) {
         }
         suspendBtn.setOnClickListener { checkMembershipSuspension() }
 
-
+        viewProfileTV.setOnClickListener { findNavController().navigate(R.id.action_membershipFragment_to_profileFragment) }
         viewModel.error.observe(viewLifecycleOwner, Observer {
 
                 it?.let {

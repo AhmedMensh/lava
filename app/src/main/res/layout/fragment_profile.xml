@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".2" />
+            app:layout_constraintGuide_percent=".1" />
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -67,16 +67,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/guidLine">
 
-            <TextView
-                android:id="@+id/profileInfoTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/profile_info"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_16sdp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+
 
             <LinearLayout
                 android:id="@+id/profileInfoLL"
@@ -87,7 +78,7 @@
                 android:gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/profileInfoTV">
+                app:layout_constraintTop_toTopOf="parent">
 
 
                 <EditText
@@ -102,8 +93,6 @@
                     android:drawablePadding="@dimen/_20sdp"
                     android:elevation="@dimen/_6sdp"
                     android:hint="User Name"
-
-                    android:inputType="phone"
                     android:padding="@dimen/_10sdp"
                     app:layout_constraintBottom_toTopOf="@id/countryTI"
                     app:layout_constraintEnd_toEndOf="parent"

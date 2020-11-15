@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.android.pharous.app.lava.R
+import com.android.pharous.app.lava.common.pickDateDialog
 import com.android.pharous.app.lava.models.ProfileRequest
 import com.android.pharous.app.lava.models.ProfileResponse
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -26,6 +27,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private var jobTitleId = -1
     private var branchId = -1
     private var nationalityId = -1
+    private var goalId = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,6 +40,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         getProfileInfo()
 
+        birthDayTI.setOnClickListener { pickDateDialog(birthDayTI) }
         saveBtn.setOnClickListener { updateProfile() }
     }
 
@@ -149,6 +152,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             )
 
             goalTV?.setAdapter(adapter)
+            goalTV.onItemClickListener = AdapterView.OnItemClickListener { _, _, poition, _ ->
+                goalId = (poition+1).toString()
+            }
 
         }
     }
@@ -222,7 +228,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             mobileNumber = phoneNumberET.text.toString()
             jobTitleID = jobTitleId.toString()
             language = languageTV.text.toString()
-            goal = goalTV.text.toString()
+            goal = goalId
 
         }
         viewModel.updateUserProfile(profileRequest).observe(viewLifecycleOwner, Observer {
