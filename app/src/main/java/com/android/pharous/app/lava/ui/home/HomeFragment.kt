@@ -25,7 +25,9 @@ import com.android.pharous.app.lava.ui.workout.models.CardioProgrameDetails
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_workout.*
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import java.util.ArrayList
 
 /**

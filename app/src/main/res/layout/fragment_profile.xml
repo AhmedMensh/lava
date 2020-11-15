@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.profile.ProfileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,404 +15,439 @@
             android:id="@+id/backGroundImgV"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_200sdp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/orange_dark"/>
+            android:background="@color/orange_dark"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/curveImgV"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_100sdp"
             android:scaleType="fitXY"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-
             android:tint="@color/orange_dark"
-            app:srcCompat="@drawable/ic_dot"
             app:layout_constraintBottom_toBottomOf="@id/backGroundImgV"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/backGroundImgV"
-            />
+            app:srcCompat="@drawable/ic_dot" />
 
         <TextView
             android:id="@+id/appBarTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My Profile"
-            android:textSize="@dimen/_14sdp"
-            android:textColor="@color/white"
             android:layout_marginTop="@dimen/_20sdp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="My Profile"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14sdp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/backArrowImgV"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
-            app:layout_constraintHorizontal_bias=".1"
-            app:layout_constraintEnd_toStartOf="@id/appBarTitle"
-            app:srcCompat="@drawable/ic_left_arrow"
             app:layout_constraintBottom_toBottomOf="@id/appBarTitle"
+            app:layout_constraintEnd_toStartOf="@id/appBarTitle"
+            app:layout_constraintHorizontal_bias=".1"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/appBarTitle"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:srcCompat="@drawable/ic_left_arrow" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_percent=".1"
-            android:orientation="horizontal"/>
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".2" />
 
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/guidLine">
 
+            <TextView
+                android:id="@+id/profileInfoTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_info"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
+                android:id="@+id/profileInfoLL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/guidLine">
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profileInfoTV">
 
-                <TextView
-                    android:id="@+id/profileInfoTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/profile_info"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/_16sdp"
-                    android:textStyle="bold"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
 
-                <LinearLayout
-                    android:id="@+id/profileInfoLL"
+                <EditText
+                    android:id="@+id/userNameET"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:orientation="vertical"
-                    app:layout_constraintTop_toBottomOf="@id/profileInfoTV"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@drawable/rect_sharp_corner_white"
+                    android:drawableStart="@drawable/ic_user"
+                    android:drawablePadding="@dimen/_20sdp"
+                    android:elevation="@dimen/_6sdp"
+                    android:hint="User Name"
+
+                    android:inputType="phone"
+                    android:padding="@dimen/_10sdp"
+                    app:layout_constraintBottom_toTopOf="@id/countryTI"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/signInLabel" />
 
 
-
-                    <EditText
-                        android:id="@+id/userNameET"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_45sdp"
-                        android:layout_marginStart="@dimen/_20sdp"
-                        android:layout_marginEnd="@dimen/_20sdp"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:background="@drawable/rect_sharp_corner_off_white"
-                        android:drawableStart="@drawable/ic_user"
-                        android:drawablePadding="@dimen/_20sdp"
-                        android:elevation="@dimen/_2sdp"
-                        android:hint="User Name"
-                        android:drawableEnd="@drawable/ic_pencil"
-                        android:inputType="phone"
-                        android:padding="@dimen/_10sdp"
-                        app:layout_constraintBottom_toTopOf="@id/emailET"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/signInLabel" />
-
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/countryTI"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_45sdp"
-                        android:layout_marginStart="@dimen/_20sdp"
-                        android:layout_marginTop="@dimen/_6sdp"
-                        android:layout_marginEnd="@dimen/_20sdp"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:background="@drawable/rect_sharp_corner_off_white"
-                        android:elevation="@dimen/_6sdp"
-                        android:gravity="center"
-                        app:boxStrokeColor="@android:color/white"
-                        app:boxStrokeWidth="@dimen/_1sdp"
-                        app:hintEnabled="false"
-                        app:layout_constraintBottom_toTopOf="@id/signUpBtn"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/phoneNumberET">
-
-                        <AutoCompleteTextView
-                            android:id="@+id/countryTV"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:backgroundTint="@color/white"
-                            android:drawableStart="@drawable/ic_pin"
-                            android:drawablePadding="@dimen/_8sdp"
-                            android:editable="false"
-                            android:hint="Choose your city"
-                            android:padding="@dimen/_6sdp" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/cityTI"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_45sdp"
-                        android:layout_marginStart="@dimen/_20sdp"
-                        android:layout_marginTop="@dimen/_6sdp"
-                        android:layout_marginEnd="@dimen/_20sdp"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:background="@drawable/rect_sharp_corner_off_white"
-                        android:elevation="@dimen/_6sdp"
-                        android:gravity="center"
-                        app:boxStrokeColor="@android:color/white"
-                        app:boxStrokeWidth="@dimen/_1sdp"
-                        app:hintEnabled="false"
-                        app:layout_constraintBottom_toTopOf="@id/signUpBtn"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/phoneNumberET">
-
-                        <AutoCompleteTextView
-                            android:id="@+id/cityTV"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:backgroundTint="@color/white"
-                            android:drawableStart="@drawable/ic_pin"
-                            android:drawablePadding="@dimen/_8sdp"
-                            android:editable="false"
-                            android:hint="Choose your city"
-                            android:padding="@dimen/_6sdp" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <EditText
-                        android:id="@+id/mobileET"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_45sdp"
-                        android:layout_marginStart="@dimen/_20sdp"
-                        android:layout_marginEnd="@dimen/_20sdp"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:background="@drawable/rect_sharp_corner_off_white"
-                        android:drawableStart="@drawable/ic_phone"
-                        android:drawablePadding="@dimen/_20sdp"
-                        android:elevation="@dimen/_2sdp"
-                        android:hint="0512345678"
-                        android:inputType="textEmailAddress"
-                        android:padding="@dimen/_10sdp"
-                        app:layout_constraintBottom_toTopOf="@id/phoneNumberET"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/userNameET" />
-
-
-                    <TextView
-                        android:id="@+id/birthDayTI"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_45sdp"
-                        android:layout_marginStart="@dimen/_20sdp"
-                        android:layout_marginTop="@dimen/_6sdp"
-                        android:layout_marginEnd="@dimen/_20sdp"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:background="@drawable/rect_sharp_corner_off_white"
-                        android:elevation="@dimen/_6sdp"
-                        android:gravity="center"
-                        app:boxStrokeColor="@android:color/white"
-                        app:boxStrokeWidth="@dimen/_1sdp"
-                        app:hintEnabled="false"
-                        android:paddingStart="@dimen/_10sdp"
-                        android:paddingEnd="@dimen/_10sdp"
-                        android:drawableStart="@drawable/ic_calendar"
-                        app:layout_constraintBottom_toTopOf="@id/signUpBtn"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/phoneNumberET"/>
-
-
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_45sdp"
-                        android:layout_marginStart="@dimen/_20sdp"
-                        android:layout_marginTop="@dimen/_6sdp"
-                        android:layout_marginEnd="@dimen/_20sdp"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:background="@drawable/rect_sharp_corner_off_white"
-                        android:elevation="@dimen/_6sdp"
-                        android:gravity="center"
-                        app:boxStrokeColor="@android:color/white"
-                        app:boxStrokeWidth="@dimen/_1sdp"
-                        app:hintEnabled="false"
-                        app:layout_constraintBottom_toTopOf="@id/signUpBtn"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/phoneNumberET">
-
-                        <AutoCompleteTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:backgroundTint="@color/white"
-                            android:drawableStart="@drawable/ic_pin"
-                            android:drawablePadding="@dimen/_8sdp"
-                            android:editable="false"
-                            android:hint="Single"
-                            android:padding="@dimen/_6sdp" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/contactInfoTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/contact_info"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/_16sdp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    app:layout_constraintTop_toBottomOf="@+id/profileInfoLL"
-                    app:layout_constraintStart_toStartOf="parent"/>
-
-                <LinearLayout
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/countryTI"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    app:elevation="@dimen/_6sdp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/white"
                     android:gravity="center"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    app:layout_constraintTop_toBottomOf="@+id/contactInfoTV"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxStrokeColor="@android:color/white"
+                    app:boxStrokeWidth="@dimen/_1sdp"
+                    app:hintEnabled="false"
+                    app:layout_constraintBottom_toTopOf="@id/cityTI"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/userNameET">
 
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <AutoCompleteTextView
+                        android:id="@+id/countryTV"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_60sdp">
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/white"
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Change"
-                            android:elevation="@dimen/_23sdp"
-                            android:textSize="@dimen/_16sdp"
-                            android:textColor="@android:color/darker_gray"
-                            app:layout_constraintHorizontal_bias=".85"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            android:gravity="center"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="@dimen/_20sdp"
-                            android:layout_marginEnd="@dimen/_20sdp"
-                            android:layout_marginBottom="@dimen/_10sdp"
-                            android:background="@drawable/rect_sharp_corner_off_white"
-                            android:drawableStart="@drawable/ic_phone"
-                            android:drawablePadding="@dimen/_20sdp"
-                            android:elevation="@dimen/_2sdp"
-                            android:hint="0512345678"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            android:inputType="textEmailAddress"
-                            android:padding="@dimen/_10sdp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"/>
+                        android:drawableStart="@drawable/ic_pin"
+                        android:drawablePadding="@dimen/_8sdp"
+                        android:editable="false"
+                        android:hint="Choose your city"
+                        android:padding="@dimen/_6sdp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/cityTI"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:elevation="@dimen/_6sdp"
+                    android:gravity="center"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxStrokeColor="@android:color/white"
+                    app:boxStrokeWidth="@dimen/_1sdp"
+                    app:hintEnabled="false"
+                    app:layout_constraintBottom_toTopOf="@id/identityTV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/countryTI">
 
-                    <EditText
-                        android:id="@+id/emailET"
+                    <AutoCompleteTextView
+                        android:id="@+id/cityTV"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_45sdp"
-                        android:layout_marginStart="@dimen/_20sdp"
-                        android:layout_marginEnd="@dimen/_20sdp"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:background="@drawable/rect_sharp_corner_off_white"
-                        android:drawableStart="@drawable/ic_email"
-                        android:drawablePadding="@dimen/_20sdp"
-                        android:elevation="@dimen/_2sdp"
-                        android:hint="a@e.com"
-                        android:drawableEnd="@drawable/ic_pencil"
-                        android:inputType="textEmailAddress"
-                        android:padding="@dimen/_10sdp"
-                        app:layout_constraintBottom_toTopOf="@id/emailET"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/signInLabel" />
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/white"
+                        android:drawableStart="@drawable/ic_pin"
+                        android:drawablePadding="@dimen/_8sdp"
+                        android:editable="false"
+                        android:hint="Choose your city"
+                        android:padding="@dimen/_6sdp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/identityTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@drawable/rect_sharp_corner_white"
+                    android:drawableStart="@drawable/ic_phone"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:elevation="@dimen/_6sdp"
+                    android:hint="0512345678"
+                    android:gravity="center|start"
+                    android:inputType="textEmailAddress"
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toTopOf="@id/birthDayTI"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cityTI" />
 
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                <TextView
+                    android:id="@+id/birthDayTI"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@drawable/rect_sharp_corner_white"
+                    android:drawableStart="@drawable/ic_calendar"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:elevation="@dimen/_6sdp"
+                    android:gravity="center|start"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    app:boxStrokeColor="@android:color/white"
+                    app:boxStrokeWidth="@dimen/_1sdp"
+                    app:hintEnabled="false"
+                    app:layout_constraintBottom_toTopOf="@id/phoneNumberET"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/identityTV" />
+
+
+                <EditText
+                    android:id="@+id/phoneNumberET"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@drawable/rect_sharp_corner_white"
+                    android:drawableStart="@drawable/ic_phone"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:elevation="@dimen/_6sdp"
+                    android:hint="0512345678"
+                    android:inputType="phone"
+                    android:padding="@dimen/_10sdp"
+                    app:layout_constraintBottom_toTopOf="@id/emergencyPhoneET"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/birthDayTI" />
+
+                <EditText
+                    android:id="@+id/emergencyPhoneET"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@drawable/rect_sharp_corner_white"
+                    android:drawableStart="@drawable/ic_phone"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:elevation="@dimen/_6sdp"
+                    android:hint="0512345678"
+                    android:inputType="phone"
+                    android:padding="@dimen/_10sdp"
+                    app:layout_constraintBottom_toTopOf="@id/emailET"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/phoneNumberET" />
+
+
+                <EditText
+                    android:id="@+id/emailET"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@drawable/rect_sharp_corner_white"
+                    android:drawableStart="@drawable/ic_email"
+                    android:drawablePadding="@dimen/_20sdp"
+                    android:elevation="@dimen/_6sdp"
+                    android:hint="a@e.com"
+                    android:inputType="textEmailAddress"
+                    android:padding="@dimen/_10sdp"
+                    app:layout_constraintBottom_toTopOf="@id/jobTitleET"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/emergencyPhoneET" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/jobTitleET"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:elevation="@dimen/_6sdp"
+                    android:gravity="center"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxStrokeColor="@android:color/white"
+                    app:boxStrokeWidth="@dimen/_1sdp"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/emailET">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/jobTitleTV"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_45sdp"
-                        android:layout_marginStart="@dimen/_20sdp"
-                        android:layout_marginTop="@dimen/_6sdp"
-                        android:layout_marginEnd="@dimen/_20sdp"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:background="@drawable/rect_sharp_corner_off_white"
-                        android:elevation="@dimen/_6sdp"
-                        android:gravity="center"
-                        app:boxStrokeColor="@android:color/white"
-                        app:boxStrokeWidth="@dimen/_1sdp"
-                        app:hintEnabled="false"
-                        app:layout_constraintBottom_toTopOf="@id/signUpBtn"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/phoneNumberET">
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/white"
+                        android:drawableStart="@drawable/ic_pin"
+                        android:drawablePadding="@dimen/_8sdp"
+                        android:editable="false"
+                        android:hint="Choose your Job"
+                        android:padding="@dimen/_6sdp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <AutoCompleteTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:backgroundTint="@color/white"
-                            android:drawableStart="@drawable/ic_pin"
-                            android:drawablePadding="@dimen/_8sdp"
-                            android:editable="false"
-                            android:hint="Single"
-                            android:padding="@dimen/_6sdp" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/branchET"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:elevation="@dimen/_6sdp"
+                    android:gravity="center"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxStrokeColor="@android:color/white"
+                    app:boxStrokeWidth="@dimen/_1sdp"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/emailET">
 
-
-
-                    <EditText
-                        android:id="@+id/addressET"
+                    <AutoCompleteTextView
+                        android:id="@+id/branchTV"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_45sdp"
-                        android:layout_marginStart="@dimen/_20sdp"
-                        android:layout_marginEnd="@dimen/_20sdp"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:background="@drawable/rect_sharp_corner_off_white"
-                        android:drawableStart="@drawable/ic_email"
-                        android:drawablePadding="@dimen/_20sdp"
-                        android:elevation="@dimen/_2sdp"
-                        android:hint="a@e.com"
-                        android:drawableEnd="@drawable/ic_pencil"
-                        android:inputType="textEmailAddress"
-                        android:padding="@dimen/_10sdp"
-                        app:layout_constraintBottom_toTopOf="@id/emailET"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/signInLabel" />
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/white"
+                        android:drawableStart="@drawable/ic_pin"
+                        android:drawablePadding="@dimen/_8sdp"
+                        android:editable="false"
+                        android:hint="Choose your Job"
+                        android:padding="@dimen/_6sdp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:elevation="@dimen/_6sdp"
+                    android:gravity="center"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxStrokeColor="@android:color/white"
+                    app:boxStrokeWidth="@dimen/_1sdp"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/emailET">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/nationalityTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/white"
+                        android:drawableStart="@drawable/ic_pin"
+                        android:drawablePadding="@dimen/_8sdp"
+                        android:editable="false"
+                        android:hint="Choose your Job"
+                        android:padding="@dimen/_6sdp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
 
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/saveBtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_20sdp"
-                        android:layout_marginBottom="@dimen/_30sdp"
-                        android:background="@drawable/button_orange_background"
-                        android:minWidth="@dimen/_150sdp"
-                        android:text="Save Changes"
-                        android:textAllCaps="false"
-                        android:textColor="@android:color/white"
-                        android:textSize="@dimen/_14sdp"
-                        app:layout_constraintBottom_toTopOf="@id/haveAccountLabel"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cityTI" />
 
-                </LinearLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/goalET"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:elevation="@dimen/_6sdp"
+                    android:gravity="center"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxStrokeColor="@android:color/white"
+                    app:boxStrokeWidth="@dimen/_1sdp"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/emailET">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <AutoCompleteTextView
+                        android:id="@+id/goalTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/white"
+                        android:drawableStart="@drawable/ic_pin"
+                        android:drawablePadding="@dimen/_8sdp"
+                        android:editable="false"
+                        android:hint="Choose your Job"
+                        android:padding="@dimen/_6sdp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/languageET"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:elevation="@dimen/_6sdp"
+                    android:gravity="center"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxStrokeColor="@android:color/white"
+                    app:boxStrokeWidth="@dimen/_1sdp"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/emailET">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/languageTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/white"
+                        android:drawableStart="@drawable/ic_pin"
+                        android:drawablePadding="@dimen/_8sdp"
+                        android:editable="false"
+                        android:hint="Choose your Job"
+                        android:padding="@dimen/_6sdp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
