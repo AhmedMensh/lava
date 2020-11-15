@@ -18,6 +18,16 @@ interface ApiService {
     @GET("city/index")
     suspend fun getCities(): ApiResponse<List<CityResponse>>
 
+    @GET("region/index")
+    suspend fun getRegions(@Query("AccessToken") token: String): ApiResponse<List<RegionResponse>>
+
+    @GET("nationality/index")
+    suspend fun getNationalities(@Query("AccessToken") token: String): ApiResponse<List<NationalityResponse>>
+
+
+    @GET("job-title/index")
+    suspend fun getJobTitles(@Query("AccessToken") token: String): ApiResponse<List<JobResponse>>
+
 
     @FormUrlEncoded
     @POST("user/login")
@@ -31,6 +41,10 @@ interface ApiService {
 
     @GET("user/profile")
     suspend fun getProfile(@Query("AccessToken") token: String): ApiResponse<ProfileResponse>
+
+
+    @POST("user/update")
+    suspend fun updateUserProfile(@Body profileRequest: ProfileRequest) : ApiResponse<List<String>>
 
     @GET("exercise/view")
     suspend fun getExerciseReservations(@Query("AccessToken") token: String)

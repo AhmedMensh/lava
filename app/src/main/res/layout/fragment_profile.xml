@@ -84,6 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:orientation="vertical"
+                android:gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/profileInfoTV">
@@ -119,13 +120,13 @@
                     android:layout_marginTop="@dimen/_6sdp"
                     android:layout_marginEnd="@dimen/_20sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    app:elevation="@dimen/_6sdp"
                     android:background="@color/white"
                     android:backgroundTint="@color/white"
                     android:gravity="center"
                     app:boxBackgroundColor="@color/white"
                     app:boxStrokeColor="@android:color/white"
                     app:boxStrokeWidth="@dimen/_1sdp"
+                    app:elevation="@dimen/_6sdp"
                     app:hintEnabled="false"
                     app:layout_constraintBottom_toTopOf="@id/cityTI"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -190,8 +191,8 @@
                     android:drawableStart="@drawable/ic_phone"
                     android:drawablePadding="@dimen/_10sdp"
                     android:elevation="@dimen/_6sdp"
-                    android:hint="0512345678"
                     android:gravity="center|start"
+                    android:hint="0512345678"
                     android:inputType="textEmailAddress"
                     android:padding="@dimen/_10sdp"
                     android:textColor="@android:color/black"
@@ -378,8 +379,6 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
-
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/goalET"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
@@ -444,6 +443,21 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/saveBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_30sdp"
+                    android:background="@drawable/button_orange_background"
+                    android:gravity="center"
+                    android:minWidth="@dimen/_150sdp"
+                    android:text="Save"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_14sdp"
+                    app:layout_constraintBottom_toTopOf="@id/dontHaveAccountLabel"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
             </LinearLayout>
 
 

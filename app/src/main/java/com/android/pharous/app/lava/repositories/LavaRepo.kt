@@ -25,6 +25,27 @@ class LavaRepo(private val remoteDataSource: RemoteDataSource, private val conte
 
     }
 
+    override suspend fun getRegions(): DataResult<List<RegionResponse>> {
+        return when (val result = remoteDataSource.getRegions(token)) {
+            is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
+
+    override suspend fun getNationalities(): DataResult<List<NationalityResponse>> {
+        return when (val result = remoteDataSource.getNationalities(token)) {
+            is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
+
+    override suspend fun getJobTitles(): DataResult<List<JobResponse>> {
+        return when (val result = remoteDataSource.getJobTitles(token)) {
+            is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
+
     override suspend fun userLogin(mobileNumber: String): DataResult<LoginResponse> {
 
         return when (val result = remoteDataSource.userLogin(mobileNumber)) {
@@ -65,6 +86,15 @@ class LavaRepo(private val remoteDataSource: RemoteDataSource, private val conte
                 )
                 DataResult.Success(result.content)
             }
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
+
+    override suspend fun updateUserProfile(profileRequest: ProfileRequest): DataResult<Boolean> {
+
+        profileRequest.accessToken = token
+        return when (val result = remoteDataSource.updateUserProfile(profileRequest)) {
+            is DataResult.Success -> DataResult.Success(true)
             is DataResult.Error -> DataResult.Error(result.exception)
         }
     }

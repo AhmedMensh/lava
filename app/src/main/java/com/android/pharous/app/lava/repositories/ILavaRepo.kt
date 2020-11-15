@@ -2,6 +2,7 @@ package com.android.pharous.app.lava.repositories
 
 import com.android.pharous.app.lava.ui.workout.models.CardioProgramResponse
 import com.android.pharous.app.lava.models.*
+import com.android.pharous.app.lava.network.safeApiCall
 import com.android.pharous.app.lava.ui.measurement.MemberInbodyresultResponse
 import com.android.pharous.app.lava.ui.measurement.MemberMeasurementResponse
 import com.android.pharous.app.lava.ui.training.models.ExerciseScheduleResponse
@@ -11,9 +12,13 @@ import com.android.pharous.app.lava.ui.workout.models.EvaluateProgramRequest
 interface ILavaRepo {
 
     suspend fun getCities() : DataResult<List<CityResponse>>
+    suspend fun getRegions() : DataResult<List<RegionResponse>>
+    suspend fun getNationalities() : DataResult<List<NationalityResponse>>
+    suspend fun getJobTitles() : DataResult<List<JobResponse>>
     suspend fun userLogin(mobileNumber : String) : DataResult<LoginResponse>
     suspend fun verifyPhoneNumber(verificationCodeRequest: VerificationCodeRequest) : DataResult<LoginResponse>
     suspend fun getProfile() : DataResult<ProfileResponse>
+    suspend fun updateUserProfile(profileRequest: ProfileRequest) : DataResult<Boolean>
     suspend fun getExerciseReservations() : DataResult<List<ExerciseReservationResponse>>
     suspend fun updateReservation(id : String , canceled : String,isAttended: String) : DataResult<Boolean>
     suspend fun getBranches() :DataResult<List<BranchResponse>>

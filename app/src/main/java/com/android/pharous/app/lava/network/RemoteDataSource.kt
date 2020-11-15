@@ -1,9 +1,10 @@
 package com.android.pharous.app.lava.network
 
-import com.android.pharous.app.lava.models.RegisterRequest
-import com.android.pharous.app.lava.models.VerificationCodeRequest
+import com.android.pharous.app.lava.models.*
 import com.android.pharous.app.lava.ui.workout.models.EvaluateProgramRequest
+import retrofit2.http.Body
 import retrofit2.http.Field
+import retrofit2.http.GET
 import retrofit2.http.Query
 
 
@@ -11,6 +12,11 @@ class RemoteDataSource(private val api: ApiService) {
 
 
     suspend fun getCities() = safeApiCall { api.getCities() }
+    suspend fun getRegions(token: String) = safeApiCall { api.getRegions(token) }
+    suspend fun getNationalities(token: String) = safeApiCall { api.getNationalities(token) }
+    suspend fun getJobTitles(token: String) = safeApiCall { api.getJobTitles(token) }
+
+
     suspend fun userLogin(mobileNumber: String) = safeApiCall { api.userLogin(mobileNumber) }
 
 
@@ -21,11 +27,12 @@ class RemoteDataSource(private val api: ApiService) {
     }
 
     suspend fun getProfile(token: String) = safeApiCall { api.getProfile(token) }
+    suspend fun updateUserProfile(profileRequest: ProfileRequest) = safeApiCall { api.updateUserProfile(profileRequest) }
     suspend fun getExerciseReservations(token: String) =
         safeApiCall { api.getExerciseReservations(token) }
 
-    suspend fun updateReservation(token: String, id: String, canceled: String,isAttended: String) =
-        safeApiCall { api.updateReservation(token, id, canceled,isAttended) }
+    suspend fun updateReservation(token: String, id: String, canceled: String, isAttended: String) =
+        safeApiCall { api.updateReservation(token, id, canceled, isAttended) }
 
     suspend fun getBranches(token: String) = safeApiCall { api.getBranches(token) }
 
