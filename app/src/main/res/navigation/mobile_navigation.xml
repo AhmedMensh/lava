@@ -58,8 +58,15 @@
     <fragment
         android:id="@+id/measurementHistoryFragment"
         android:name="com.android.pharous.app.lava.ui.measurementHistory.MeasurementHistoryFragment"
-        tools:layout="@layout/fragment_measurement_history" />
+        tools:layout="@layout/fragment_measurement_history">
 
+        <action android:id="@+id/action_measurementHistoryFragment_to_editMeasuremntFragment"
+            app:destination="@id/editMeasuremntFragment"/>
+    </fragment>
+
+    <fragment android:id="@+id/editMeasuremntFragment"
+        android:name="com.android.pharous.app.lava.ui.measurementHistory.EditMeasurementFragment"
+        tools:layout="@layout/fragment_edit_measurement"/>
     <fragment
         android:id="@+id/phoneVerificationFragment"
         android:name="com.android.pharous.app.lava.ui.auth.phoneVerification.PhoneVerificationFragment"

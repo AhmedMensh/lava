@@ -46,6 +46,9 @@ interface ApiService {
     @POST("user/update")
     suspend fun updateUserProfile(@Body profileRequest: ProfileRequest) : ApiResponse<List<String>>
 
+    @POST("training/add-inbody-result")
+    suspend fun updateInbodyResult(@Body inbodyResultRequest: InbodyResultRequest) : ApiResponse<String>
+
     @GET("exercise/view")
     suspend fun getExerciseReservations(@Query("AccessToken") token: String)
             : ApiResponse<List<ExerciseReservationResponse>>

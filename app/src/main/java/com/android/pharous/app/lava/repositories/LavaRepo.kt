@@ -303,4 +303,12 @@ class LavaRepo(private val remoteDataSource: RemoteDataSource, private val conte
             is DataResult.Error -> DataResult.Error(result.exception)
         }
     }
+
+    override suspend fun updateInbodyResult(inbodyResultRequest: InbodyResultRequest): DataResult<Boolean> {
+        inbodyResultRequest.accessToken = token
+        return when (val result = remoteDataSource.updateInbodyResult(inbodyResultRequest)) {
+            is DataResult.Success -> DataResult.Success(true)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
 }

@@ -43,4 +43,5 @@ interface ILavaRepo {
     suspend fun getPackageDetails(peroidID: Int) : DataResult<PackageDetailsResponse>
     suspend fun checkStartDate(peroidID: Int , startDate : String) : DataResult<Boolean>
     suspend fun createContract(peroidID: Int ,branchID: Int, startDate : String) : DataResult<Boolean>
+    suspend fun updateInbodyResult(inbodyResultRequest: InbodyResultRequest)  : DataResult<Boolean>
 }

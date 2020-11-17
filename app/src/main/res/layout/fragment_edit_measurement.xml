@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    tools:context=".ui.measurementHistory.EditMeasurementFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/colorPrimary">
+
+            <ImageView
+                android:id="@+id/backImgV"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                app:srcCompat="@drawable/ic_left_arrow"
+                app:layout_constraintHorizontal_bias=".08"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add New Result"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/waterTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:text="Water"
+
+            android:textSize="@dimen/_14sdp" />
+
+        <EditText
+            android:id="@+id/waterEt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            android:elevation="@dimen/_6sdp"
+            android:hint="Water Measurement Value"
+            android:inputType="number"
+            android:padding="@dimen/_10sdp" />
+
+        <TextView
+            android:id="@+id/fatTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:text="Fat"
+            android:textSize="@dimen/_14sdp" />
+
+
+        <EditText
+            android:id="@+id/fatEt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            android:elevation="@dimen/_6sdp"
+            android:hint="Fat Measurement Value"
+            android:inputType="number"
+            android:padding="@dimen/_10sdp" />
+
+
+        <TextView
+            android:id="@+id/fatControlTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:text="Fat Control"
+            android:textSize="@dimen/_14sdp" />
+
+        <EditText
+            android:id="@+id/fatControlEt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            android:elevation="@dimen/_6sdp"
+            android:hint="Fat Control Measurement Value"
+            android:inputType="number"
+            android:padding="@dimen/_10sdp" />
+
+        <TextView
+            android:id="@+id/fatLevelTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:text="Fat Level"
+            android:textSize="@dimen/_14sdp" />
+
+        <EditText
+            android:id="@+id/fatLevelEt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            android:elevation="@dimen/_6sdp"
+            android:hint="Fat Level Measurement Value"
+            android:inputType="number"
+            android:padding="@dimen/_10sdp" />
+        <TextView
+            android:id="@+id/bodyFatPercentTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:text="Body Fat Percent"
+            android:textSize="@dimen/_14sdp" />
+
+        <EditText
+            android:id="@+id/bodyFatPercentET"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            android:elevation="@dimen/_6sdp"
+            android:hint="BodyFatPercent Measurement Value"
+            android:inputType="number"
+            android:padding="@dimen/_10sdp" />
+
+        <TextView
+            android:id="@+id/smmTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:text="SMM"
+            android:textSize="@dimen/_14sdp" />
+
+
+        <EditText
+            android:id="@+id/smmEt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            android:elevation="@dimen/_6sdp"
+            android:hint="SMM Measurement Value"
+            android:inputType="number"
+            android:padding="@dimen/_10sdp" />
+
+        <TextView
+            android:id="@+id/weightTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:text="Weight"
+            android:textSize="@dimen/_14sdp" />
+
+        <EditText
+            android:id="@+id/weightEt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            android:elevation="@dimen/_6sdp"
+            android:hint="Weight Measurement Value"
+            android:inputType="number"
+            android:padding="@dimen/_10sdp" />
+
+        <TextView
+            android:id="@+id/targetWeightTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:text="Target Weight"
+            android:textSize="@dimen/_14sdp" />
+
+
+        <EditText
+            android:id="@+id/targetWeightEt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            android:elevation="@dimen/_6sdp"
+            android:hint="Target Weight Measurement Value"
+            android:inputType="number"
+            android:padding="@dimen/_10sdp" />
+
+        <TextView
+            android:id="@+id/weightControlTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:text="Weight Control"
+            android:textSize="@dimen/_14sdp" />
+
+        <EditText
+            android:id="@+id/weightControlEt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            android:elevation="@dimen/_6sdp"
+            android:hint="Weight Control Measurement Value"
+            android:inputType="number"
+            android:padding="@dimen/_10sdp" />
+
+        <TextView
+            android:id="@+id/muscleControlTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:text="Muscle Control"
+            android:textSize="@dimen/_14sdp" />
+
+
+        <EditText
+            android:id="@+id/muscleControlEt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            android:elevation="@dimen/_6sdp"
+            android:hint="Muscle Control Measurement Value"
+            android:inputType="number"
+            android:padding="@dimen/_10sdp" />
+
+        <TextView
+            android:id="@+id/basalMetabolicRateTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:text="Basal Metabolic Rate"
+            android:textSize="@dimen/_14sdp" />
+
+
+        <EditText
+            android:id="@+id/basalMetabolicRateET"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            android:elevation="@dimen/_6sdp"
+            android:hint="Basal Metabolic Rate Measurement Value"
+            android:inputType="number"
+            android:padding="@dimen/_10sdp" />
+
+        <TextView
+            android:id="@+id/hipTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:text="Hip"
+            android:textSize="@dimen/_14sdp" />
+
+        <EditText
+            android:id="@+id/hipEt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/rect_sharp_corner_white"
+            android:elevation="@dimen/_6sdp"
+            android:hint="Hip Measurement Value"
+            android:inputType="number"
+            android:padding="@dimen/_10sdp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/confirmBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:background="@drawable/button_orange_background"
+            android:gravity="center"
+            android:maxWidth="@dimen/_150sdp"
+            android:minWidth="@dimen/_150sdp"
+            android:text="Confirm"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_14sdp" />
+
+    </LinearLayout>
+
+</ScrollView>

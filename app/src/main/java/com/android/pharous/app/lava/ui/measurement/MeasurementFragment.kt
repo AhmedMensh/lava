@@ -75,10 +75,17 @@ class MeasurementFragment : Fragment(R.layout.fragment_measurement),IItemClickLi
 
         viewModel.getMemberInBodyResults().observe(viewLifecycleOwner , Observer {
 
-            it?.let {
-                if (!it.isNullOrEmpty()){
+            it?.let {result ->
 
-                    it[0].let {
+                if (!result.isNullOrEmpty()){
+
+                    fullHistoryLabel.setOnClickListener {
+                        val bundle = Bundle()
+                        bundle.putParcelableArrayList("History",result as ArrayList<out Parcelable>)
+
+                        findNavController().navigate(R.id.action_measurementFragment_to_measurementHistoryFragment,bundle)
+                    }
+                    result[0].let {
 
                         val waterPercentage = it.weight?.toDouble()?.let { it1 -> it.totalBodyWater?.toDouble()?.div(it1) }
                             ?.times(100)

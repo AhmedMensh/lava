@@ -69,6 +69,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:padding="0dp"
+            android:visibility="gone"
             android:layout_marginTop="@dimen/_20sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -139,6 +140,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
+            android:visibility="gone"
             app:srcCompat="@drawable/ic_maximize"
             app:layout_constraintTop_toBottomOf="@id/toggle_button_group"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -149,6 +151,7 @@
             android:scaleType="fitXY"
             android:layout_marginTop="@dimen/_20sdp"
             android:layout_marginStart="@dimen/_20sdp"
+            android:visibility="gone"
             android:layout_marginEnd="@dimen/_20sdp"
             app:srcCompat="@drawable/ic_chart"
             app:layout_constraintTop_toBottomOf="@id/toggle_button_group"
@@ -171,6 +174,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@+id/historyLabel"
             android:orientation="horizontal">
 
@@ -262,15 +266,24 @@
                 />
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/measurementHistoryRV"
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="@dimen/_20sdp"
-            tools:listitem="@layout/weight_history_item"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/titlesLL"/>
+            app:layout_constraintTop_toBottomOf="@id/titlesLL">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/measurementHistoryRV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+                android:layout_marginBottom="@dimen/_20sdp"
+                tools:listitem="@layout/weight_history_item"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                />
+        </HorizontalScrollView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

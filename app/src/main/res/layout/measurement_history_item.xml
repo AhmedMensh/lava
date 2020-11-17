@@ -2,91 +2,140 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/creationDateTV"
-        android:layout_width="0dp"
-        android:layout_weight="1.5"
-        android:layout_marginStart="@dimen/_4sdp"
-        android:textSize="@dimen/_8sdp"
-        android:layout_marginEnd="@dimen/_4sdp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="11-11-2019"
-        />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/armValueTV"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:text="30Cm"
-        android:textSize="@dimen/_8sdp"
-        app:layout_constraintEnd_toStartOf="@+id/textView3"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        tools:layout_editor_absoluteY="299dp" />
+        <TextView
+            android:id="@+id/creationDateTV"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
 
-    <TextView
-        android:id="@+id/breastValueTV"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:text="30Cm"
-        android:textSize="@dimen/_8sdp"
-        app:layout_constraintEnd_toStartOf="@+id/textView4"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        tools:layout_editor_absoluteY="299dp" />
+            android:gravity="center"
+            android:textSize="@dimen/_14sdp" />
 
-    <TextView
-        android:id="@+id/westValueTV"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:text="30Cm"
-        android:textSize="@dimen/_8sdp"
-        app:layout_constraintEnd_toStartOf="@+id/textView5"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        tools:layout_editor_absoluteY="299dp" />
+        <TextView
+            android:id="@+id/waterTV"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:gravity="center"
+            android:textSize="@dimen/_14sdp" />
 
-    <TextView
-        android:id="@+id/hipsValueTV"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:text="30Cm"
-        android:textSize="@dimen/_8sdp"
-        app:layout_constraintEnd_toStartOf="@+id/textView7"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        tools:layout_editor_absoluteY="299dp" />
+        <TextView
+            android:id="@+id/fatTV"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:gravity="center"
 
-    <TextView
-        android:id="@+id/thightsValueTV"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:text="30Cm"
-        android:textSize="@dimen/_8sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
-        tools:layout_editor_absoluteY="302dp" />
+            android:textSize="@dimen/_14sdp" />
 
-    <TextView
-        android:id="@+id/legsValueTV"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:text="30Cm"
-        android:textSize="@dimen/_8sdp"
-        app:layout_constraintEnd_toStartOf="@+id/textView6"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-         />
+        <TextView
+            android:id="@+id/fatControlTV"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:gravity="center"
+
+            android:textSize="@dimen/_14sdp" />
+
+        <TextView
+            android:id="@+id/fatLevelTV"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:gravity="center"
+            android:text="30Cm"
+            android:textSize="@dimen/_14sdp" />
+
+        <TextView
+            android:id="@+id/smmTV"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:gravity="center"
+            android:textSize="@dimen/_14sdp" />
+
+        <TextView
+            android:id="@+id/weightTV"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+
+            android:gravity="center"
+            android:textSize="@dimen/_14sdp" />
+
+        <TextView
+            android:id="@+id/targetWeightTV"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:gravity="center"
+            android:textSize="@dimen/_14sdp" />
+
+
+        <TextView
+            android:id="@+id/weightControlTV"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:gravity="center"
+            android:textSize="@dimen/_14sdp" />
+
+
+        <TextView
+            android:id="@+id/muscleControlTV"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:gravity="center"
+            android:textSize="@dimen/_14sdp" />
+        <TextView
+            android:id="@+id/rateTV"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:gravity="center"
+            android:textSize="@dimen/_14sdp" />
+        <TextView
+            android:id="@+id/hipTV"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:gravity="center"
+            android:textSize="@dimen/_14sdp" />
+
+        <TextView
+            android:id="@+id/editTV"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:visibility="gone"
+            android:text="Edit"
+            android:textSize="@dimen/_14sdp" />
+
+        <ImageView
+            android:id="@+id/editImgV"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_edit"
+            android:visibility="gone"
+            android:tint="@color/colorPrimary"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/gray" />
 </LinearLayout>

@@ -27,7 +27,9 @@ class RemoteDataSource(private val api: ApiService) {
     }
 
     suspend fun getProfile(token: String) = safeApiCall { api.getProfile(token) }
-    suspend fun updateUserProfile(profileRequest: ProfileRequest) = safeApiCall { api.updateUserProfile(profileRequest) }
+    suspend fun updateUserProfile(profileRequest: ProfileRequest) =
+        safeApiCall { api.updateUserProfile(profileRequest) }
+
     suspend fun getExerciseReservations(token: String) =
         safeApiCall { api.getExerciseReservations(token) }
 
@@ -48,6 +50,9 @@ class RemoteDataSource(private val api: ApiService) {
 
     suspend fun checkMembershipSuspension(token: String) =
         safeApiCall { api.checkMembershipSuspension(token) }
+
+    suspend fun updateInbodyResult(inbodyResultRequest: InbodyResultRequest) =
+        safeApiCall { api.updateInbodyResult(inbodyResultRequest) }
 
     suspend fun getMemberCardioPrograms(token: String) =
         safeApiCall { api.getMemberCardioPrograms(token) }

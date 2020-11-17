@@ -238,6 +238,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/cardioLabel"
                     android:text="tone muscles"
+                    android:maxLength="14"
                     android:textColor="@color/white"
                     android:layout_margin="@dimen/_5sdp"
                     android:layout_width="wrap_content"
@@ -319,7 +320,9 @@
                     android:id="@+id/bodBuildingProgramNameTV"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/strengthLabel"
-                    android:text="tone muscles"
+
+                    android:maxLength="14"
+                    android:ellipsize="end"
                     android:textColor="@android:color/black"
                     android:layout_margin="@dimen/_5sdp"
                     android:layout_width="wrap_content"

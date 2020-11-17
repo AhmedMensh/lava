@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.android.pharous.app.lava.models.DataResult
+import com.android.pharous.app.lava.models.InbodyResultRequest
 import com.android.pharous.app.lava.repositories.ILavaRepo
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -46,6 +47,29 @@ class MeasurementViewModel(private val iLavaRepo: ILavaRepo) : ViewModel() {
 
         viewModelScope.launch {
             when(val result = withContext(IO) { iLavaRepo.getMemberInbodyResults()}){
+
+                is DataResult.Success-> {
+                    data.value = result.content
+                    error.value = null
+                    isLoading.value = false
+                }
+                is DataResult.Error -> {
+                    data.value = null
+                    error.value = result.exception.message
+                    isLoading.value = false
+                }
+            }
+        }
+        return data
+    }
+
+    fun updateMemberInBodyResults(inbodyResultRequest: InbodyResultRequest) : LiveData<Boolean>{
+
+        val data = MutableLiveData<Boolean>()
+        isLoading.value = true
+
+        viewModelScope.launch {
+            when(val result = withContext(IO) { iLavaRepo.updateInbodyResult(inbodyResultRequest)}){
 
                 is DataResult.Success-> {
                     data.value = result.content
