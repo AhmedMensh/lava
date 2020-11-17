@@ -3,8 +3,10 @@ package com.android.pharous.app.lava.ui.workout.models
 import android.os.Parcelable
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
-
-
+//
+//"BodybuildingLastDone": "قبل 71 يوم/ أيام",
+//"Note": null,
+//"CreationDate": "2019-09-06 07:57:17",
 @Parcelize
 data class CardioProgramResponse (
     @field:Json(name = "ID")
@@ -21,6 +23,15 @@ data class CardioProgramResponse (
 
     @field:Json(name = "WeekRepetition")
     val weekRepetition: String,
+
+    @field:Json(name = "WeekCounter")
+    val weekCounter: String,
+
+    @field:Json(name = "CardioLastDone")
+    val cardioLastDone: String,
+
+    @field:Json(name = "BodybuildingLastDone")
+    val bodybuildingLastDone: String,
 
     @field:Json(name = "Note")
     val note: String? = null,

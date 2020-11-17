@@ -44,4 +44,6 @@ interface ILavaRepo {
     suspend fun checkStartDate(peroidID: Int , startDate : String) : DataResult<Boolean>
     suspend fun createContract(peroidID: Int ,branchID: Int, startDate : String) : DataResult<Boolean>
     suspend fun updateInbodyResult(inbodyResultRequest: InbodyResultRequest)  : DataResult<Boolean>
+    suspend fun addCardioReadout(cardioRequest: CardioRequest)  : DataResult<Boolean>
+    suspend fun addBodyBuildingReadout(bodyBuildingRequest: BodyBuildingRequest)  : DataResult<Boolean>
 }

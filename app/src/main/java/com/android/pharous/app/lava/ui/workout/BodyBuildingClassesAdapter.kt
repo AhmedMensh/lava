@@ -12,8 +12,12 @@ import com.chauthai.swipereveallayout.SwipeRevealLayout
 import com.chauthai.swipereveallayout.ViewBinderHelper
 import kotlinx.android.synthetic.main.strength_class_item.view.*
 
-class StrengthClassesAdapter : ListAdapter<BodybuildingProgramDetails,StrengthClassesAdapter.ViewHolder>(DiffCallback) {
+class BodyBuildingClassesAdapter(private val listener : BodyBuildingListener) : ListAdapter<BodybuildingProgramDetails,BodyBuildingClassesAdapter.ViewHolder>(DiffCallback) {
 
+    interface BodyBuildingListener{
+        fun onBodBuildingItemClick(item : BodybuildingProgramDetails)
+        fun onBodBuildingHowIconClick(item : BodybuildingProgramDetails)
+    }
 
     private var viewBinderHelper : ViewBinderHelper = ViewBinderHelper()
 
@@ -21,10 +25,12 @@ class StrengthClassesAdapter : ListAdapter<BodybuildingProgramDetails,StrengthCl
 
         var swipeRevealLayout = itemView.findViewById<SwipeRevealLayout>(R.id.swipeRevealLayout)
 
-        fun bind(item : BodybuildingProgramDetails){
+        fun bind(item: BodybuildingProgramDetails, listener: BodyBuildingListener){
 
             itemView.strengthNameTV.text = item?.equipment?.nameEN
             itemView.durationTV.text = "${item.duration}"
+            itemView.foregroundCL.setOnClickListener { listener.onBodBuildingItemClick(item) }
+
         }
 
     }
@@ -47,7 +53,7 @@ class StrengthClassesAdapter : ListAdapter<BodybuildingProgramDetails,StrengthCl
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
 
-        holder.bind(getItem(position))
+        holder.bind(getItem(position),listener)
         viewBinderHelper.bind(holder.swipeRevealLayout,position.toString())
     }
 }

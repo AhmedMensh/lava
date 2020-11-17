@@ -13,14 +13,18 @@ import com.chauthai.swipereveallayout.SwipeRevealLayout
 import com.chauthai.swipereveallayout.ViewBinderHelper
 import kotlinx.android.synthetic.main.cardio_class_item.view.*
 
-class CardioClassesAdapter(private val listener : IItemClickListener<Any>) : ListAdapter<CardioProgrameDetails,CardioClassesAdapter.ViewHolder>(DiffCallback) {
+class CardioClassesAdapter(private val listener : CardioListener) : ListAdapter<CardioProgrameDetails,CardioClassesAdapter.ViewHolder>(DiffCallback) {
 
 
     private var viewBinderHelper : ViewBinderHelper = ViewBinderHelper()
 
+    interface CardioListener{
+        fun onCardioItemClicked(item : CardioProgrameDetails)
+        fun onCardioHowIconClicked(item : CardioProgrameDetails)
+    }
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun render(
-            listener : IItemClickListener<Any>,
+            listener : CardioListener,
             item: CardioProgrameDetails?
         ) {
 
@@ -28,10 +32,11 @@ class CardioClassesAdapter(private val listener : IItemClickListener<Any>) : Lis
             itemView.cardioTypeTV.text = item?.equipment?.nameEN
             itemView.cardioInfoTV.text = "${item?.duration} Min ${item?.speed} Speed"
 
-            itemView.howItWorkTV.setOnClickListener { item?.let { it1 -> listener.onItemClick(it1) } }
+            itemView.howItWorkTV.setOnClickListener { item?.let { it1 -> listener.onCardioHowIconClicked(it1) } }
+            itemView.foregroundCL.setOnClickListener { item?.let { it1 -> listener.onCardioItemClicked(it1) } }
         }
 
-        var swipeRevealLayout = itemView.findViewById<SwipeRevealLayout>(R.id.swipeRevealLayout)
+//        var swipeRevealLayout = itemView.findViewById<SwipeRevealLayout>(R.id.swipeRevealLayout)
 
 
 
@@ -53,7 +58,7 @@ class CardioClassesAdapter(private val listener : IItemClickListener<Any>) : Lis
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
 
-        viewBinderHelper.bind(holder.swipeRevealLayout,position.toString())
+//        viewBinderHelper.bind(holder.swipeRevealLayout,position.toString())
 
         holder.render(listener,getItem(position))
     }

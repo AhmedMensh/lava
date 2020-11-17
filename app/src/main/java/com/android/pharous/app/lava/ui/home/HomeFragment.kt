@@ -41,10 +41,19 @@ class HomeFragment : Fragment(R.layout.fragment_home),
     private var isUserHasCardioProgram = false
     private var isUserHasBodyBuildingProgram = false
     private val viewModel: HomeViewModel by viewModel()
+    private var programId: String? = null
 //    private val viewModel: HomeViewModel by inject { parametersOf(this)  }
 
-    private val upcomingBookingsAdapter: UpcomingBookingsAdapter by lazy { UpcomingBookingsAdapter(this) }
-    private val personalTrainingSessionsAdapter: PersonalTrainingSessionsAdapter by lazy { PersonalTrainingSessionsAdapter(this) }
+    private val upcomingBookingsAdapter: UpcomingBookingsAdapter by lazy {
+        UpcomingBookingsAdapter(
+            this
+        )
+    }
+    private val personalTrainingSessionsAdapter: PersonalTrainingSessionsAdapter by lazy {
+        PersonalTrainingSessionsAdapter(
+            this
+        )
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -57,21 +66,29 @@ class HomeFragment : Fragment(R.layout.fragment_home),
             swiperefresh.isRefreshing = false
         }
         cardioCL.setOnClickListener {
-            if (isUserHasCardioProgram){
+            if (isUserHasCardioProgram) {
                 var bundle = Bundle()
                 bundle.putString("type", "cardio")
-                bundle.putParcelableArrayList("cardio_list",cardioList as ArrayList<out Parcelable>)
+                bundle.putString("programId", programId)
+                bundle.putParcelableArrayList(
+                    "cardio_list",
+                    cardioList as ArrayList<out Parcelable>
+                )
                 findNavController().navigate(R.id.action_homeFragment_to_workoutFragment, bundle)
             }
 
         }
         strengthCL.setOnClickListener {
-            if (isUserHasBodyBuildingProgram){
-            var bundle = Bundle()
-            bundle.putString("type", "")
-            bundle.putParcelableArrayList("strength_list",strengthList as ArrayList<out Parcelable>)
-            findNavController().navigate(R.id.action_homeFragment_to_workoutFragment, bundle)
-        }
+            if (isUserHasBodyBuildingProgram) {
+                var bundle = Bundle()
+                bundle.putString("type", "")
+                bundle.putString("programId", programId)
+                bundle.putParcelableArrayList(
+                    "strength_list",
+                    strengthList as ArrayList<out Parcelable>
+                )
+                findNavController().navigate(R.id.action_homeFragment_to_workoutFragment, bundle)
+            }
         }
 
 
@@ -118,7 +135,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),
         })
     }
 
-    fun getPersonalTrainingSessions(){
+    fun getPersonalTrainingSessions() {
 
         viewModel.getPersonalTrainingSessions().observe(viewLifecycleOwner, Observer {
 
@@ -143,8 +160,9 @@ class HomeFragment : Fragment(R.layout.fragment_home),
 
         viewModel.getMemberCardioPrograms().observe(viewLifecycleOwner, Observer {
 
-            it?.let {
 
+            it?.let {
+                programId = it[0].id
                 it.forEach {
                     it.cardioProgrameDetail?.values?.forEach {
                         isUserHasCardioProgram = true
@@ -155,7 +173,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),
                 cardioProgramNameTV.text = cardioList[0]?.equipment?.nameEN
                 cardioProgramDurationTV.text = "${cardioList[0]?.duration} min"
 
-                Log.e("DATA","$cardioList")
+
                 it.forEach {
                     it.bodybuildingProgrameDetail?.values?.forEach {
                         isUserHasBodyBuildingProgram = true
@@ -194,7 +212,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),
 
     override fun onItemClick(item: Any) {
 
-             showCancelBookingDialog(item)
+        showCancelBookingDialog(item)
 
     }
 
@@ -205,14 +223,15 @@ class HomeFragment : Fragment(R.layout.fragment_home),
         builder.setView(view)
         var dialog = builder.create()
 
-        when(item){
+        when (item) {
             is ExerciseReservationResponse -> {
 
                 view?.findViewById<TextView>(R.id.exerciseNameTV)?.text = item.exerciseTitle
                 view?.findViewById<TextView>(R.id.trainerTV)?.text = " Trainer : ${item.coachName}"
                 view?.findViewById<TextView>(R.id.exerciseDurationTV)?.text = "${item.duration} Min"
                 view?.findViewById<TextView>(R.id.exerciseDateTV)?.text = item.date
-                view?.findViewById<ImageView>(R.id.cancelImgV)?.setOnClickListener { dialog.dismiss() }
+                view?.findViewById<ImageView>(R.id.cancelImgV)
+                    ?.setOnClickListener { dialog.dismiss() }
                 view?.findViewById<Button>(R.id.cancelReservationBtn)?.setOnClickListener {
 
                     item.iD?.let { it1 ->
@@ -221,7 +240,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),
                                 dialog.dismiss()
                             })
                     }
-            }
+                }
 
                 view?.findViewById<Button>(R.id.presenceBtn)?.setOnClickListener {
 
@@ -232,20 +251,22 @@ class HomeFragment : Fragment(R.layout.fragment_home),
                             })
                     }
                 }
-        }
+            }
             is SessionResponse -> {
                 view?.findViewById<TextView>(R.id.exerciseNameTV)?.text = item.serviceName
                 view?.findViewById<TextView>(R.id.exerciseDurationTV)?.text = "${item.time} Min"
                 view?.findViewById<TextView>(R.id.exerciseDateTV)?.text = item.date
-                view?.findViewById<TextView>(R.id.trainerTV)?.text = "Trainer : ${item.trainerName} "
+                view?.findViewById<TextView>(R.id.trainerTV)?.text =
+                    "Trainer : ${item.trainerName} "
 
-                view?.findViewById<ImageView>(R.id.cancelImgV)?.setOnClickListener { dialog.dismiss() }
+                view?.findViewById<ImageView>(R.id.cancelImgV)
+                    ?.setOnClickListener { dialog.dismiss() }
 
 
                 view?.findViewById<Button>(R.id.cancelReservationBtn)?.setOnClickListener {
 
                     item.iD?.let { it1 ->
-                        viewModel.updatePersonalTrainingReservation(id = it1,canceled =  "1")
+                        viewModel.updatePersonalTrainingReservation(id = it1, canceled = "1")
                             .observe(viewLifecycleOwner, Observer {
                                 dialog.dismiss()
                             })
@@ -255,7 +276,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),
                 view?.findViewById<Button>(R.id.presenceBtn)?.setOnClickListener {
 
                     item.iD?.let { it1 ->
-                        viewModel.updatePersonalTrainingReservation(id = it1,isAttended =  "1")
+                        viewModel.updatePersonalTrainingReservation(id = it1, isAttended = "1")
                             .observe(viewLifecycleOwner, Observer {
 
                                 dialog.dismiss()

@@ -49,6 +49,12 @@ interface ApiService {
     @POST("training/add-inbody-result")
     suspend fun updateInbodyResult(@Body inbodyResultRequest: InbodyResultRequest) : ApiResponse<String>
 
+    @POST("cardio/add-cardio-readout")
+    suspend fun addCardioReadout(@Body cardioRequest: CardioRequest) : ApiResponse<String>
+
+    @POST("cardio/add-bodybuilding-readout")
+    suspend fun addBodyBuildingReadout(@Body bodyBuildingRequest: BodyBuildingRequest) : ApiResponse<String>
+
     @GET("exercise/view")
     suspend fun getExerciseReservations(@Query("AccessToken") token: String)
             : ApiResponse<List<ExerciseReservationResponse>>

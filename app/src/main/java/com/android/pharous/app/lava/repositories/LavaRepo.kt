@@ -311,4 +311,20 @@ class LavaRepo(private val remoteDataSource: RemoteDataSource, private val conte
             is DataResult.Error -> DataResult.Error(result.exception)
         }
     }
+
+    override suspend fun addCardioReadout(cardioRequest: CardioRequest): DataResult<Boolean> {
+        cardioRequest.accessToken = token
+        return when (val result = remoteDataSource.addCardioReadout(cardioRequest)) {
+            is DataResult.Success -> DataResult.Success(true)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
+
+    override suspend fun addBodyBuildingReadout(bodyBuildingRequest: BodyBuildingRequest): DataResult<Boolean> {
+        bodyBuildingRequest.accessToken = token
+        return when (val result = remoteDataSource.addBodyBuildingReadout(bodyBuildingRequest)) {
+            is DataResult.Success -> DataResult.Success(true)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
 }

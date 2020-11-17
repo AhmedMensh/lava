@@ -51,6 +51,12 @@ class RemoteDataSource(private val api: ApiService) {
     suspend fun checkMembershipSuspension(token: String) =
         safeApiCall { api.checkMembershipSuspension(token) }
 
+    suspend fun addCardioReadout(cardioRequest: CardioRequest) =
+        safeApiCall { api.addCardioReadout(cardioRequest) }
+
+    suspend fun addBodyBuildingReadout(bodyBuildingRequest: BodyBuildingRequest) =
+        safeApiCall { api.addBodyBuildingReadout(bodyBuildingRequest) }
+
     suspend fun updateInbodyResult(inbodyResultRequest: InbodyResultRequest) =
         safeApiCall { api.updateInbodyResult(inbodyResultRequest) }
 
