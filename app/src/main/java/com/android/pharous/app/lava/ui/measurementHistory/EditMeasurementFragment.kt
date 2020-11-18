@@ -17,11 +17,13 @@ class EditMeasurementFragment : Fragment(R.layout.fragment_edit_measurement) {
 
     private val viewModel: MeasurementViewModel by viewModel()
     private val inbodyResultRequest by lazy { InbodyResultRequest() }
+    private var updatedResultId : Int = -1
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         arguments?.let {
             it.getParcelable<MemberInbodyresultResponse>("Edit")?.let { it1 -> bindData(it1) }
+            titleTV.text = "Edit Result"
         }
         backImgV.setOnClickListener { activity?.onBackPressed() }
 
@@ -48,16 +50,31 @@ class EditMeasurementFragment : Fragment(R.layout.fragment_edit_measurement) {
                     bodyFatPercent = bodyFatPercentET.text.toString().trim()
                 }
 
-                viewModel.updateMemberInBodyResults(inbodyResultRequest).observe(viewLifecycleOwner,
-                    Observer {
-                        it?.let {
-                            Toast.makeText(
-                                requireContext(),
-                                "Data Updated Successfully",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    })
+                if (updatedResultId == -1){
+                    viewModel.addMemberInBodyResults(inbodyResultRequest).observe(viewLifecycleOwner,
+                        Observer {
+                            it?.let {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Data Updated Successfully",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        })
+                }else{
+                    inbodyResultRequest.resultID = updatedResultId.toString()
+                    viewModel.updateMemberInBodyResults(inbodyResultRequest).observe(viewLifecycleOwner,
+                        Observer {
+                            it?.let {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Data Updated Successfully",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        })
+                }
+
             }
         }
     }
@@ -84,6 +101,7 @@ class EditMeasurementFragment : Fragment(R.layout.fragment_edit_measurement) {
     }
 
     private fun bindData(item: MemberInbodyresultResponse) {
+        updatedResultId = item.iD ?: -1
         waterEt.setText("${item.totalBodyWater}")
         fatEt.setText("${item.bodyFatMass}")
         fatControlEt.setText("${item.fatControl}")

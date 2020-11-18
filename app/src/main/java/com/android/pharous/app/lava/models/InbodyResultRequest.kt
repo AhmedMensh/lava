@@ -6,6 +6,8 @@ import com.squareup.moshi.Json
 data class InbodyResultRequest(
     @field:Json(name = "AccessToken")
     var accessToken: String? = null,
+    @field:Json(name = "ResultID")
+    var resultID: String? = null,
     @field:Json(name = "BasalMetabolicRate")
     var basalMetabolicRate: String? = null,
     @field:Json(name = "BodyFatMass")

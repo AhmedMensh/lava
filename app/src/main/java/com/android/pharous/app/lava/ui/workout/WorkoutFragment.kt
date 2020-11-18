@@ -147,7 +147,8 @@ class WorkoutFragment : Fragment(R.layout.fragment_workout) , CardioClassesAdapt
         view?.findViewById<TextView>(R.id.titleTV)?.text = item?.equipment?.nameEN
         view?.findViewById<ImageView>(R.id.equipmentIV)?.visibility = View.VISIBLE
         builder.setView(view)
-        var dialog = builder.create()
+        val dialog = builder.create()
+        view?.findViewById<ImageView>(R.id.closeImgV)?.setOnClickListener { dialog.dismiss() }
 
 
         dialog.show()

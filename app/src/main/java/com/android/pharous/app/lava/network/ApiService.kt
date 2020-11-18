@@ -46,8 +46,11 @@ interface ApiService {
     @POST("user/update")
     suspend fun updateUserProfile(@Body profileRequest: ProfileRequest) : ApiResponse<List<String>>
 
-    @POST("training/add-inbody-result")
+    @POST("training/update-inbody-result")
     suspend fun updateInbodyResult(@Body inbodyResultRequest: InbodyResultRequest) : ApiResponse<String>
+
+    @POST("training/add-inbody-result")
+    suspend fun addInbodyResult(@Body inbodyResultRequest: InbodyResultRequest) : ApiResponse<String>
 
     @POST("cardio/add-cardio-readout")
     suspend fun addCardioReadout(@Body cardioRequest: CardioRequest) : ApiResponse<String>
@@ -74,13 +77,13 @@ interface ApiService {
         @Query("AccessToken") token: String,
         @Query("BranchID") branchID: Int,
         @Query("Type") type: Int
-    ): ApiResponse<Map<String, String>>
+    ): ApiResponse<List<Map<String, String>>>
 
     @GET("amtar-member-point/list-period")
     suspend fun getPackagePeriods(
         @Query("AccessToken") token: String,
         @Query("PackageID") packageID: Int
-    ): ApiResponse<Map<String, Int>>
+    ): ApiResponse<List<Map<String, Int>>>
 
     @GET("amtar-member-point/package-detail")
     suspend fun getPackageDetails(
@@ -103,7 +106,7 @@ interface ApiService {
         @Field("PeriodID") peroidID: Int,
         @Field("BranchID") BranchID: Int,
         @Field("StartDate") StartDate: String
-    ): ApiResponse<Boolean>
+    ): ApiResponse<AmtarContractResponse>
 
     @GET("amtar-level/get-level")
     suspend fun getTotalPoints(@Query("AccessToken") token: String): ApiResponse<TotalPointResponse>

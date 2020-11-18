@@ -36,14 +36,8 @@ class MeasurementHistoryFragment : Fragment(R.layout.fragment_measurement_histor
             measurementHistoryRV.setHasFixedSize(true)
             adapter.submitList(historyList)
         }
-//        viewModel.getMemberMeasurements().observe(viewLifecycleOwner , Observer {
-//            it?.let {
-//                val adapter = MeasurementHistoryAdapter()
-//                measurementHistoryRV.adapter = adapter
-//                measurementHistoryRV.setHasFixedSize(true)
-//                adapter.submitList(it)
-//            }
-//        })
+
+        addNewResultTV.setOnClickListener { findNavController().navigate(R.id.action_measurementHistoryFragment_to_editMeasuremntFragment) }
 
 
     }

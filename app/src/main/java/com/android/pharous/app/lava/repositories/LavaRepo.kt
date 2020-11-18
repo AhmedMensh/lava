@@ -267,14 +267,22 @@ class LavaRepo(private val remoteDataSource: RemoteDataSource, private val conte
     ): DataResult<Map<String, String>> {
 
         return when (val result = remoteDataSource.getBranchPackages(token,branchID, type)) {
-            is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Success -> {
+                if (result.content?.isNullOrEmpty() == true) DataResult.Success(emptyMap())
+                else
+                DataResult.Success(result.content[0])
+            }
             is DataResult.Error -> DataResult.Error(result.exception)
         }
     }
 
     override suspend fun getPackagePeriods(packageID: Int): DataResult<Map<String, Int>> {
         return when (val result = remoteDataSource.getPackagePeriods(token,packageID)) {
-            is DataResult.Success -> DataResult.Success(result.content)
+            is DataResult.Success ->{
+                if (result.content?.isNullOrEmpty() == true) DataResult.Success(emptyMap())
+                else
+                    DataResult.Success(result.content[0])
+            }
             is DataResult.Error -> DataResult.Error(result.exception)
         }
     }
@@ -307,6 +315,14 @@ class LavaRepo(private val remoteDataSource: RemoteDataSource, private val conte
     override suspend fun updateInbodyResult(inbodyResultRequest: InbodyResultRequest): DataResult<Boolean> {
         inbodyResultRequest.accessToken = token
         return when (val result = remoteDataSource.updateInbodyResult(inbodyResultRequest)) {
+            is DataResult.Success -> DataResult.Success(true)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
+    }
+
+    override suspend fun addInbodyResult(inbodyResultRequest: InbodyResultRequest): DataResult<Boolean> {
+        inbodyResultRequest.accessToken = token
+        return when (val result = remoteDataSource.addInbodyResult(inbodyResultRequest)) {
             is DataResult.Success -> DataResult.Success(true)
             is DataResult.Error -> DataResult.Error(result.exception)
         }

@@ -7,10 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -64,9 +61,9 @@ class MembershipFragment : Fragment(R.layout.fragment_membership) {
         membershipServicesRV.adapter = membershipServicesAdapter
         membershipServicesAdapter.submitList(membership.services?.values?.toList())
 
-        startDateTV.text = "Member Since ${membership.startDate}"
-        endDateTV.text = "End in  ${membership.endDate }"
-        membershipDurationTV.text = "${membership.period} Day Membership"
+        startDateTV.text = "Member Since ${membership.startDate ?: ""}"
+        endDateTV.text = "End in  ${membership.endDate ?: ""}"
+        membershipDurationTV.text = "${membership.period ?: ""} Day Membership"
         branchTV.text = membership.branchName
     }
 
@@ -84,6 +81,7 @@ class MembershipFragment : Fragment(R.layout.fragment_membership) {
 
         builder.setView(view)
         val dialog = builder.create()
+        view?.findViewById<ImageView>(R.id.closeImgV)?.setOnClickListener { dialog.dismiss() }
         view?.findViewById<Button>(R.id.suspendBtn)?.setOnClickListener {
 
            viewModel.suspendMembership(startDateTV?.text.toString() , endDateTV?.text.toString())

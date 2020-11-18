@@ -39,8 +39,8 @@
 
     <ImageView
         android:id="@+id/backArrowImgV"
-        android:layout_width="@dimen/_20sdp"
-        android:layout_height="@dimen/_20sdp"
+        android:layout_width="@dimen/_15sdp"
+        android:layout_height="@dimen/_15sdp"
         app:layout_constraintBottom_toBottomOf="@id/appBarTitle"
         app:layout_constraintEnd_toStartOf="@id/appBarTitle"
         app:layout_constraintHorizontal_bias=".1"
@@ -50,16 +50,48 @@
 
 
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/myBookingRV"
-        android:layout_width="match_parent"
+    <ScrollView
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:layout_margin="@dimen/_4sdp"
-        android:visibility="visible"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/backGroundImgV" />
+        app:layout_constraintTop_toBottomOf="@id/backGroundImgV">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ptSessionsRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/_4sdp"
+                android:visibility="visible"
+                app:fastScrollEnabled="false"
+                app:layout_constraintBottom_toTopOf="@id/exerciseRV"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/exerciseRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/_4sdp"
+                android:visibility="visible"
+                app:fastScrollEnabled="false"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/ptSessionsRV" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

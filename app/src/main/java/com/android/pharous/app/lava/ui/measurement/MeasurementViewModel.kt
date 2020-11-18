@@ -84,5 +84,26 @@ class MeasurementViewModel(private val iLavaRepo: ILavaRepo) : ViewModel() {
             }
         }
         return data
+    } fun addMemberInBodyResults(inbodyResultRequest: InbodyResultRequest) : LiveData<Boolean>{
+
+        val data = MutableLiveData<Boolean>()
+        isLoading.value = true
+
+        viewModelScope.launch {
+            when(val result = withContext(IO) { iLavaRepo.addInbodyResult(inbodyResultRequest)}){
+
+                is DataResult.Success-> {
+                    data.value = result.content
+                    error.value = null
+                    isLoading.value = false
+                }
+                is DataResult.Error -> {
+                    data.value = null
+                    error.value = result.exception.message
+                    isLoading.value = false
+                }
+            }
+        }
+        return data
     }
 }

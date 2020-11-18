@@ -12,6 +12,7 @@ import com.android.pharous.app.lava.ui.home.HomeViewModel
 import com.android.pharous.app.lava.ui.invitation.InvitationViewModel
 import com.android.pharous.app.lava.ui.measurement.MeasurementViewModel
 import com.android.pharous.app.lava.ui.membership.MembershipViewModel
+import com.android.pharous.app.lava.ui.myBooking.MyBookingViewModel
 import com.android.pharous.app.lava.ui.point.PointViewModel
 import com.android.pharous.app.lava.ui.profile.ProfileViewModel
 import com.android.pharous.app.lava.ui.settings.SettingsViewModel
@@ -44,6 +45,7 @@ private val viewModelModule = module {
     viewModel { MembershipViewModel(get()) }
     viewModel { InvitationViewModel(get()) }
     viewModel { ProfileViewModel(get()) }
+    viewModel { MyBookingViewModel(get()) }
 
 }
 

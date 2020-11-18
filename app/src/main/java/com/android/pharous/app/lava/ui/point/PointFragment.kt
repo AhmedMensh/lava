@@ -85,7 +85,6 @@ class PointFragment : Fragment(R.layout.fragment_point) {
         viewModel.getPointHistory().observe(viewLifecycleOwner , Observer {
 
             it?.let {
-                Log.e("LIST","$it")
                 pointHistoryList = it
             }
         })

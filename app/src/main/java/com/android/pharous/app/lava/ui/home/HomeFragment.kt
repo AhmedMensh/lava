@@ -135,7 +135,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),
         })
     }
 
-    fun getPersonalTrainingSessions() {
+    private fun getPersonalTrainingSessions() {
 
         viewModel.getPersonalTrainingSessions().observe(viewLifecycleOwner, Observer {
 
@@ -163,6 +163,9 @@ class HomeFragment : Fragment(R.layout.fragment_home),
 
             it?.let {
                 programId = it[0].id
+                lastDoneBodyBuilidingTV.text = "Last Done :${it[0].bodybuildingLastDone}"
+                cardioLastDoneTV.text = "Last Done :${it[0].cardioLastDone}"
+                
                 it.forEach {
                     it.cardioProgrameDetail?.values?.forEach {
                         isUserHasCardioProgram = true

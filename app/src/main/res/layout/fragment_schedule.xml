@@ -41,8 +41,8 @@
 
     <ImageView
         android:id="@+id/backArrowImgV"
-        android:layout_width="@dimen/_20sdp"
-        android:layout_height="@dimen/_20sdp"
+        android:layout_width="@dimen/_15sdp"
+        android:layout_height="@dimen/_15sdp"
         app:layout_constraintBottom_toBottomOf="@id/appBarTitle"
         app:layout_constraintEnd_toStartOf="@id/appBarTitle"
         app:layout_constraintHorizontal_bias=".1"

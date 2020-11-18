@@ -22,7 +22,7 @@
             app:srcCompat="@drawable/ic_bycycle" />
 
         <TextView
-            android:id="@+id/text"
+            android:id="@+id/nameTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
@@ -36,26 +36,26 @@
             app:layout_constraintVertical_bias=".1" />
 
         <TextView
+            android:id="@+id/dateTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Date : Today"
-            app:layout_constraintStart_toStartOf="@id/text"
-            app:layout_constraintTop_toBottomOf="@id/text" />
+            app:layout_constraintStart_toStartOf="@id/nameTV"
+            app:layout_constraintTop_toBottomOf="@id/nameTV" />
 
     <TextView
         android:id="@+id/durationTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Duration : 30 min"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintStart_toStartOf="@+id/dateTV"
+        app:layout_constraintTop_toBottomOf="@+id/dateTV"/>
 
 
     <TextView
         android:id="@+id/timeTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Time : 9.30 am"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/durationTV"
         app:layout_constraintTop_toBottomOf="@+id/durationTV"/>

@@ -42,6 +42,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         birthDayTI.setOnClickListener { pickDateDialog(birthDayTI) }
         saveBtn.setOnClickListener { updateProfile() }
+        backArrowImgV.setOnClickListener { activity?.onBackPressed() }
     }
 
     private fun getCities() {
